@@ -1,1532 +1,1731 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soarblue Consultores - Soluciones Ambientales con Tecnología</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #030059;
-            --primary-light: #050088;
-            --secondary: #0055ff;
-            --accent: #00c2ff;
-            --light: #f8fafc;
-            --dark: #1e293b;
-            --gray: #64748b;
-            --gray-light: #e2e8f0;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-        }
-
-        html, body {
-            scroll-behavior: smooth;
-            background-color: var(--light);
-            color: var(--dark);
-            overflow-x: hidden;
-        }
-
-        /* Header y Navegación */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.2rem 2rem;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.4s ease;
-        }
-
-        .header.scrolled {
-            padding: 0.8rem 2rem;
-        }
-
-        .header-logo {
-            height: 40px;
-            width: auto;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-link:hover {
-            color: var(--secondary);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 2rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.15;
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1000px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards 0.5s;
-        }
-
-        .hero-logo {
-            width: 300px;
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
-        }
-
-        .hero-title {
-            font-size: 3.2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-            font-weight: 300;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--secondary);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid var(--secondary);
-            box-shadow: 0 10px 20px rgba(0, 85, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(0, 85, 255, 0.4);
-        }
-
-        /* Section Common Styles */
-        .section {
-            padding: 6rem 2rem;
-            position: relative;
-        }
-
-        .section-dark {
-            background: var(--primary);
-            color: white;
-        }
-
-        .section-light {
-            background: white;
-        }
-
-        .section-gray {
-            background: #f8fafc;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 3rem;
-            color: inherit;
-            font-weight: 700;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 4rem;
-            color: var(--gray);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-image {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transform: rotate(-2deg);
-            transition: all 0.5s ease;
-        }
-
-        .about-image:hover {
-            transform: rotate(0deg) scale(1.02);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .about-content h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-
-        .about-content p {
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            color: var(--gray);
-        }
-
-        .highlight {
-            color: var(--secondary);
-            font-weight: 600;
-        }
-
-        .history-part {
-            background: #f8fafc;
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            border-left: 4px solid var(--secondary);
-        }
-
-        .history-part:nth-child(even) {
-            border-left-color: var(--accent);
-        }
-
-        .part-title {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        /* Team Section */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .team-member {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .team-member-image {
-            height: 280px;
-            overflow: hidden;
-        }
-
-        .team-member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .team-member:hover .team-member-image img {
-            transform: scale(1.05);
-        }
-
-        .team-member-content {
-            padding: 2rem;
-        }
-
-        .team-member-name {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-
-        .team-member-role {
-            color: var(--secondary);
-            font-weight: 500;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .team-member-info {
-            margin-bottom: 1.2rem;
-        }
-
-        .team-info-title {
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            color: var(--primary);
-            font-size: 0.95rem;
-        }
-
-        .team-info-desc {
-            color: var(--gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 0.8rem;
-        }
-
-        .team-member-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--gray-light);
-        }
-
-        .skill-tag {
-            background: var(--gray-light);
-            color: var(--dark);
-            padding: 0.4rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-card-header {
-            padding: 2rem 2rem 1rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-        }
-
-        .service-card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card-title {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .service-card-content {
-            padding: 2rem;
-        }
-
-        .service-card-desc {
-            color: var(--gray);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .service-feature {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin-bottom: 0.8rem;
-            color: var(--dark);
-        }
-
-        .service-feature i {
-            color: var(--secondary);
-        }
-
-        .service-link {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.3s;
-        }
-
-        .service-link:hover {
-            gap: 0.8rem;
-        }
-
-        /* Clients Section */
-        .clients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .client-logo {
-            max-height: 80px;
-            width: 100%;
-            object-fit: contain;
-            filter: grayscale(100%);
-            opacity: 0.6;
-            transition: all 0.4s ease;
-        }
-
-        .client-logo:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .project-card {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            background: white;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-image {
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
-        }
-
-        .project-year {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--secondary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-title {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-        }
-
-        .project-client {
-            color: var(--secondary);
-            font-weight: 500;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .project-desc {
-            color: var(--gray);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .project-tag {
-            background: var(--gray-light);
-            color: var(--dark);
-            padding: 0.4rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        /* Technology Section */
-        .tech-stack {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .tech-item {
-            text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .tech-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-        }
-
-        .tech-name {
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        /* Contact Section */
-        .contact-content {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--secondary);
-        }
-
-        /* Footer */
-        .footer {
-            padding: 4rem 2rem 2rem;
-            background: var(--dark);
-            color: white;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            width: 150px;
-            margin-bottom: 1.5rem;
-            opacity: 0.8;
-        }
-
-        .footer-text {
-            opacity: 0.7;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .footer-copyright {
-            opacity: 0.5;
-            font-size: 0.9rem;
-            margin-top: 2rem;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero-title {
-                font-size: 2.8rem;
-            }
-            
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
-            .about-image {
-                max-width: 500px;
-                margin: 0 auto;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                padding: 1rem;
-            }
-            
-            .nav-menu {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .hero-logo {
-                width: 220px;
-            }
-            
-            .section {
-                padding: 4rem 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
-            
-            .team-grid, .services-grid, .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .team-member-content, .service-card-content, .project-content {
-                padding: 1.5rem;
-            }
-            
-            .tech-stack {
-                gap: 2rem;
-            }
-            
-            .tech-icon {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soarblue Consultores - Soluciones Ambientales con Tecnología</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #030059;
+      --primary-light: #050088;
+      --secondary: #0055ff;
+      --accent: #00c2ff;
+      --light: #f8fafc;
+      --dark: #1e293b;
+      --gray: #64748b;
+      --gray-light: #e2e8f0;
+      --error: #ff4757;
+      --success: #2ed573;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    }
+
+    html, body {
+      scroll-behavior: smooth;
+      background-color: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
+      height: 100%;
+    }
+
+    /* Sistema de acceso seguro */
+    .access-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    .access-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      width: 100%;
+      max-width: 450px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .access-logo {
+      width: 180px;
+      margin-bottom: 30px;
+      filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+    }
+
+    .access-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .access-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 30px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .input-group {
+      margin-bottom: 25px;
+      text-align: left;
+    }
+
+    .input-label {
+      display: block;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 12px;
+      border: none;
+      background: rgba(0, 0, 0, 0.2);
+      color: white;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(0, 194, 255, 0.3);
+    }
+
+    .input-field::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .access-btn {
+      width: 100%;
+      padding: 15px;
+      border-radius: 12px;
+      border: none;
+      background: var(--secondary);
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0, 85, 255, 0.3);
+    }
+
+    .access-btn:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px rgba(0, 194, 255, 0.4);
+    }
+
+    .access-btn:active {
+      transform: translateY(0);
+    }
+
+    .error-message {
+      color: var(--error);
+      font-size: 14px;
+      margin-top: 15px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* Header y Navegación */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.2rem 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.4s ease;
+    }
+
+    .header.scrolled {
+      padding: 0.8rem 2rem;
+    }
+
+    .header-logo {
+      height: 40px;
+      width: auto;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-link:hover {
+      color: var(--secondary);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.15;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards 0.5s;
+    }
+
+    .hero-logo {
+      width: 300px;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+    }
+
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--secondary);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid var(--secondary);
+      box-shadow: 0 10px 20px rgba(0, 85, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .cta-button:hover::before {
+      left: 100%;
+    }
+
+    .cta-button:hover {
+      background: transparent;
+      color: var(--secondary);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 25px rgba(0, 85, 255, 0.4);
+    }
+
+    /* Section Common Styles */
+    .section {
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .section-dark {
+      background: var(--primary);
+      color: white;
+    }
+
+    .section-light {
+      background: white;
+    }
+
+    .section-gray {
+      background: #f8fafc;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 3rem;
+      color: inherit;
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 4rem;
+      color: var(--gray);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      transform: rotate(-2deg);
+      transition: all 0.5s ease;
+    }
+
+    .about-image:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .about-content h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .about-content p {
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+
+    .highlight {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    .history-part {
+      background: #f8fafc;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .history-part:nth-child(even) {
+      border-left-color: var(--accent);
+    }
+
+    .part-title {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    /* Team Section */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .team-member {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .team-member-image {
+      height: 280px;
+      overflow: hidden;
+    }
+
+    .team-member-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .team-member:hover .team-member-image img {
+      transform: scale(1.05);
+    }
+
+    .team-member-content {
+      padding: 2rem;
+    }
+
+    .team-member-name {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .team-member-role {
+      color: var(--secondary);
+      font-weight: 500;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .team-member-info {
+      margin-bottom: 1.2rem;
+    }
+
+    .team-info-title {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .team-info-desc {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+
+    .team-member-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--gray-light);
+    }
+
+    .skill-tag {
+      background: var(--gray-light);
+      color: var(--dark);
+      padding: 0.4rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-card-header {
+      padding: 2rem 2rem 1rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+    }
+
+    .service-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card-content {
+      padding: 2rem;
+    }
+
+    .service-card-desc {
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .service-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+      color: var(--dark);
+    }
+
+    .service-feature i {
+      color: var(--secondary);
+    }
+
+    .service-link {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.3s;
+    }
+
+    .service-link:hover {
+      gap: 0.8rem;
+    }
+
+    /* Clients Section */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .client-logo {
+      max-height: 80px;
+      width: 100%;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.6;
+      transition: all 0.4s ease;
+    }
+
+    .client-logo:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .project-card {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      background: white;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-image {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.05);
+    }
+
+    .project-year {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--secondary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .project-content {
+      padding: 2rem;
+    }
+
+    .project-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary);
+    }
+
+    .project-client {
+      color: var(--secondary);
+      font-weight: 500;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .project-desc {
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      background: var(--gray-light);
+      color: var(--dark);
+      padding: 0.4rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Technology Section */
+    .tech-stack {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .tech-item {
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .tech-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+
+    .tech-name {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    /* Contact Section */
+    .contact-content {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      color: var(--secondary);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 4rem 2rem 2rem;
+      background: var(--dark);
+      color: white;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      width: 150px;
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+    }
+
+    .footer-text {
+      opacity: 0.7;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-copyright {
+      opacity: 0.5;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    /* Context Section Styles */
+    .context-section {
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .context-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(0, 85, 255, 0.05);
+      z-index: 0;
+    }
+
+    .context-section::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: -50px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(0, 194, 255, 0.05);
+      z-index: 0;
+    }
+
+    .context-card {
+      background: white;
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      max-width: 900px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    .context-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--secondary), var(--accent));
+      border-radius: 4px 0 0 4px;
+    }
+
+    .context-quote {
+      font-size: 1.4rem;
+      line-height: 1.8;
+      color: var(--dark);
+      margin-bottom: 2rem;
+      font-weight: 500;
+      position: relative;
+      padding-left: 2rem;
+      font-style: italic;
+    }
+
+    .context-quote::before {
+      content: """;
+      position: absolute;
+      left: 0;
+      top: -1rem;
+      font-size: 4rem;
+      color: var(--secondary);
+      font-family: Georgia, serif;
+      line-height: 1;
+      opacity: 0.3;
+    }
+
+    .context-author {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--gray-light);
+    }
+
+    .context-author-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--gray-light);
+      flex-shrink: 0;
+    }
+
+    .context-author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .context-author-info h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .context-author-info p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .animate-shake {
+      animation: shake 0.5s ease;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      
+      .about-image {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 968px) {
+      .context-card {
+        padding: 2.5rem;
+      }
+      
+      .context-quote {
+        font-size: 1.2rem;
+        padding-left: 1.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 1rem;
+      }
+      
+      .nav-menu {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .hero-logo {
+        width: 220px;
+      }
+      
+      .section {
+        padding: 4rem 1.5rem;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+      }
+      
+      .team-grid, .services-grid, .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      .context-section {
+        padding: 4rem 1.5rem;
+      }
+      
+      .context-card {
+        padding: 2rem;
+      }
+      
+      .context-quote {
+        font-size: 1.1rem;
+        padding-left: 1.5rem;
+      }
+      
+      .context-quote::before {
+        font-size: 3rem;
+        top: -0.5rem;
+      }
+      
+      .context-author {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+      
+      .context-author-avatar {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .team-member-content, .service-card-content, .project-content {
+        padding: 1.5rem;
+      }
+      
+      .tech-stack {
+        gap: 2rem;
+      }
+      
+      .tech-icon {
+        font-size: 2.5rem;
+      }
+      
+      .context-card {
+        padding: 1.5rem;
+      }
+      
+      .context-quote {
+        padding-left: 1.2rem;
+        font-size: 1rem;
+      }
+      
+      .context-author-info h4 {
+        font-size: 1.1rem;
+      }
+      
+      .context-author-info p {
+        font-size: 0.9rem;
+      }
+      
+      .access-container {
+        padding: 30px 20px;
+      }
+      
+      .access-title {
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Sistema de acceso seguro -->
+  <div id="access-overlay" class="access-overlay">
+    <div class="access-container animate-fadeIn">
+      <img src="logo/logo-soarblue-W.svg" alt="Soarblue Consultores" class="access-logo">
+      <h2 class="access-title">Acceso Privado</h2>
+      <p class="access-subtitle">Ingrese la contraseña para acceder al sitio web</p>
+      
+      <div class="input-group">
+        <label for="clave" class="input-label">Contraseña</label>
+        <input 
+          type="password" 
+          id="clave" 
+          placeholder="Ingrese su contraseña" 
+          class="input-field"
+        >
+      </div>
+      
+      <button onclick="verificarAcceso()" class="access-btn">Entrar</button>
+
+      <p id="error" class="error-message">
+        <i class="fas fa-exclamation-circle"></i> Contraseña incorrecta
+      </p>
+    </div>
+  </div>
+
+  <!-- Contenido principal (oculto inicialmente) -->
+  <div id="main-content" style="display: none;">
     <!-- Header -->
     <header class="header" id="header">
-        <img src="logo/logo-soarblue.svg" alt="Soarblue Consultores" class="header-logo">
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
-                <li><a href="#servicios" class="nav-link">Servicios</a></li>
-                <li><a href="#equipo" class="nav-link">Equipo</a></li>
-                <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
-                <li><a href="#tecnologia" class="nav-link">Tecnología</a></li>
-                <li><a href="#contacto" class="nav-link">Contacto</a></li>
-            </ul>
-        </nav>
-        <button class="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-        </button>
+      <img src="logo/logo-soarblue.svg" alt="Soarblue Consultores" class="header-logo">
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#inicio" class="nav-link">Inicio</a></li>
+          <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+          <li><a href="#servicios" class="nav-link">Servicios</a></li>
+          <li><a href="#equipo" class="nav-link">Equipo</a></li>
+          <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+          <li><a href="#tecnologia" class="nav-link">Tecnología</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="inicio">
-        <video autoplay muted loop class="hero-video">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-river-and-forest-43575-large.mp4" type="video/mp4">
-        </video>
-        <div class="hero-content">
-            <img src="logo/logo-soarblue-W.svg" alt="Soarblue Consultores" class="hero-logo">
-            <h1 class="hero-title">Soluciones ambientales con tecnología de vanguardia</h1>
-            <p class="hero-subtitle">Expertos en evaluación ambiental, compliance, sostenibilidad y documentación técnica mediante métodos innovadores y tecnología avanzada</p>
-            <a href="#contacto" class="cta-button">Contactar ahora</a>
-        </div>
+      <video autoplay muted loop class="hero-video">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-river-and-forest-43575-large.mp4" type="video/mp4">
+      </video>
+      <div class="hero-content">
+        <img src="logo/logo-soarblue-W.svg" alt="Soarblue Consultores" class="hero-logo">
+        <h1 class="hero-title">Soluciones ambientales con tecnología de vanguardia</h1>
+        <p class="hero-subtitle">Expertos en evaluación ambiental, compliance, sostenibilidad y documentación técnica mediante métodos innovadores y tecnología avanzada</p>
+        <a href="#contacto" class="cta-button">Contactar ahora</a>
+      </div>
     </section>
 
     <!-- About Section -->
-           <div class="container">
-            <h2 class="section-title">Nuestra Historia</h2>
-            <div class="about-grid">
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Soarblue Valdivia">
-                </div>
-                <div class="about-content">
-                    <h3>Soarblue fue fundada en Valdivia en 2016</h3>
-                    
-                    <div class="history-part">
-                        <h4 class="part-title">Historia I</h4>
-                        <p>Por su director ejecutivo, Felipe Zapata, con el objetivo de mejorar la capacidad de análisis en la evaluación ambiental, la inspección, transparencia y comunicación de proyectos de gran envergadura.</p>
-                        <p>Esta <span class="highlight">visión fue co-financiada en 2016 por Corfo, Fomento Los Ríos y patrocinada por INCUBA UC</span>, bajo la denominación de <span class="highlight">Método Córtex</span>.</p>
-                        <p>Este desarrollo surgió de la trayectoria y experiencia profesional como asesor ambiental en el sector público (Gobernación Marítima Castro y Valdivia y Servicio de Evaluación Ambiental Los Ríos), así como en la empresa privada y en su rol como docente universitario.</p>
-                        <p>La iniciativa se sustenta en una formación profesional científico-técnica multidisciplinaria y en su pasión por la fotografía y el video documental especializado en el registro de proyectos y tecnologías vanguardistas.</p>
-                    </div>
-                    
-                    <div class="history-part">
-                        <h4 class="part-title">Historia II</h4>
-                        <p>En la actualidad, resulta particularmente <span class="highlight">relevante y estratégico</span> en relación con la necesidad de transparencia y comprensión para diversas audiencias, incluyendo grupos vulnerables.</p>
-                        <p>Asimismo, es fundamental para la gestión de crisis y la construcción de confianza en un contexto cada vez más regulado por normativas como el <span class="highlight">Acuerdo de Escazú, Cambio Climático, la Ley de Delitos en Contra del Medio Ambiente, y los Procedimientos Sancionatorios</span>, entre otros.</p>
-                        <p>Nuestra visión de proporcionar <span class="highlight">evidencia visual vinculante y trazable</span> se alinea con la demanda de rendición de cuentas de los stakeholders y la gestión de riesgos y los actuales formas de información.</p>
-                    </div>
-                    
-                  
-                </div>
+    <section class="section section-light" id="nosotros">
+      <div class="container">
+        <h2 class="section-title">Nuestra Historia</h2>
+        <div class="about-grid">
+          <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Soarblue Valdivia">
+          </div>
+          <div class="about-content">
+            <h3>Soarblue fue fundada en Valdivia en 2016</h3>
+            
+            <div class="history-part">
+              <h4 class="part-title">Historia I</h4>
+              <p>Por su director ejecutivo, Felipe Zapata, con el objetivo de mejorar la capacidad de análisis en la evaluación ambiental, la inspección, transparencia y comunicación de proyectos de gran envergadura.</p>
+              <p>Esta <span class="highlight">visión fue co-financiada en 2016 por Corfo, Fomento Los Ríos y patrocinada por INCUBA UC</span>, bajo la denominación de <span class="highlight">Método Córtex</span>.</p>
+              <p>Este desarrollo surgió de la trayectoria y experiencia profesional como asesor ambiental en el sector público (Gobernación Marítima Castro y Valdivia y Servicio de Evaluación Ambiental Los Ríos), así como en la empresa privada y en su rol como docente universitario.</p>
+              <p>La iniciativa se sustenta en una formación profesional científico-técnica multidisciplinaria y en su pasión por la fotografía y el video documental especializado en el registro de proyectos y tecnologías vanguardistas.</p>
             </div>
+            
+            <div class="history-part">
+              <h4 class="part-title">Historia II</h4>
+              <p>En la actualidad, resulta particularmente <span class="highlight">relevante y estratégico</span> en relación con la necesidad de transparencia y comprensión para diversas audiencias, incluyendo grupos vulnerables.</p>
+              <p>Asimismo, es fundamental para la gestión de crisis y la construcción de confianza en un contexto cada vez más regulado por normativas como el <span class="highlight">Acuerdo de Escazú, Cambio Climático, la Ley de Delitos en Contra del Medio Ambiente, y los Procedimientos Sancionatorios</span>, entre otros.</p>
+              <p>Nuestra visión de proporcionar <span class="highlight">evidencia visual vinculante y trazable</span> se alinea con la demanda de rendición de cuentas de los stakeholders y la gestión de riesgos y los actuales formas de información.</p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-
-<style>
-    /* Context Section Styles */
-    .context-section {
-        padding: 6rem 2rem;
-        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .context-section::before {
-        content: '';
-        position: absolute;
-        top: -100px;
-        right: -100px;
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        background: rgba(0, 85, 255, 0.05);
-        z-index: 0;
-    }
-
-    .context-section::after {
-        content: '';
-        position: absolute;
-        bottom: -50px;
-        left: -50px;
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        background: rgba(0, 194, 255, 0.05);
-        z-index: 0;
-    }
-
-    .context-card {
-        background: white;
-        border-radius: 20px;
-        padding: 3rem;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
-        position: relative;
-        overflow: hidden;
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        max-width: 900px;
-        margin: 0 auto;
-        z-index: 1;
-    }
-
-    .context-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 8px;
-        height: 100%;
-        background: linear-gradient(to bottom, var(--secondary), var(--accent));
-        border-radius: 4px 0 0 4px;
-    }
-
-    .context-quote {
-        font-size: 1.4rem;
-        line-height: 1.8;
-        color: var(--dark);
-        margin-bottom: 2rem;
-        font-weight: 500;
-        position: relative;
-        padding-left: 2rem;
-        font-style: italic;
-    }
-
-    .context-quote::before {
-        content: """;
-        position: absolute;
-        left: 0;
-        top: -1rem;
-        font-size: 4rem;
-        color: var(--secondary);
-        font-family: Georgia, serif;
-        line-height: 1;
-        opacity: 0.3;
-    }
-
-    .context-author {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 1px solid var(--gray-light);
-    }
-
-    .context-author-avatar {
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        overflow: hidden;
-        border: 3px solid var(--gray-light);
-        flex-shrink: 0;
-    }
-
-    .context-author-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .context-author-info h4 {
-        font-size: 1.2rem;
-        margin-bottom: 0.3rem;
-        color: var(--primary);
-        font-weight: 600;
-    }
-
-    .context-author-info p {
-        color: var(--gray);
-        font-size: 0.95rem;
-        margin: 0;
-    }
-
-    /* Responsive adjustments for context section */
-    @media (max-width: 968px) {
-        .context-card {
-            padding: 2.5rem;
-        }
-        
-        .context-quote {
-            font-size: 1.2rem;
-            padding-left: 1.8rem;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .context-section {
-            padding: 4rem 1.5rem;
-        }
-        
-        .context-card {
-            padding: 2rem;
-        }
-        
-        .context-quote {
-            font-size: 1.1rem;
-            padding-left: 1.5rem;
-        }
-        
-        .context-quote::before {
-            font-size: 3rem;
-            top: -0.5rem;
-        }
-        
-        .context-author {
-            flex-direction: column;
-            text-align: center;
-            gap: 1rem;
-        }
-        
-        .context-author-avatar {
-            width: 60px;
-            height: 60px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .context-card {
-            padding: 1.5rem;
-        }
-        
-        .context-quote {
-            padding-left: 1.2rem;
-            font-size: 1rem;
-        }
-        
-        .context-author-info h4 {
-            font-size: 1.1rem;
-        }
-        
-        .context-author-info p {
-            font-size: 0.9rem;
-        }
-    }
-</style>
 
     <!-- Context Section -->
     <section class="context-section" id="contexto">
-        <div class="container">
-            <h2 class="section-title">CONTEXTO</h2>
-            <p class="section-subtitle">Nuestra filosofía y enfoque en el sector ambiental y tecnológico</p>
-            
-            <div class="context-card">
-                <p class="context-quote">
-                    "En Soarblue Consultores, entendemos los desafíos únicos que enfrentan las empresas. Nuestros servicios se basa en un profundo conocimiento del entorno regulatorio político-ambiental, sostenible y tecnológico y en nuestra capacidad técnica para ofrecer soluciones innovadoras y vanguardistas a nuestros clientes en la complejidad de la actualidad".
-                </p>
-                
-                <div class="context-author">
-                    <div class="context-author-avatar">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Felipe Zapata">
-                    </div>
-                    <div class="context-author-info">
-                        <h4>Felipe Zapata</h4>
-                        <p>Director Ejecutivo - Soarblue Consultores</p>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title">CONTEXTO</h2>
+        <p class="section-subtitle">Nuestra filosofía y enfoque en el sector ambiental y tecnológico</p>
+        
+        <div class="context-card">
+          <p class="context-quote">
+            "En Soarblue Consultores, entendemos los desafíos únicos que enfrentan las empresas. Nuestros servicios se basa en un profundo conocimiento del entorno regulatorio político-ambiental, sostenible y tecnológico y en nuestra capacidad técnica para ofrecer soluciones innovadoras y vanguardistas a nuestros clientes en la complejidad de la actualidad".
+          </p>
+          
+          <div class="context-author">
+            <div class="context-author-avatar">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Felipe Zapata">
             </div>
+            <div class="context-author-info">
+              <h4>Felipe Zapata</h4>
+              <p>Director Ejecutivo - Soarblue Consultores</p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-
-    <!-- Team Section -->
-    
     <!-- Team Section -->
     <section class="section section-gray" id="equipo">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Nuestro Equipo</h2>
-            <p class="section-subtitle animate-on-scroll">Profesionales multidisciplinarios con experiencia en los sectores público y privado</p>
-            
-            <div class="team-grid">
-                <!-- Felipe Zapata -->
-                <div class="team-member animate-on-scroll">
-                    <div class="team-member-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Felipe Zapata">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">Felipe Zapata</h3>
-                        <span class="team-member-role">Director</span>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Formación</div>
-                            <div class="team-info-desc">Biólogo Ambiental. Centro EULA, Universidad de Concepción. MAGÍSTER (E) en Recursos Hídricos (Universidad Austral de Chile)</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Postítulos</div>
-                            <div class="team-info-desc">Sostenibilidad en los Negocios, Comunicación Corporativa, Compliance Ambiental, Smartcities, Liquidación de Siniestros Ambientales, Bioseguridad, IA y Machine Learning, Python para Data Science</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Experiencia Pública</div>
-                            <div class="team-info-desc">SERVICIO EVALUACIÓN AMBIENTAL, región de los Ríos. GOBERNACIONES MARÍTIMAS, VALDIVIA Y CASTRO. Experiencia en evaluación de proyectos acuícolas, portuarios y emergencias marítimas.</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Experiencia Privada</div>
-                            <div class="team-info-desc">SOCIEDAD MARMAU Ltda. Implementación de medidas de emergencia en Medioambiente y Bioseguridad ante la crisis del virus ISA en la salmonicultura, 2007.</div>
-                        </div>
-                        
-                        <div class="team-member-skills">
-                            <span class="skill-tag">Perito Ambiental</span>
-                            <span class="skill-tag">Piloto Drones</span>
-                            <span class="skill-tag">Método Córtex</span>
-                            <span class="skill-tag">Comunicación Estratégica</span>
-                            <span class="skill-tag">Liquidador de Siniestros</span>
-                            <span class="skill-tag">Docente</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Alberto Guajardo -->
-                <div class="team-member animate-on-scroll">
-                    <div class="team-member-image">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Alberto Guajardo">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">Alberto Guajardo</h3>
-                        <span class="team-member-role">Sostenibilidad</span>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Formación</div>
-                            <div class="team-info-desc">INGENIERO COMERCIAL, Universidad de Chile. Máster Executive en Gestión de Calidad (EOI de España)</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Especialidades</div>
-                            <div class="team-info-desc">Responsabilidad Social Empresarial para empresas de América Latina. Acreditado por GRI para implementación de Reportes de Sostenibilidad. Experto en Norma SGE21.</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Reconocimientos</div>
-                            <div class="team-info-desc">Examinador internacional del Premio Iberoamericano de la Calidad y del Premio Nacional a la Calidad de Chile</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Experiencia Docente</div>
-                            <div class="team-info-desc">Universidad de Chile, Universidad Católica de Valparaíso, Universidad Andrés Bello en diplomados de Responsabilidad Social</div>
-                        </div>
-                        
-                        <div class="team-member-skills">
-                            <span class="skill-tag">RSE</span>
-                            <span class="skill-tag">GRI</span>
-                            <span class="skill-tag">SGE21</span>
-                            <span class="skill-tag">Calidad</span>
-                            <span class="skill-tag">Sostenibilidad</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Alejandra Canelas -->
-                <div class="team-member animate-on-scroll">
-                    <div class="team-member-image">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Alejandra Canelas">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">Alejandra Canelas</h3>
-                        <span class="team-member-role">Comunicación Corporativa</span>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Formación</div>
-                            <div class="team-info-desc">PERIODISTA, Universidad de Chile. Comunicación Social titulada con distinción máxima. Bilingüe (español - inglés)</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Experiencia</div>
-                            <div class="team-info-desc">Editora de material impreso y responsable del levantamiento de contenido para web en temas de perfil social: medioambiente, educación y turismo</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Reconocimientos</div>
-                            <div class="team-info-desc">Beca de la Università degli Studi di Genova, Italia, diplomada con honores. Premio Mujer Destacada en ámbito social-comunitario 2012, I. Municipalidad de Viña del Mar</div>
-                        </div>
-                        
-                        <div class="team-member-skills">
-                            <span class="skill-tag">Comunicación</span>
-                            <span class="skill-tag">Bilingüe</span>
-                            <span class="skill-tag">Edición</span>
-                            <span class="skill-tag">Contenidos Web</span>
-                            <span class="skill-tag">RSC</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Franklin Gallegos -->
-                <div class="team-member animate-on-scroll">
-                    <div class="team-member-image">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Franklin Gallegos">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">Franklin Gallegos</h3>
-                        <span class="team-member-role">Compliance</span>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Formación</div>
-                            <div class="team-info-desc">ABOGADO, Universidad Gabriela Mistral. LL. M. Litigación Oral California Western School of Law</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Postgrados</div>
-                            <div class="team-info-desc">Máster Iberoamericano en Anticorrupción (Universidad de Salamanca). Máster Compliance y Gestión de Riesgos (ADEN University y Universitat Politecnica de Catalunya)</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Doctorado</div>
-                            <div class="team-info-desc">Doctor © Centro de Estudios Jurídicos Carbonell (México)</div>
-                        </div>
-                        
-                        <div class="team-member-skills">
-                            <span class="skill-tag">Compliance</span>
-                            <span class="skill-tag">Gestión de Riesgos</span>
-                            <span class="skill-tag">Anticorrupción</span>
-                            <span class="skill-tag">Litigación</span>
-                            <span class="skill-tag">Derecho</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Arturo Linares -->
-                <div class="team-member animate-on-scroll">
-                    <div class="team-member-image">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Arturo Linares">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">Arturo Linares</h3>
-                        <span class="team-member-role">IA Generativa</span>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Formación</div>
-                            <div class="team-info-desc">INGENIERO ELECTRÓNICO con más de 7 años de experiencia en desarrollo de soluciones tecnológicas</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Experiencia Internacional</div>
-                            <div class="team-info-desc">Proyectos en múltiples industrias en Chile, España, Perú y Argentina</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Tecnologías</div>
-                            <div class="team-info-desc">Inteligencia Artificial, Blockchain, Cloud Computing, Machine Learning, NLP, Computer Vision, LLMs</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Reconocimientos</div>
-                            <div class="team-info-desc">Ganador Hackathon OpenAI 2024. Diplomados en Data Science, Blockchain, Inteligencia Artificial, MLOps</div>
-                        </div>
-                        
-                        <div class="team-member-skills">
-                            <span class="skill-tag">IA</span>
-                            <span class="skill-tag">Blockchain</span>
-                            <span class="skill-tag">Cloud</span>
-                            <span class="skill-tag">ML</span>
-                            <span class="skill-tag">NLP</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Jerman Espindola -->
-                <div class="team-member animate-on-scroll">
-                    <div class="team-member-image">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Jerman Espindola">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">Jerman Espindola</h3>
-                        <span class="team-member-role">Blockchain</span>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Formación</div>
-                            <div class="team-info-desc">INGENIERO EN GESTIÓN INDUSTRIAL. Magíster en Ciencias de la Computación</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Experiencia</div>
-                            <div class="team-info-desc">Más de 20 años de experiencia en TI. Experto en Blockchain y Desarrollo de Software</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Liderazgo</div>
-                            <div class="team-info-desc">Lideró Operaciones y Sistemas de TI por más de 10 años. Desarrolló sistemas de datos y transaccionales</div>
-                        </div>
-                        
-                        <div class="team-member-info">
-                            <div class="team-info-title">Docencia</div>
-                            <div class="team-info-desc">Profesor Universitario, Universidad de Talca. Cofundador de Krivia Labs</div>
-                        </div>
-                        
-                        <div class="team-member-skills">
-                            <span class="skill-tag">Blockchain</span>
-                            <span class="skill-tag">TI</span>
-                            <span class="skill-tag">Desarrollo</span>
-                            <span class="skill-tag">Análisis de Riesgo</span>
-                            <span class="skill-tag">Docencia</span>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">Nuestro Equipo</h2>
+        <p class="section-subtitle animate-on-scroll">Profesionales multidisciplinarios con experiencia en los sectores público y privado</p>
+        
+        <div class="team-grid">
+          <!-- Felipe Zapata -->
+          <div class="team-member animate-on-scroll">
+            <div class="team-member-image">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Felipe Zapata">
             </div>
+            <div class="team-member-content">
+              <h3 class="team-member-name">Felipe Zapata</h3>
+              <span class="team-member-role">Director</span>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Formación</div>
+                <div class="team-info-desc">Biólogo Ambiental. Centro EULA, Universidad de Concepción. MAGÍSTER (E) en Recursos Hídricos (Universidad Austral de Chile)</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Postítulos</div>
+                <div class="team-info-desc">Sostenibilidad en los Negocios, Comunicación Corporativa, Compliance Ambiental, Smartcities, Liquidación de Siniestros Ambientales, Bioseguridad, IA y Machine Learning, Python para Data Science</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Experiencia Pública</div>
+                <div class="team-info-desc">SERVICIO EVALUACIÓN AMBIENTAL, región de los Ríos. GOBERNACIONES MARÍTIMAS, VALDIVIA Y CASTRO. Experiencia en evaluación de proyectos acuícolas, portuarios y emergencias marítimas.</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Experiencia Privada</div>
+                <div class="team-info-desc">SOCIEDAD MARMAU Ltda. Implementación de medidas de emergencia en Medioambiente y Bioseguridad ante la crisis del virus ISA en la salmonicultura, 2007.</div>
+              </div>
+              
+              <div class="team-member-skills">
+                <span class="skill-tag">Perito Ambiental</span>
+                <span class="skill-tag">Piloto Drones</span>
+                <span class="skill-tag">Método Córtex</span>
+                <span class="skill-tag">Comunicación Estratégica</span>
+                <span class="skill-tag">Liquidador de Siniestros</span>
+                <span class="skill-tag">Docente</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Alberto Guajardo -->
+          <div class="team-member animate-on-scroll">
+            <div class="team-member-image">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Alberto Guajardo">
+            </div>
+            <div class="team-member-content">
+              <h3 class="team-member-name">Alberto Guajardo</h3>
+              <span class="team-member-role">Sostenibilidad</span>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Formación</div>
+                <div class="team-info-desc">INGENIERO COMERCIAL, Universidad de Chile. Máster Executive en Gestión de Calidad (EOI de España)</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Especialidades</div>
+                <div class="team-info-desc">Responsabilidad Social Empresarial para empresas de América Latina. Acreditado por GRI para implementación de Reportes de Sostenibilidad. Experto en Norma SGE21.</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Reconocimientos</div>
+                <div class="team-info-desc">Examinador internacional del Premio Iberoamericano de la Calidad y del Premio Nacional a la Calidad de Chile</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Experiencia Docente</div>
+                <div class="team-info-desc">Universidad de Chile, Universidad Católica de Valparaíso, Universidad Andrés Bello en diplomados de Responsabilidad Social</div>
+              </div>
+              
+              <div class="team-member-skills">
+                <span class="skill-tag">RSE</span>
+                <span class="skill-tag">GRI</span>
+                <span class="skill-tag">SGE21</span>
+                <span class="skill-tag">Calidad</span>
+                <span class="skill-tag">Sostenibilidad</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Alejandra Canelas -->
+          <div class="team-member animate-on-scroll">
+            <div class="team-member-image">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Alejandra Canelas">
+            </div>
+            <div class="team-member-content">
+              <h3 class="team-member-name">Alejandra Canelas</h3>
+              <span class="team-member-role">Comunicación Corporativa</span>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Formación</div>
+                <div class="team-info-desc">PERIODISTA, Universidad de Chile. Comunicación Social titulada con distinción máxima. Bilingüe (español - inglés)</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Experiencia</div>
+                <div class="team-info-desc">Editora de material impreso và responsable del levantamiento de contenido para web en temas de perfil social: medioambiente, educación y turismo</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Reconocimientos</div>
+                <div class="team-info-desc">Beca de la Università degli Studi di Genova, Italia, diplomada con honores. Premio Mujer Destacada en ámbito social-comunitario 2012, I. Municipalidad de Viña del Mar</div>
+              </div>
+              
+              <div class="team-member-skills">
+                <span class="skill-tag">Comunicación</span>
+                <span class="skill-tag">Bilingüe</span>
+                <span class="skill-tag">Edición</span>
+                <span class="skill-tag">Contenidos Web</span>
+                <span class="skill-tag">RSC</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Franklin Gallegos -->
+          <div class="team-member animate-on-scroll">
+            <div class="team-member-image">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Franklin Gallegos">
+            </div>
+            <div class="team-member-content">
+              <h3 class="team-member-name">Franklin Gallegos</h3>
+              <span class="team-member-role">Compliance</span>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Formación</div>
+                <div class="team-info-desc">ABOGADO, Universidad Gabriela Mistral. LL. M. Litigación Oral California Western School of Law</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Postgrados</div>
+                <div class="team-info-desc">Máster Iberoamericano en Anticorrupción (Universidad de Salamanca). Máster Compliance y Gestión de Riesgos (ADEN University y Universitat Politecnica de Catalunya)</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Doctorado</div>
+                <div class="team-info-desc">Doctor © Centro de Estudios Jurídicos Carbonell (México)</div>
+              </div>
+              
+              <div class="team-member-skills">
+                <span class="skill-tag">Compliance</span>
+                <span class="skill-tag">Gestión de Riesgos</span>
+                <span class="skill-tag">Anticorrupción</span>
+                <span class="skill-tag">Litigación</span>
+                <span class="skill-tag">Derecho</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Arturo Linares -->
+          <div class="team-member animate-on-scroll">
+            <div class="team-member-image">
+              <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Arturo Linares">
+            </div>
+            <div class="team-member-content">
+              <h3 class="team-member-name">Arturo Linares</h3>
+              <span class="team-member-role">IA Generativa</span>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Formación</div>
+                <div class="team-info-desc">INGENIERO ELECTRÓNICO con más de 7 años de experiencia en desarrollo de soluciones tecnológicas</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Experiencia Internacional</div>
+                <div class="team-info-desc">Proyectos en múltiples industrias en Chile, España, Perú y Argentina</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Tecnologías</div>
+                <div class="team-info-desc">Inteligencia Artificial, Blockchain, Cloud Computing, Machine Learning, NLP, Computer Vision, LLMs</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Reconocimientos</div>
+                <div class="team-info-desc">Ganador Hackathon OpenAI 2024. Diplomados en Data Science, Blockchain, Inteligencia Artificial, MLOps</div>
+              </div>
+              
+              <div class="team-member-skills">
+                <span class="skill-tag">IA</span>
+                <span class="skill-tag">Blockchain</span>
+                <span class="skill-tag">Cloud</span>
+                <span class="skill-tag">ML</span>
+                <span class="skill-tag">NLP</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Jerman Espindola -->
+          <div class="team-member animate-on-scroll">
+            <div class="team-member-image">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Jerman Espindola">
+            </div>
+            <div class="team-member-content">
+              <h3 class="team-member-name">Jerman Espindola</h3>
+              <span class="team-member-role">Blockchain</span>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Formación</div>
+                <div class="team-info-desc">INGENIERO EN GESTIÓN INDUSTRIAL. Magíster en Ciencias de la Computación</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Experiencia</div>
+                <div class="team-info-desc">Más de 20 años de experiencia en TI. Experto en Blockchain y Desarrollo de Software</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Liderazgo</div>
+                <div class="team-info-desc">Lideró Operaciones y Sistemas de TI por más de 10 años. Desarrolló sistemas de datos y transaccionales</div>
+              </div>
+              
+              <div class="team-member-info">
+                <div class="team-info-title">Docencia</div>
+                <div class="team-info-desc">Profesor Universitario, Universidad de Talca. Cofundador de Krivia Labs</div>
+              </div>
+              
+              <div class="team-member-skills">
+                <span class="skill-tag">Blockchain</span>
+                <span class="skill-tag">TI</span>
+                <span class="skill-tag">Desarrollo</span>
+                <span class="skill-tag">Análisis de Riesgo</span>
+                <span class="skill-tag">Docencia</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Services Section -->
     <section class="section section-light" id="servicios">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Nuestros Servicios</h2>
-            <p class="section-subtitle animate-on-scroll">Soluciones integrales para la gestión ambiental empresarial</p>
-            
-            <div class="services-grid">
-                <!-- Auditoría Ambiental -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-card-header">
-                        <div class="service-card-icon"><i class="fas fa-clipboard-check"></i></div>
-                        <h3 class="service-card-title">Auditoría Ambiental</h3>
-                    </div>
-                    <div class="service-card-content">
-                        <p class="service-card-desc">Evaluación independiente y transparente del cumplimiento de las Resoluciones de Calificación Ambiental (RCA) para empresas.</p>
-                        <ul class="service-features">
-                            <li class="service-feature"><i class="fas fa-check"></i> Debida Diligencia Ambiental</li>
-                            <li class="service-feature"><i class="fas fa-check"></i> Peritaje</li>
-                            <li class="service-feature"><i class="fas fa-check"></i> Preparación para Fiscalización</li>
-                        </ul>
-                        <a href="#" class="service-link">Conocer más <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <!-- Compliance Ambiental -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-card-header">
-                        <div class="service-card-icon"><i class="fas fa-scale-balanced"></i></div>
-                        <h3 class="service-card-title">Compliance Ambiental</h3>
-                    </div>
-                    <div class="service-card-content">
-                        <p class="service-card-desc">Diseño e implementación de modelos de prevención de delitos ambientales y programas de debida diligencia.</p>
-                        <ul class="service-features">
-                            <li class="service-feature"><i class="fas fa-check"></i> Modelo Prevención de Delitos</li>
-                            <li class="service-feature"><i class="fas fa-check"></i> Protocolos de Respuesta</li>
-                            <li class="service-feature"><i class="fas fa-check"></i> Mitigación de Riesgos</li>
-                        </ul>
-                        <a href="#" class="service-link">Conocer más <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <!-- Sostenibilidad -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-card-header">
-                        <div class="service-card-icon"><i class="fas fa-leaf"></i></div>
-                        <h3 class="service-card-title">Sostenibilidad</h3>
-                    </div>
-                    <div class="service-card-content">
-                        <p class="service-card-desc">Elaboración de estrategias de sostenibilidad, reportes integrados y gestión de riesgos ESG y derechos humanos.</p>
-                        <ul class="service-features">
-                            <li class="service-feature"><i class="fas fa-check"></i> Estrategias ESG</li>
-                            <li class="service-feature"><i class="fas fa-check"></i> Reportes Integrados</li>
-                            <li class="service-feature"><i class="fas fa-check"></i> Doble Materialidad</li>
-                        </ul>
-                        <a href="#" class="service-link">Conocer más <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">Nuestros Servicios</h2>
+        <p class="section-subtitle animate-on-scroll">Soluciones integrales para la gestión ambiental empresarial</p>
+        
+        <div class="services-grid">
+          <!-- Auditoría Ambiental -->
+          <div class="service-card animate-on-scroll">
+            <div class="service-card-header">
+              <div class="service-card-icon"><i class="fas fa-clipboard-check"></i></div>
+              <h3 class="service-card-title">Auditoría Ambiental</h3>
             </div>
+            <div class="service-card-content">
+              <p class="service-card-desc">Evaluación independiente y transparente del cumplimiento de las Resoluciones de Calificación Ambiental (RCA) para empresas.</p>
+              <ul class="service-features">
+                <li class="service-feature"><i class="fas fa-check"></i> Debida Diligencia Ambiental</li>
+                <li class="service-feature"><i class="fas fa-check"></i> Peritaje</li>
+                <li class="service-feature"><i class="fas fa-check"></i> Preparación para Fiscalización</li>
+              </ul>
+              <a href="#" class="service-link">Conocer más <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+          
+          <!-- Compliance Ambiental -->
+          <div class="service-card animate-on-scroll">
+            <div class="service-card-header">
+              <div class="service-card-icon"><i class="fas fa-scale-balanced"></i></div>
+              <h3 class="service-card-title">Compliance Ambiental</h3>
+            </div>
+            <div class="service-card-content">
+              <p class="service-card-desc">Diseño e implementación de modelos de prevención de delitos ambientales y programas de debida diligencia.</p>
+              <ul class="service-features">
+                <li class="service-feature"><i class="fas fa-check"></i> Modelo Prevención de Delitos</li>
+                <li class="service-feature"><i class="fas fa-check"></i> Protocolos de Respuesta</li>
+                <li class="service-feature"><i class="fas fa-check"></i> Mitigación de Riesgos</li>
+              </ul>
+              <a href="#" class="service-link">Conocer más <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+          
+          <!-- Sostenibilidad -->
+          <div class="service-card animate-on-scroll">
+            <div class="service-card-header">
+              <div class="service-card-icon"><i class="fas fa-leaf"></i></div>
+              <h3 class="service-card-title">Sostenibilidad</h3>
+            </div>
+            <div class="service-card-content">
+              <p class="service-card-desc">Elaboración de estrategias de sostenibilidad, reportes integrados y gestión de riesgos ESG y derechos humanos.</p>
+              <ul class="service-features">
+                <li class="service-feature"><i class="fas fa-check"></i> Estrategias ESG</li>
+                <li class="service-feature"><i class="fas fa-check"></i> Reportes Integrados</li>
+                <li class="service-feature"><i class="fas fa-check"></i> Doble Materialidad</li>
+              </ul>
+              <a href="#" class="service-link">Conocer más <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Clients Section -->
     <section class="section section-dark">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Nuestros Clientes</h2>
-            <p class="section-subtitle animate-on-scroll">Hemos trabajado con empresas líderes en diversos sectores</p>
-            
-            <div class="clients-grid">
-                <img src="logo/colbun.svg" alt="Colbún" class="client-logo animate-on-scroll">
-                <img src="logo/marval.svg" alt="Marval" class="client-logo animate-on-scroll">
-                <img src="logo/oxxean.svg" alt="Oxean" class="client-logo animate-on-scroll">
-                <img src="logo/resolve.svg" alt="Resolve Marine" class="client-logo animate-on-scroll">
-                <img src="logo/scotta.svg" alt="Scotta" class="client-logo animate-on-scroll">
-                <img src="logo/ovejera.svg" alt="Hidromocho" class="client-logo animate-on-scroll">
-            </div>
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">Nuestros Clientes</h2>
+        <p class="section-subtitle animate-on-scroll">Hemos trabajado con empresas líderes en diversos sectores</p>
+        
+        <div class="clients-grid">
+          <img src="logo/colbun.svg" alt="Colbún" class="client-logo animate-on-scroll">
+          <img src="logo/marval.svg" alt="Marval" class="client-logo animate-on-scroll">
+          <img src="logo/oxxean.svg" alt="Oxean" class="client-logo animate-on-scroll">
+          <img src="logo/resolve.svg" alt="Resolve Marine" class="client-logo animate-on-scroll">
+          <img src="logo/scotta.svg" alt="Scotta" class="client-logo animate-on-scroll">
+          <img src="logo/ovejera.svg" alt="Hidromocho" class="client-logo animate-on-scroll">
         </div>
+      </div>
     </section>
 
     <!-- Projects Section -->
     <section class="section section-light" id="proyectos">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Proyectos Destacados</h2>
-            <p class="section-subtitle animate-on-scroll">Algunos de nuestros trabajos más relevantes</p>
-            
-            <div class="projects-grid">
-                <!-- Proyecto Colbún -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Proyecto Colbún">
-                        <span class="project-year">2021</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Embalse San Pedro</h3>
-                        <span class="project-client">Colbún - Mejor Energía</span>
-                        <p class="project-desc">Asesoría ambiental para proyecto Embalse San Pedro Río San Pedro - Lago Riñihue, Región de los Ríos.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Participación Ciudadana</span>
-                            <span class="project-tag">Documentación</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Proyecto Ovejerasur -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Proyecto Ovejerasur">
-                        <span class="project-year">2020</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Parque Eólico Ovejerasur</h3>
-                        <span class="project-client">Ovejerasur</span>
-                        <p class="project-desc">Asesoría ambiental para Parque Eólico Ovejerasur, EIA en fase Evaluación Ambiental, SEA Los Ríos.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Energía Eólica</span>
-                            <span class="project-tag">Evaluación Ambiental</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Proyecto Hidromocho -->
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Proyecto Hidromocho">
-                        <span class="project-year">2016-2021</span>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Central Hidroeléctrica Hidromocho</h3>
-                        <span class="project-client">Hidromocho S.A.</span>
-                        <p class="project-desc">Consultor ambiental para Mini Central Hidroeléctrica de Pasada, fase de construcción en Puyehue, Región de los Ríos.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Hidroeléctrica</span>
-                            <span class="project-tag">Reportabilidad</span>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">Proyectos Destacados</h2>
+        <p class="section-subtitle animate-on-scroll">Algunos de nuestros trabajos más relevantes</p>
+        
+        <div class="projects-grid">
+          <!-- Proyecto Colbún -->
+          <div class="project-card animate-on-scroll">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Proyecto Colbún">
+              <span class="project-year">2021</span>
             </div>
+            <div class="project-content">
+              <h3 class="project-title">Embalse San Pedro</h3>
+              <span class="project-client">Colbún - Mejor Energía</span>
+              <p class="project-desc">Asesoría ambiental para proyecto Embalse San Pedro Río San Pedro - Lago Riñihue, Región de los Ríos.</p>
+              <div class="project-tags">
+                <span class="project-tag">Participación Ciudadana</span>
+                <span class="project-tag">Documentación</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Proyecto Ovejerasur -->
+          <div class="project-card animate-on-scroll">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Proyecto Ovejerasur">
+              <span class="project-year">2020</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Parque Eólico Ovejerasur</h3>
+              <span class="project-client">Ovejerasur</span>
+              <p class="project-desc">Asesoría ambiental para Parque Eólico Ovejerasur, EIA en fase Evaluación Ambiental, SEA Los Ríos.</p>
+              <div class="project-tags">
+                <span class="project-tag">Energía Eólica</span>
+                <span class="project-tag">Evaluación Ambiental</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Proyecto Hidromocho -->
+          <div class="project-card animate-on-scroll">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Proyecto Hidromocho">
+              <span class="project-year">2016-2021</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Central Hidroeléctrica Hidromocho</h3>
+              <span class="project-client">Hidromocho S.A.</span>
+              <p class="project-desc">Consultor ambiental para Mini Central Hidroeléctrica de Pasada, fase de construcción en Puyehue, Región de los Ríos.</p>
+              <div class="project-tags">
+                <span class="project-tag">Hidroeléctrica</span>
+                <span class="project-tag">Reportabilidad</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Technology Section -->
     <section class="section section-gray" id="tecnologia">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Tecnología Aplicada</h2>
-            <p class="section-subtitle animate-on-scroll">Utilizamos tecnología de vanguardia para soluciones ambientales innovadoras</p>
-            
-            <div class="tech-stack">
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-icon"><i class="fas fa-plane"></i></div>
-                    <div class="tech-name">Drones Profesionales</div>
-                </div>
-                
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-icon"><i class="fas fa-brain"></i></div>
-                    <div class="tech-name">Inteligencia Artificial</div>
-                </div>
-                
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-icon"><i class="fas fa-link"></i></div>
-                    <div class="tech-name">Blockchain</div>
-                </div>
-                
-                <div class="tech-item animate-on-scroll">
-                    <div class="tech-icon"><i class="fas fa-cloud"></i></div>
-                    <div class="tech-name">Cloud Computing</div>
-                </div>
-                
-             
-            </div>
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">Tecnología Aplicada</h2>
+        <p class="section-subtitle animate-on-scroll">Utilizamos tecnología de vanguardia para soluciones ambientales innovadoras</p>
+        
+        <div class="tech-stack">
+          <div class="tech-item animate-on-scroll">
+            <div class="tech-icon"><i class="fas fa-plane"></i></div>
+            <div class="tech-name">Drones Profesionales</div>
+          </div>
+          
+          <div class="tech-item animate-on-scroll">
+            <div class="tech-icon"><i class="fas fa-brain"></i></div>
+            <div class="tech-name">Inteligencia Artificial</div>
+          </div>
+          
+          <div class="tech-item animate-on-scroll">
+            <div class="tech-icon"><i class="fas fa-link"></i></div>
+            <div class="tech-name">Blockchain</div>
+          </div>
+          
+          <div class="tech-item animate-on-scroll">
+            <div class="tech-icon"><i class="fas fa-cloud"></i></div>
+            <div class="tech-name">Cloud Computing</div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section class="section section-dark" id="contacto">
-        <div class="container">
-            <div class="contact-content">
-                <h2 class="section-title animate-on-scroll">¿Necesitas asesoría especializada?</h2>
-                <p class="section-subtitle animate-on-scroll">Contáctanos para evaluar cómo podemos apoyar tus proyectos con soluciones ambientales innovadoras y tecnológicamente avanzadas.</p>
-                
-                <div class="contact-info">
-                    <div class="contact-item animate-on-scroll">
-                        <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                        <span>felipe@soarblue.cl</span>
-                    </div>
-                    <div class="contact-item animate-on-scroll">
-                        <span class="contact-icon"><i class="fab fa-whatsapp"></i></span>
-                        <span>+56998114750 (WhatsApp)</span>
-                    </div>
-                    <div class="contact-item animate-on-scroll">
-                        <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
-                        <span>Valdivia, Región de Los Ríos, Chile</span>
-                    </div>
-                </div>
-                
-                <a href="https://wa.me/56998114750" class="cta-button animate-on-scroll">Contactar por WhatsApp</a>
+      <div class="container">
+        <div class="contact-content">
+          <h2 class="section-title animate-on-scroll">¿Necesitas asesoría especializada?</h2>
+          <p class="section-subtitle animate-on-scroll">Contáctanos para evaluar cómo podemos apoyar tus proyectos con soluciones ambientales innovadoras y tecnológicamente avanzadas.</p>
+          
+          <div class="contact-info">
+            <div class="contact-item animate-on-scroll">
+              <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+              <span>felipe@soarblue.cl</span>
             </div>
+            <div class="contact-item animate-on-scroll">
+              <span class="contact-icon"><i class="fab fa-whatsapp"></i></span>
+              <span>+56998114750 (WhatsApp)</span>
+            </div>
+            <div class="contact-item animate-on-scroll">
+              <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+              <span>Valdivia, Región de Los Ríos, Chile</span>
+            </div>
+          </div>
+          
+          <a href="https://wa.me/56998114750" class="cta-button animate-on-scroll">Contactar por WhatsApp</a>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <img src="logo/logo-soarblue-W.svg" alt="Soarblue Consultores" class="footer-logo">
-            <p class="footer-text">Innovación tecnológica aplicada.</p>
-            <p class="footer-copyright">© 2025 Soarblue Consultores. Todos los derechos reservados.</p>
-        </div>
+      <div class="footer-content">
+        <img src="logo/logo-soarblue-W.svg" alt="Soarblue Consultores" class="footer-logo">
+        <p class="footer-text">Innovación tecnológica aplicada.</p>
+        <p class="footer-copyright">© 2025 Soarblue Consultores. Todos los derechos reservados.</p>
+      </div>
     </footer>
+  </div>
 
-    <script>
-        // Animación al hacer scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.animate-on-scroll');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-            
-            // Header scroll effect
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-            
-            // Mobile menu toggle
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            mobileMenuBtn.addEventListener('click', function() {
-                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-            });
+  <script>
+    // Función para verificar el acceso
+    function verificarAcceso() {
+      const clave = document.getElementById("clave").value;
+      const correcta = "2025"; // 🔑 Cambia la clave aquí
+
+      if (clave === correcta) {
+        document.getElementById("access-overlay").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+      } else {
+        const error = document.getElementById("error");
+        error.style.display = "flex";
+
+        // Efecto "shake"
+        const box = document.getElementById("access-overlay");
+        box.classList.add("animate-shake");
+        setTimeout(() => box.classList.remove("animate-shake"), 500);
+      }
+    }
+
+    // Permitir enviar con Enter
+    document.getElementById("clave").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        verificarAcceso();
+      }
+    });
+
+    // Animación al hacer scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll('.animate-on-scroll');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+          }
         });
-    </script>
+      }, {
+        threshold: 0.1
+      });
+      
+      animatedElements.forEach(element => {
+        observer.observe(element);
+      });
+      
+      // Header scroll effect
+      const header = document.getElementById('header');
+      if (header) {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        });
+      }
+      
+      // Mobile menu toggle
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const navMenu = document.querySelector('.nav-menu');
+      
+      if (mobileMenuBtn && navMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+          navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+      }
+    });
+  </script>
 </body>
 </html>
