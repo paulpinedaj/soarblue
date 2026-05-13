@@ -4,2175 +4,1421 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Soarblue Consultores - Soluciones Ambientales</title>
+<title>Soarblue Consultores</title>
 
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<!-- Satoshi CDN -->
 <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
 
 <style>
-:root {
-    --primary: #112629;
-    --primary-light: #112629 ;
-    --secondary: #0055ff;
-    --accent: #00c2ff;
-    --light: #f8fafc;
-    --dark: #1e293b;
-    --gray: #64748b;
-    --gray-light: #e2e8f0;
-    --error: #ff4757;
-    --success: #2ed573;
+
+/* =========================================================
+ROOT
+========================================================= */
+
+:root{
+
+  --bg:#2b2b2b;
+  --bg-soft:#313131;
+  --card:#373737;
+  --card-2:#3d3d3d;
+
+  --line:rgba(255,255,255,.06);
+
+  --text:#ebe4d6;
+  --text-soft:#c8c1b4;
+
+  --accent:#8fb6be;
+
+  --shadow:0 20px 60px rgba(0,0,0,.22);
+
 }
 
-/* 👇 AQUÍ aplicas la fuente correctamente */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Satoshi', 'SF Pro Display', -apple-system, BlinkMacSystemFont,
-                 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+/* =========================================================
+RESET
+========================================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Satoshi','SF Pro Display',sans-serif;
 }
 
-    html, body {
-      scroll-behavior: smooth;
-      background-color: var(--light);
-      color: var(--dark);
-      overflow-x: hidden;
-      height: 100%;
-    }
-
-    /* Sistema de acceso seguro */
-    .access-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 20px;
-    }
-
-    .access-container {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 16px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      padding: 40px;
-      width: 100%;
-      max-width: 450px;
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .access-logo {
-      width: 180px;
-      margin-bottom: 30px;
-      filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
-    }
-
-    .access-title {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-
-    .access-subtitle {
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 30px;
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .input-group {
-      margin-bottom: 25px;
-      text-align: left;
-    }
-
-    .input-label {
-      display: block;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 8px;
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .input-field {
-      width: 100%;
-      padding: 15px 20px;
-      border-radius: 12px;
-      border: none;
-      background: rgba(0, 0, 0, 0.2);
-      color: white;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .input-field:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 2px rgba(0, 194, 255, 0.3);
-    }
-
-    .input-field::placeholder {
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .access-btn {
-      width: 100%;
-      padding: 15px;
-      border-radius: 12px;
-      border: none;
-      background: var(--secondary);
-      color: white;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 20px rgba(0, 85, 255, 0.3);
-    }
-
-    .access-btn:hover {
-      background: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 15px 25px rgba(0, 194, 255, 0.4);
-    }
-
-    .access-btn:active {
-      transform: translateY(0);
-    }
-
-    .error-message {
-      color: var(--error);
-      font-size: 14px;
-      margin-top: 15px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    /* Header y Navegación */
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 1.2rem 2rem;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: all 0.4s ease;
-    }
-
-    .header.scrolled {
-      padding: 0.8rem 2rem;
-    }
-
-    .header-logo {
-      height: 40px;
-      width: auto;
-    }
-
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-    }
-
-    .nav-link {
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: color 0.3s;
-      position: relative;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--secondary);
-      transition: width 0.3s ease;
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    .nav-link:hover {
-      color: var(--secondary);
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--dark);
-    }
-
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 2rem;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.15;
-      z-index: 0;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1000px;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s ease forwards 0.5s;
-    }
-
-    .hero-logo {
-      width: 614px;
-      margin-bottom: 2rem;
-      filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
-    }
-
-    .hero-title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-      color:#A9D7DE;
-    }
-
-    .hero-subtitle {
-      font-size: 1.3rem;
-      margin-bottom: 2.5rem;
-      opacity: 0.9;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-      font-weight: 300;
-            color:#fff;
-
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 1rem 2.5rem;
-      background: var(--secondary);
-      color: white;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      border: 2px solid var(--secondary);
-      box-shadow: 0 10px 20px rgba(0, 85, 255, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: 0.5s;
-    }
-
-    .cta-button:hover::before {
-      left: 100%;
-    }
-
-    .cta-button:hover {
-      background: transparent;
-      color: var(--secondary);
-      transform: translateY(-3px);
-      box-shadow: 0 15px 25px rgba(0, 85, 255, 0.4);
-    }
-
-    /* Section Common Styles */
-    .section {
-      padding: 6rem 2rem;
-      position: relative;
-    }
-
-    .section-dark {
-      background: var(--primary);
-      color: white;
-    }
-
-    .section-light {
-      background: #F6F5F1;
-    }
-
-    .section-gray {
-      background: #f8fafc;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2.8rem;
-      margin-bottom: 3rem;
-      color: inherit;
-      font-weight: 700;
-      opacity: 1;
-      transform: translateY(20px);
-      color:#6cbaea;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      font-size: 1.2rem;
-      margin-bottom: 4rem;
-      color: var(--gray);
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
-
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
-
-    .animate-on-scroll.animated {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* About Section */
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .about-image {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-      transform: rotate(-2deg);
-      transition: all 0.5s ease;
-    }
-
-    .about-image:hover {
-      transform: rotate(0deg) scale(1.02);
-    }
-
-    .about-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .about-content h3 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary);
-    }
-
-    .about-content p {
-      margin-bottom: 1.5rem;
-      line-height: 1.7;
-      color: var(--gray);
-    }
-
-    .highlight {
-      color: var(--secondary);
-      font-weight: 600;
-    }
-
-    .history-part {
-      background: #f8fafc;
-      padding: 2rem;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-      border-left: 4px solid #0B6B6F;
-    }
-
-    .history-part:nth-child(even) {
-      border-left-color: var(--accent);
-    }
-
-    .part-title {
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
-
-    /* Team Section */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .team-member {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      transition: all 0.4s ease;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    .team-member:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .team-member-image {
-      height: 280px;
-      overflow: hidden;
-    }
-
-    .team-member-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .team-member:hover .team-member-image img {
-      transform: scale(1.05);
-    }
-
-    .team-member-content {
-      padding: 2rem;
-    }
-
-    .team-member-name {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-    }
-
-    .team-member-role {
-      color: #6cbaea;
-      font-weight: 500;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .team-member-info {
-      margin-bottom: 1.2rem;
-    }
-
-    .team-info-title {
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-      color: var(--primary);
-      font-size: 0.95rem;
-    }
-
-    .team-info-desc {
-      color: var(--gray);
-      font-size: 0.9rem;
-      line-height: 1.5;
-      margin-bottom: 0.8rem;
-    }
-
-    .team-member-skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--gray-light);
-    }
-
-    .skill-tag {
-      background: var(--gray-light);
-      color: var(--dark);
-      padding: 0.4rem 0.8rem;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    /* Services Section */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .service-card {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      transition: all 0.4s ease;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .service-card-header {
-      padding: 2rem 2rem 1rem;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      color: white;
-    }
-
-    .service-card-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .service-card-title {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .service-card-content {
-      padding: 2rem;
-    }
-
-    .service-card-desc {
-      color: var(--gray);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    .service-features {
-      list-style: none;
-      margin-bottom: 2rem;
-    }
-
-    .service-feature {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 0.8rem;
-      color: var(--dark);
-    }
-
-    .service-feature i {
-      color: #6cbaea;
-    }
-
-    .service-link {
-      color: #6cbaea;
-      text-decoration: none;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: gap 0.3s;
-    }
-
-    .service-link:hover {
-      gap: 0.8rem;
-    }
-
-    /* Clients Section */
-    .clients-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .client-logo {
-      max-height: 80px;
-      width: 100%;
-      object-fit: contain;
-      filter: grayscale(100%);
-      opacity: 0.6;
-      transition: all 0.4s ease;
-    }
-
-    .client-logo:hover {
-      filter: grayscale(0%);
-      opacity: 1;
-    }
-
-    /* Projects Section */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .project-card {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      transition: all 0.4s ease;
-      opacity: 0;
-      transform: translateY(30px);
-      background: white;
-    }
-
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .project-image {
-      height: 250px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .project-card:hover .project-image img {
-      transform: scale(1.05);
-    }
-
-    .project-year {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: var(--secondary);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .project-content {
-      padding: 2rem;
-    }
-
-    .project-title {
-      font-size: 1.4rem;
-      margin-bottom: 0.8rem;
-      color: var(--primary);
-    }
-
-    .project-client {
-      color: var(--secondary);
-      font-weight: 500;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .project-desc {
-      color: var(--gray);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .project-tag {
-      background: var(--gray-light);
-      color: var(--dark);
-      padding: 0.4rem 0.8rem;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    /* Technology Section */
-    .tech-stack {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 3rem;
-      margin-top: 3rem;
-    }
-
-    .tech-item {
-      text-align: center;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    .tech-icon {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      color: var(--secondary);
-    }
-
-    .tech-name {
-      font-weight: 600;
-      color: var(--dark);
-    }
-
-    /* Contact Section */
-    .contact-content {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .contact-info {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 1.1rem;
-    }
-
-    .contact-icon {
-      font-size: 1.5rem;
-      color: var(--secondary);
-    }
-
-    /* Footer */
-    .footer {
-      padding: 4rem 2rem 2rem;
-      background: #0B6B6F;
-      color: white;
-      text-align: center;
-    }
-
-    .footer-content {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .footer-logo {
-      width:240px;
-      margin-bottom: 1.5rem;
-      opacity: 0.8;
-    }
-
-    .footer-text {
-      opacity: 0.7;
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .footer-copyright {
-      opacity: 0.5;
-      font-size: 0.9rem;
-      margin-top: 2rem;
-    }
-
-    /* Context Section Styles */
-    .context-section {
-      padding: 6rem 2rem;
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .context-section::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: rgba(0, 85, 255, 0.05);
-      z-index: 0;
-    }
-
-    .context-section::after {
-      content: '';
-      position: absolute;
-      bottom: -50px;
-      left: -50px;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: rgba(0, 194, 255, 0.05);
-      z-index: 0;
-    }
-
-    .context-card {
-      background: white;
-      border-radius: 20px;
-      padding: 3rem;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      max-width: 900px;
-      margin: 0 auto;
-      z-index: 1;
-    }
-
-    .context-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 8px;
-      height: 100%;
-      background: linear-gradient(to bottom, var(--secondary), var(--accent));
-      border-radius: 4px 0 0 4px;
-    }
-
-    .context-quote {
-      font-size: 1.4rem;
-      line-height: 1.8;
-      color: var(--dark);
-      margin-bottom: 2rem;
-      font-weight: 500;
-      position: relative;
-      padding-left: 2rem;
-      font-style: italic;
-    }
-
-    .context-quote::before {
-      content: """;
-      position: absolute;
-      left: 0;
-      top: -1rem;
-      font-size: 4rem;
-      color: var(--secondary);
-      font-family: Georgia, serif;
-      line-height: 1;
-      opacity: 0.3;
-    }
-
-    .context-author {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--gray-light);
-    }
-
-    .context-author-avatar {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid var(--gray-light);
-      flex-shrink: 0;
-    }
-
-    .context-author-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .context-author-info h4 {
-      font-size: 1.2rem;
-      margin-bottom: 0.3rem;
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    .context-author-info p {
-      color: var(--gray);
-      font-size: 0.95rem;
-      margin: 0;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { 
-        opacity: 0; 
-        transform: translateY(20px); 
-      }
-      to { 
-        opacity: 1; 
-        transform: translateY(0); 
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-8px); }
-      40%, 80% { transform: translateX(8px); }
-    }
-
-    .animate-fadeIn {
-      animation: fadeIn 0.6s ease forwards;
-    }
-
-    .animate-shake {
-      animation: shake 0.5s ease;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-      .hero-title {
-        font-size: 2.8rem;
-      }
-      
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-      
-      .about-image {
-        max-width: 500px;
-        margin: 0 auto;
-      }
-    }
-
-    @media (max-width: 968px) {
-      .context-card {
-        padding: 2.5rem;
-      }
-      
-      .context-quote {
-        font-size: 1.2rem;
-        padding-left: 1.8rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .header {
-        padding: 1rem;
-      }
-      
-      .nav-menu {
-        display: none;
-      }
-      
-      .mobile-menu-btn {
-        display: block;
-      }
-      
-      .hero-title {
-        font-size: 2.2rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.1rem;
-      }
-      
-      .hero-logo {
-        width: 401px;
-      }
-      
-      .section {
-        padding: 4rem 1.5rem;
-      }
-      
-      .section-title {
-        font-size: 2.2rem;
-      }
-      
-      .team-grid, .services-grid, .projects-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .contact-info {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-      
-      .context-section {
-        padding: 4rem 1.5rem;
-      }
-      
-      .context-card {
-        padding: 2rem;
-      }
-      
-      .context-quote {
-        font-size: 1.1rem;
-        padding-left: 1.5rem;
-      }
-      
-      .context-quote::before {
-        font-size: 3rem;
-        top: -0.5rem;
-      }
-      
-      .context-author {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-      }
-      
-      .context-author-avatar {
-        width: 60px;
-        height: 60px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 2rem;
-      }
-      
-      .section-title {
-        font-size: 2rem;
-      }
-      
-      .team-member-content, .service-card-content, .project-content {
-        padding: 1.5rem;
-      }
-      
-      .tech-stack {
-        gap: 2rem;
-      }
-      
-      .tech-icon {
-        font-size: 2.5rem;
-      }
-      
-      .context-card {
-        padding: 1.5rem;
-      }
-      
-      .context-quote {
-        padding-left: 1.2rem;
-        font-size: 1rem;
-      }
-      
-      .context-author-info h4 {
-        font-size: 1.1rem;
-      }
-      
-      .context-author-info p {
-        font-size: 0.9rem;
-      }
-      
-      .access-container {
-        padding: 30px 20px;
-      }
-      
-      .access-title {
-        font-size: 24px;
-      }
-    }
-  </style>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* =========================================================
+GLOBAL
+========================================================= */
+
+.section{
+  padding:7rem 2rem;
+}
+
+.container{
+  width:100%;
+  max-width:1250px;
+  margin:0 auto;
+}
+
+.section-title{
+  text-align:center;
+  font-size:2.9rem;
+  font-weight:700;
+  letter-spacing:-1px;
+  margin-bottom:1.2rem;
+  color:var(--text);
+}
+
+.section-subtitle{
+  text-align:center;
+  max-width:820px;
+  margin:0 auto 4rem;
+  color:var(--text-soft);
+  line-height:1.9;
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.header{
+
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+
+  z-index:1000;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:1.1rem 2rem;
+
+  background:rgba(28,28,28,.55);
+
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+
+  border-bottom:1px solid rgba(255,255,255,.04);
+
+  transition:.35s ease;
+
+}
+
+.header.scrolled{
+  background:rgba(24,24,24,.82);
+  padding:.95rem 2rem;
+}
+
+.header-logo{
+  height:38px;
+}
+
+.nav-menu{
+  list-style:none;
+  display:flex;
+  gap:2rem;
+}
+
+.nav-link{
+
+  position:relative;
+
+  color:var(--text);
+  text-decoration:none;
+
+  font-size:.92rem;
+  letter-spacing:.4px;
+
+  transition:.25s ease;
+
+}
+
+.nav-link::after{
+
+  content:'';
+
+  position:absolute;
+  left:0;
+  bottom:-7px;
+
+  width:0%;
+  height:1px;
+
+  background:var(--accent);
+
+  transition:.3s ease;
+
+}
+
+.nav-link:hover{
+  color:#ffffff;
+}
+
+.nav-link:hover::after{
+  width:100%;
+}
+
+.mobile-menu-btn{
+
+  display:none;
+
+  background:none;
+  border:none;
+
+  color:var(--text);
+
+  font-size:1.3rem;
+  cursor:pointer;
+
+}
+
+/* =========================================================
+HERO
+========================================================= */
+
+.hero{
+
+  min-height:100vh;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  padding:8rem 2rem 5rem;
+
+  position:relative;
+  overflow:hidden;
+
+  background:
+  radial-gradient(circle at top, rgba(255,255,255,.04), transparent 30%),
+  linear-gradient(180deg,#2b2b2b 0%, #252525 100%);
+
+}
+
+.hero::before{
+
+  content:'';
+
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(120deg, transparent 0%, rgba(255,255,255,.02) 50%, transparent 100%);
+
+  opacity:.4;
+
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:1050px;
+}
+
+.hero-logo{
+  width:100%;
+  max-width:620px;
+  margin-bottom:2.7rem;
+  opacity:.95;
+}
+
+.hero-subtitle{
+
+  max-width:950px;
+
+  margin:0 auto 1.4rem;
+
+  color:var(--text-soft);
+
+  line-height:1.9;
+  font-size:1.1rem;
+
+}
+
+.hero-title{
+
+  margin-top:2.5rem;
+
+  color:var(--accent);
+
+  font-size:3.3rem;
+  font-weight:700;
+
+  letter-spacing:-1px;
+
+}
+
+/* =========================================================
+HISTORIA
+========================================================= */
+
+.history-wrapper{
+  max-width:1100px;
+  margin:0 auto;
+}
+
+.history-card{
+
+  background:
+  linear-gradient(180deg,#373737 0%, #313131 100%);
+
+  border:1px solid var(--line);
+
+  border-radius:30px;
+
+  padding:4rem;
+
+  position:relative;
+
+  overflow:hidden;
+
+  box-shadow:var(--shadow);
+
+}
+
+.history-card::before{
+
+  content:'';
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:1px;
+
+  background:
+  linear-gradient(90deg,
+  transparent,
+  rgba(255,255,255,.15),
+  transparent);
+
+}
+
+.history-label{
+
+  display:inline-flex;
+  align-items:center;
+  gap:.7rem;
+
+  color:var(--accent);
+
+  font-size:.82rem;
+  letter-spacing:2px;
+
+  margin-bottom:2rem;
+
+  text-transform:uppercase;
+
+}
+
+.history-text{
+  color:var(--text-soft);
+  line-height:2;
+  font-size:1.05rem;
+}
+
+.history-text p{
+  margin-bottom:1.8rem;
+}
+
+/* =========================================================
+VALUES
+========================================================= */
+
+.values-grid{
+
+  margin-top:4rem;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  gap:1.5rem;
+
+}
+
+.value-card{
+
+  background:
+  linear-gradient(180deg,#3a3a3a 0%, #323232 100%);
+
+  border:1px solid var(--line);
+
+  border-radius:26px;
+
+  padding:2.4rem;
+
+  transition:.35s ease;
+
+  position:relative;
+
+  overflow:hidden;
+
+  box-shadow:var(--shadow);
+
+}
+
+.value-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,.12);
+}
+
+.value-card::before{
+
+  content:'';
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:1px;
+
+  background:
+  linear-gradient(90deg,
+  transparent,
+  rgba(255,255,255,.12),
+  transparent);
+
+}
+
+.value-icon{
+
+  width:58px;
+  height:58px;
+
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-bottom:1.5rem;
+
+  background:rgba(255,255,255,.04);
+
+  color:var(--accent);
+
+  font-size:1.15rem;
+
+}
+
+.value-title{
+  font-size:1.3rem;
+  margin-bottom:1rem;
+  color:var(--text);
+}
+
+.value-text{
+  color:var(--text-soft);
+  line-height:1.9;
+}
+
+/* =========================================================
+SERVICIOS
+========================================================= */
+
+.services-section{
+  background:#303030;
+}
+
+.services-grid{
+
+  margin-top:4rem;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  gap:1.6rem;
+
+}
+
+.service-main-card{
+
+  background:
+  linear-gradient(180deg,#3b3b3b 0%, #333333 100%);
+
+  border:1px solid var(--line);
+
+  border-radius:30px;
+
+  overflow:hidden;
+
+  transition:.35s ease;
+
+  position:relative;
+
+  box-shadow:var(--shadow);
+
+}
+
+.service-main-card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(255,255,255,.12);
+}
+
+.service-main-card::before{
+
+  content:'';
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:1px;
+
+  background:
+  linear-gradient(90deg,
+  transparent,
+  rgba(255,255,255,.12),
+  transparent);
+
+}
+
+.service-card-top{
+
+  padding:2.4rem 2.4rem 1.5rem;
+
+  border-bottom:1px solid rgba(255,255,255,.05);
+
+}
+
+.service-card-label{
+
+  display:inline-flex;
+  align-items:center;
+  gap:.7rem;
+
+  margin-bottom:1rem;
+
+  color:var(--accent);
+
+  letter-spacing:2px;
+  text-transform:uppercase;
+
+  font-size:.8rem;
+
+}
+
+.service-card-title{
+
+  font-size:2rem;
+  letter-spacing:-1px;
+
+  color:var(--text);
+
+}
+
+.service-card-content{
+  padding:2rem;
+}
+
+.service-sub-box{
+
+  background:rgba(255,255,255,.03);
+
+  border:1px solid rgba(255,255,255,.05);
+
+  border-radius:18px;
+
+  padding:1.2rem 1.3rem;
+
+  margin-bottom:1rem;
+
+  transition:.3s ease;
+
+}
+
+.service-sub-box:hover{
+  background:rgba(255,255,255,.05);
+}
+
+.service-sub-title{
+
+  color:var(--text);
+
+  line-height:1.8;
+
+  font-size:1rem;
+  font-weight:500;
+
+}
+
+.service-sub-desc{
+
+  margin-top:.7rem;
+
+  color:var(--text-soft);
+
+  line-height:1.8;
+  font-size:.94rem;
+
+}
+
+.service-image{
+
+  width:100%;
+  height:260px;
+
+  object-fit:cover;
+
+  border-radius:20px;
+
+  margin-top:1.5rem;
+
+  border:1px solid rgba(255,255,255,.05);
+
+}
+
+.service-special-list{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+
+.service-special-item{
+
+  display:flex;
+  gap:1rem;
+  align-items:flex-start;
+
+  padding:1rem;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,.03);
+
+  border:1px solid rgba(255,255,255,.05);
+
+}
+
+.service-special-icon{
+  color:var(--accent);
+  font-size:.8rem;
+  margin-top:7px;
+}
+
+.service-special-text{
+  color:var(--text-soft);
+  line-height:1.8;
+}
+
+/* =========================================================
+CLIENTES
+========================================================= */
+
+.clients{
+  background:#2d2d2d;
+}
+
+.clients-grid{
+
+  margin-top:4rem;
+
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+
+  gap:3rem;
+  align-items:center;
+
+}
+
+.client-logo{
+
+  width:100%;
+  max-height:80px;
+
+  object-fit:contain;
+
+  opacity:.55;
+  filter:grayscale(100%);
+
+  transition:.35s ease;
+
+}
+
+.client-logo:hover{
+  opacity:1;
+  filter:none;
+}
+
+/* =========================================================
+CONTACTO
+========================================================= */
+
+.contact{
+  background:#292929;
+}
+
+.contact-content{
+  max-width:900px;
+  margin:0 auto;
+  text-align:center;
+}
+
+.contact-info{
+
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+
+  gap:1.4rem;
+
+  margin:3rem 0;
+
+}
+
+.contact-item{
+
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+
+  background:#343434;
+
+  border:1px solid rgba(255,255,255,.05);
+
+  border-radius:18px;
+
+  padding:1rem 1.3rem;
+
+  color:var(--text-soft);
+
+}
+
+.contact-icon{
+  color:var(--accent);
+}
+
+.cta-button{
+
+  display:inline-flex;
+  align-items:center;
+  gap:.8rem;
+
+  padding:1rem 2rem;
+
+  border-radius:999px;
+
+  text-decoration:none;
+
+  color:#fff;
+
+  background:#404040;
+
+  border:1px solid rgba(255,255,255,.08);
+
+  transition:.3s ease;
+
+}
+
+.cta-button:hover{
+  transform:translateY(-4px);
+  background:#4a4a4a;
+}
+
+/* =========================================================
+FOOTER
+========================================================= */
+
+.footer{
+
+  padding:4rem 2rem 2rem;
+
+  background:#242424;
+
+  border-top:1px solid rgba(255,255,255,.04);
+
+}
+
+.footer-content{
+  max-width:900px;
+  margin:0 auto;
+  text-align:center;
+}
+
+.footer-logo{
+  width:220px;
+  margin-bottom:1.5rem;
+  opacity:.9;
+}
+
+.footer-text{
+  color:var(--text-soft);
+  margin-bottom:2rem;
+}
+
+.footer-copyright{
+  color:#a39b8f;
+  line-height:1.8;
+  font-size:.92rem;
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px){
+
+  .values-grid,
+  .services-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .header{
+    padding:1rem 1.2rem;
+  }
+
+  .nav-menu{
+
+    display:none;
+
+    position:absolute;
+
+    top:100%;
+    right:1rem;
+
+    flex-direction:column;
+
+    background:#343434;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:18px;
+
+    padding:1.5rem;
+
+    min-width:220px;
+
+  }
+
+  .mobile-menu-btn{
+    display:block;
+  }
+
+  .hero{
+    padding-top:9rem;
+  }
+
+  .hero-logo{
+    max-width:360px;
+  }
+
+  .hero-title{
+    font-size:2.3rem;
+  }
+
+  .hero-subtitle{
+    font-size:1rem;
+  }
+
+  .section{
+    padding:5rem 1.3rem;
+  }
+
+  .section-title{
+    font-size:2rem;
+  }
+
+  .history-card{
+    padding:2rem;
+    border-radius:24px;
+  }
+
+  .service-card-top{
+    padding:2rem 2rem 1.3rem;
+  }
+
+  .service-card-content{
+    padding:1.5rem;
+  }
+
+  .service-card-title{
+    font-size:1.7rem;
+  }
+
+  .service-image{
+    height:220px;
+  }
+
+  .contact-info{
+    flex-direction:column;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .hero-title{
+    font-size:1.9rem;
+  }
+
+  .hero-logo{
+    max-width:280px;
+  }
+
+  .section-title{
+    font-size:1.8rem;
+  }
+
+  .value-card,
+  .service-card-content{
+    padding:1.4rem;
+  }
+
+}
+
+</style>
 </head>
+
 <body>
-  <!-- Sistema de acceso seguro -->
-  <div id="access-overlay" class="access-overlay" style="display:none">
-    <div class="access-container animate-fadeIn">
-      <img src="logo/logo-soarblue-W3.svg" alt="Soarblue Consultores" class="access-logo">
-      <h2 class="access-title">En Actualización</h2>
-      <p class="access-subtitle">Ingrese la contraseña para acceder</p>
-      
-      <div class="input-group">
-        <label for="clave" class="input-label">Contraseña</label>
-        <input 
-          type="password" 
-          id="clave" 
-          placeholder="Ingrese su contraseña" 
-          class="input-field"
-        >
-      </div>
-      
-      <button onclick="verificarAcceso()" class="access-btn">Entrar</button>
 
-      <p id="error" class="error-message">
-        <i class="fas fa-exclamation-circle"></i> Contraseña incorrecta
-      </p>
-    </div>
+<!-- =========================================================
+HEADER
+========================================================= -->
+
+<header class="header" id="header">
+
+  <img
+    src="logo/logo-soarblue-M6.svg"
+    alt="Soarblue"
+    class="header-logo"
+  >
+
+  <nav>
+
+    <ul class="nav-menu">
+
+      <li><a href="#inicio" class="nav-link">Inicio</a></li>
+      <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+      <li><a href="#servicios" class="nav-link">Servicios</a></li>
+      <li><a href="#equipo" class="nav-link">Quiénes somos</a></li>
+      <li><a href="#tecnologia" class="nav-link">Tecnología 4.0</a></li>
+      <li><a href="#contacto" class="nav-link">Contacto</a></li>
+
+    </ul>
+
+  </nav>
+
+  <button class="mobile-menu-btn">
+    <i class="fas fa-bars"></i>
+  </button>
+
+</header>
+
+<!-- =========================================================
+HERO
+========================================================= -->
+
+<section class="hero" id="inicio">
+
+  <div class="hero-content">
+
+    <img
+      src="logo/logo-soarblue-M4.svg"
+      alt="Soarblue Consultores"
+      class="hero-logo"
+    >
+
+    <p class="hero-subtitle">
+      "Consultoría de vanguardia para el presente y futuro de su proyecto."
+    </p>
+
+    <p class="hero-subtitle">
+      "Diseñamos soluciones personalizadas (Ex-Ante) en medioambiente,
+      compliance, sostenibilidad y comunicación — respaldadas por un equipo
+      profesional que hace trazable e integra cada decisión, de manera
+      transparente, confidencial y cibersegura. (Ex-Post)"
+    </p>
+
+    <h1 class="hero-title">
+      Anticipa / Integra / Protege
+    </h1>
+
   </div>
 
-  <!-- Contenido principal (oculto inicialmente) -->
-  <div id="main-content" style="display: block;">
-    <!-- Header -->
-    <header class="header" id="header">
-      <img src="logo/logo-soarblue-M6.svg" alt="Soarblue Consultores" class="header-logo">
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="#inicio" class="nav-link">Inicio</a></li>
-          <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
-          <li><a href="#servicios" class="nav-link">Servicios</a></li>
-          <li><a href="#equipo" class="nav-link">Equipo</a></li>
-          <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
-          <li><a href="#tecnologia" class="nav-link">Tecnología</a></li>
-          <li><a href="#contacto" class="nav-link">Contacto</a></li>
-        </ul>
-      </nav>
-      <button class="mobile-menu-btn">
-        <i class="fas fa-bars"></i>
-      </button>
-    </header>
+</section>
 
-    <!-- Hero Section -->
-    <section class="hero" id="inicio">
-      <video autoplay muted loop class="hero-video">
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-river-and-forest-43575-large.mp4" type="video/mp4">
-      </video>
-      <div class="hero-content">
-        <img src="logo/logo-soarblue-M4.svg" alt="Soarblue Consultores" class="hero-logo">
-        <p class="hero-subtitle">"Consultoría de vanguardia para el presente y futuro de su proyecto."</p>
-        <p class="hero-subtitle">""Diseñamos soluciones personalizadas (Ex-Ante) en medioambiente, compliance, sostenibilidad y comunicación — respaldadas por un equipo  profesional que hace trazable e integra cada decisión. (Ex-Post)"</p>
-                <h1 class="hero-title">Anticipa.  Integra.  Protege.</h1>
+<!-- =========================================================
+HISTORIA
+========================================================= -->
 
-      </div>
-    </section>
+<section class="section" id="nosotros">
 
-    <!-- About Section -->
-    <section class="section section-light" id="nosotros">
-      <div class="container">
-        <h2 class="section-title">Nuestra Historia</h2>
+  <div class="container">
 
+    <h2 class="section-title">
+      Historia
+    </h2>
 
+    <div class="history-wrapper">
 
-        <div class="about-grid">
-   <div class="about-content">
-              <div class="history-part">
-                <p>Soarblue es una consultora especializada en la gestión integral de proyectos de inversión con dimensión ambiental, legal, sostenible y reputacional.</p>
-  <p>Diseñamos soluciones personalizadas según el contexto presente y futuro de cada proyecto, activando las capacidades que cada situación requiere.</p>
-              </div>
-            </div>
+      <div class="history-card">
 
-
-
-
-
-
-          <div class="about-content">
-            <div class="history-part">
-              <p>Somos un equipo de profesionales con años de experiencia en terreno — biólogos, abogados, especialistas en sostenibilidad, comunicadores y expertos en tecnologías 4.0 — que trabajamos de forma articulada bajo dos metodologías propias: el Modelo Dermis y el Modelo Resonate.</p>
-
-<p>Ambas arquitecturas organizan cada proyecto en capas de gestión que se protegen mutuamente y se adaptan al momento específico que su proyecto requiere.</p>
-            </div>
-          </div>
-
+        <div class="history-label">
+          <i class="fas fa-circle"></i>
+          SOARBLUE CONSULTORES
         </div>
 
-      </div>
-    </section>
+        <div class="history-text">
 
-    <!-- Context Section 
-    <section class="context-section" id="contexto">
-      <div class="container">
-        <h2 class="section-title">CONTEXTO</h2>
-        <p class="section-subtitle">Nuestra filosofía y enfoque en el sector ambiental y tecnológico</p>
-        
-        <div class="context-card">
-          <p class="context-quote">
-            "En Soarblue Consultores, entendemos los desafíos únicos que enfrentan las empresas. Nuestros servicios se basa en un profundo conocimiento del entorno regulatorio político-ambiental, sostenible y tecnológico y en nuestra capacidad técnica para ofrecer soluciones innovadoras y vanguardistas a nuestros clientes en la complejidad de la actualidad".
+          <p>
+            La visión de Soarblue nació en 2015 con una convicción:
+            los proyectos de inversión fallan cuando la información llega tarde,
+            llega fragmentada o no llega igual para todos.
+            En 2016, nos adjudicamos un proyecto CORFO patrocinado por INCUBA UC.
           </p>
-          
-          <div class="context-author">
-            <div class="context-author-avatar">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Felipe Zapata">
-            </div>
-            <div class="context-author-info">
-              <h4>Felipe Zapata</h4>
-              <p>Director Ejecutivo - Soarblue Consultores</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>-->
 
+          <p>
+            Nuestro nombre lo dice todo.
+            SOAR — Servicio de Observación Ambiental Remoto —
+            refleja el origen: la incorporación de tecnologías de análisis
+            realista de datos espaciales y los primeros drones para la evaluación,
+            seguimiento y comunicación de proyectos complejos de gran envergadura.
+            Blue representa la dimensión sostenible, comunicacional y reputacional
+            que hace que esa observación se convierta en valor real para el
+            territorio y las compañías.
+          </p>
 
-    <!-- Team Section -->
-    <section class="section section-gray" id="equipo">
-      <div class="container">
-        <h2 class="section-title animate-on-scroll">Nuestro Equipo</h2>
-        <p class="section-subtitle animate-on-scroll">Profesionales multidisciplinarios con experiencia en los sectores público y privado</p>
-        
-        <div class="team-grid">
-          <!-- Felipe Zapata -->
-          <div class="team-member animate-on-scroll">
+          <p>
+            Ese conocimiento surge desde la experiencia en empresas privadas,
+            servicios públicos (Directemar y SEA), docencia universitaria y
+            estudios posteriores, que con el tiempo se transforman en el
+            fundamento de los Modelos Dermis y Resonate.
+          </p>
 
-            <div class="team-member-content">
-              <h3 class="team-member-name">Felipe Zapata</h3>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc"> Es biólogo con mención en Ciencias Ambientales de la Universidad de Concepción y Magíster en Recursos Hídricos de la Universidad Austral de Chile. A esa base científica suma formación continua en Ciudades Inteligente (UFRO)s, Comunicación Corporativa (U. de los Andes), Sostenibilidad en los Negocios (U. de Chile), Compliance Ambiental para Empresas (UAI), Bioseguridad (UACh) y Liquidación de Siniestros (U de los Andes), junto a estudios en Data Science e Inteligencia Artificial para directivos (Universidad de Chicago).</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Con una amplia trayectoria en el ámbito ambiental, ha combinado rigor técnico con visión estratégica en contextos tan distintos como el Servicio de Evaluación Ambiental, la Gobernación Marítima y la gestión de emergencias en industrias de alta exposición. Su enfoque integra el método científico con la gestión estratégica, traduciendo conocimiento técnico en decisiones con impacto real para organizaciones e inversiones de alta complejidad.</div>
-              </div>
-              
-              <div class="team-member-info">
-                  <div class="team-info-desc">Como fundador y director ejecutivo de Soarblue SpA, consultora boutique que creó para acompañar a organizaciones en sus decisiones más complejas, lidera metodologías propias —RESONAR y DERMIS— que articulan medioambiente, compliance, comunicación y reputación en una sola mirada integrada, tanto en la gestión cotidiana como en situaciones de crisis, emergencia o prevención estratégica.</div>
-              </div>
-
-
-            </div>
-          </div>
-          
-          <!-- Alberto Guajardo -->
-          <div class="team-member animate-on-scroll">
-
-            <div class="team-member-content">
-              <h3 class="team-member-name">Alberto Guajardo</h3>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Es Ingeniero Comercial de la Universidad de Chile y cuenta con un Máster Executive en Gestión de Calidad por la EOI de España. </div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Su trayectoria está centrada en la sostenibilidad corporativa y la responsabilidad social empresarial para organizaciones de América Latina, con acreditación GRI para la implementación de Reportes de Sostenibilidad y experticia en la Norma SGE21.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Es examinador internacional del Premio Iberoamericano de la Calidad y del Premio Nacional a la Calidad de Chile, reconocimiento que refleja su dominio de los estándares más exigentes en gestión y desempeño organizacional.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Como docente, ha contribuido a la formación de profesionales en diplomados de Responsabilidad Social en la Universidad de Chile, la Universidad Católica de Valparaíso y la Universidad Andrés Bello, consolidando un perfil que combina práctica consultora con transferencia de conocimiento.</div>
-              </div>
-              
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Su mirada integra estrategia, gobernanza y sostenibilidad como ejes inseparables de la gestión empresarial contemporánea.</div>
-              </div>
-
-
-            </div>
-          </div>
-
-
-
-                    <!-- Macarnea Vassallo -->
-          <div class="team-member animate-on-scroll">
-            <div class="team-member-content">
-              <h3 class="team-member-name">Macarena Vassallo C.</h3>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Es abogada egresada de la Universidad Católica de Chile, especialista en gestión de conflictos y diálogo colaborativo, con una trayectoria consolidada en la construcción de acuerdos entre el sector público, el sector privado y las comunidades, tanto en Chile como en América Latina.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc"> Su trabajo se centra en acompañar a organizaciones en la prevención y resolución de controversias mediante metodologías de mediación y diálogo colaborativo, facilitando procesos que generan legitimidad social y viabilidad real para proyectos de alta complejidad.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Como partner estratégica de Soarblue, su mirada complementa la dimensión técnica y ambiental con la gestión relacional y territorial, un factor cada vez más determinante en contextos donde las licencias sociales se construyen —o se pierden— antes que las legales. </div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Juntos, acompañamos a gobiernos regionales, empresas y comunidades en procesos que convierten el conflicto en oportunidad de acuerdo. </div>
-              </div>
-
-
-            </div>
-          </div>
-
-
-          
-          <!-- Alejandra Canelas -->
-          <div class="team-member animate-on-scroll">
-
-            <div class="team-member-content">
-              <h3 class="team-member-name">Alejandra Canelas</h3>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Es periodista titulada con 
-distinción máxima de la Universidad de Chile, 
-bilingüe en español e inglés y diplomada con 
-honores en la Università degli Studi di Genova, 
-Italia, donde accedió mediante beca de excelencia 
-académica.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Su trayectoria en comunicación corporativa está 
-marcada por la edición de contenido impreso y la gestión editorial para plataformas digitales, con foco en temáticas de alto impacto social: medioambiente, educación y turismo. Una especialización que la sitúa en la intersección entre el relato estratégico y los asuntos que más importan a las comunidades y los territorios.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">En 2012 fue reconocida con el Premio Mujer 
-Destacada en el ámbito social-comunitario por 
-la Municipalidad de Viña del Mar, distinción que 
-refleja su compromiso con una comunicación 
-que trasciende lo institucional.</div>
-              </div>
-            
-
-              <div class="team-member-info">
-                <div class="team-info-desc">Como parte del equipo Soarblue, aporta la
- dimensión narrativa y reputacional que toda 
-organización necesita para comunicar con 
-coherencia en entornos complejos.</div>
-              </div>
-
-
-
-            </div>
-          </div>
-          
-
-
-
-
-
-
-          <!-- Andrés Flores Gallegos -->
-          <div class="team-member animate-on-scroll">
-
-            <div class="team-member-content">
-              <h3 class="team-member-name">Andrés Flores Gallegos</h3>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Es abogado con amplia trayectoria en derecho civil, comercial, constitucional y societario, y socio fundador de Flores & Muñoz, estudio orientado a brindar asesoría de primer nivel con foco en resultados, confianza y comunicación efectiva con los clientes.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Su experiencia abarca litigios, asesorías estratégicas y defensa ante tribunales y órganos administrativos, respaldada por una formación de postgrado en permanente actualización que le permite operar bajo los más altos estándares de calidad jurídica.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Como partner estratégico de Soarblue, integra la dimensión legal a la gestión ambiental diseñando soluciones que equilibran cumplimiento normativo, gestión de riesgos y viabilidad de negocios. Su experiencia en equipos multidisciplinarios y proyectos de alta complejidad le permite articular lo jurídico, lo técnico y lo operativo en una sola mirada, convirtiéndolo en un aliado clave para clientes que necesitan rigor legal alineado con sus objetivos de desarrollo sostenible.</div>
-              </div>
-              
-            </div>
-          </div>
-          
-
-
-
-
-          
-          <!-- Arturo Linares -->
-          <div class="team-member animate-on-scroll">
-
-            <div class="team-member-content">
-              <h3 class="team-member-name">Arturo Linares</h3>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Es Ingeniero Electrónico con más de 7 años de experiencia en el desarrollo de soluciones tecnológicas de vanguardia, con proyectos ejecutados en Chile, España, Perú y Argentina en industrias tan diversas como la hacen un referente de adaptabilidad técnica y visión internacional.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Su expertise abarca Inteligencia Artificial, Machine Learning, Blockchain, Cloud Computing, NLP, Computer Vision y Large Language Models, complementado con diplomados en Data Science, Blockchain, IA y MLOps. En 2024 fue ganador del Hackathon OpenAI, reconocimiento que lo posiciona entre los profesionales más destacados del ecosistema de IA generativa en la región.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Como parte del equipo Soarblue, aporta la capa tecnológica que transforma datos, procesos y conocimiento ambiental en soluciones inteligentes, automatizadas y escalables. Su integración al modelo boutique de Soarblue permite ofrecer a los clientes una consultoría que no solo diagnostica, sino que innova.</div>
-              </div>
-              
-            </div>
-          </div>
-          
-          <!-- Jerman Espindola -->
-          <div class="team-member animate-on-scroll">
-
-            <div class="team-member-content">
-              <h3 class="team-member-name">Jerman Espindola</h3>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Es Ingeniero en Gestión Industrial con Magíster en Ciencias de la Computación y más de 20 años de trayectoria en tecnologías de la información, combinando profundidad técnica con visión de negocio y liderazgo organizacional.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Ha liderado operaciones y sistemas de TI por más de una década, desarrollando plataformas de datos y sistemas transaccionales de alta complejidad. Su especialización en Blockchain y desarrollo de software lo posiciona como un referente en arquitecturas tecnológicas descentralizadas, con aplicaciones concretas en trazabilidad, seguridad de datos y gobernanza digital.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Es profesor universitario en la Universidad de Talca y cofundador de Krivia Labs, trayectoria que refleja un perfil singular: el del tecnólogo que también construye ecosistemas y transfiere conocimiento.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">En Soarblue, su aporte es clave para integrar soluciones blockchain en procesos de compliance, gestión ambiental y trazabilidad de información, dotando a los proyectos de una capa de transparencia y confianza difícil de replicar</div>
-              </div>
-              
-            </div>
-          </div>
-
-
-          <!-- Rodrigo Tobar -->
-          <div class="team-member animate-on-scroll">
-
-            <div class="team-member-content">
-              <h3 class="team-member-name">Rodrigo Tobar O</h3>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">es Ingeniero en Informática de la UTEM, con Magíster en Tecnologías de la Información y Gestión de la Pontificia Universidad Católica de Chile y Especialización en Dirección de Tecnología (CTO) en la misma casa de estudios. Suma diplomados en Inteligencia Artificial, Blockchain, Ciberseguridad y Transformación Digital, además de certificaciones en DevOps, Azure y Blue Team.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Con más de 21 años de trayectoria liderando transformaciones digitales de alto impacto en banca, retail y construcción —en organizaciones como Santander, Cencosud Scotiabank y Hites—, su fortaleza está en alinear estrategia corporativa y tecnología, con foco en arquitectura cloud multicloud, IA, DevSecOps y gobierno de datos.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">En 2024 obtuvo el primer lugar en el Hackathon de Inteligencia Artificial de OpenAI Latinoamérica, distinción que refleja su posición de frontera en el ecosistema tecnológico regional.</div>
-              </div>
-              
-              <div class="team-member-info">
-                <div class="team-info-desc">Como parte del equipo Soarblue, integra la dimensión digital y de arquitectura tecnológica a los proyectos de consultoría, habilitando soluciones inteligentes, seguras y escalables para clientes que operan en entornos complejos y regulados.</div>
-              </div>
-              
-            </div>
-          </div>
-
+          <p>
+            Hoy Soarblue es una arquitectura de gestión que integra profesionales
+            de diferentes disciplinas, anticipa riesgos y protege proyectos en
+            cada etapa de su ciclo de vida.
+          </p>
 
         </div>
+
       </div>
-    </section>
 
+      <!-- =========================================================
+      VALUES
+      ========================================================= -->
 
-    <style>
-      .box-servicio-imagen{
-        width: auto;
-        background: #0B6B6F;
-        margin: 0 auto;
-        text-align: center;
-      }
-      .img-servicio-imagen{
-                max-width: 1400px;
+      <div class="values-grid">
 
-        width: 100%;
-      }
-    </style>
-    <div class="box-servicio-imagen">
-      <img class="img-servicio-imagen" src="logo/servicios3.png">
+        <div class="value-card">
+
+          <div class="value-icon">
+            <i class="fas fa-shield-halved"></i>
+          </div>
+
+          <h3 class="value-title">
+            PROPÓSITO
+          </h3>
+
+          <p class="value-text">
+            "Que nuestros clientes nunca tengan que explicar lo que pudieron
+            haber anticipado — y que cuando llegue un momento crítico,
+            no estén solos."
+          </p>
+
+        </div>
+
+        <div class="value-card">
+
+          <div class="value-icon">
+            <i class="fas fa-layer-group"></i>
+          </div>
+
+          <h3 class="value-title">
+            MISIÓN
+          </h3>
+
+          <p class="value-text">
+            "Diseñar soluciones integradas de gestión ambiental, compliance,
+            sostenibilidad y comunicación para que los proyectos de inversión
+            cuenten con información trazable, verificable y anticipada en cada
+            etapa de su ciclo de vida — protegiendo la inversión, el territorio
+            y la reputación de quienes deciden."
+          </p>
+
+        </div>
+
+        <div class="value-card">
+
+          <div class="value-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+
+          <h3 class="value-title">
+            VISIÓN
+          </h3>
+
+          <p class="value-text">
+            "Ser la consultora de referencia en Chile para proyectos de inversión
+            de alta complejidad ambiental — reconocida por cambiar la forma en que
+            los directorios anticipan los riesgos y toman decisiones antes de que
+            el daño ocurra."
+          </p>
+
+        </div>
+
+      </div>
+
     </div>
 
+  </div>
 
+</section>
 
-<!-- Services Section -->
-<section class="section section-light" id="servicios">
+<!-- =========================================================
+SERVICIOS
+========================================================= -->
+
+<section class="section services-section" id="servicios">
+
   <div class="container">
-    <h2 class="section-title animate-on-scroll">Nuestros Servicios</h2>
-    <p class="section-subtitle animate-on-scroll">Soluciones integrales para la gestión ambiental empresarial</p>
-    
+
+    <h2 class="section-title">
+      Servicios
+    </h2>
+
+
+
     <div class="services-grid">
-      
-      <!-- Evaluación Ambiental -->
-      <div class="service-card animate-on-scroll">
-        <div class="service-card-header">
-          <div class="service-card-icon"><i class="fas fa-leaf"></i></div>
-          <h3 class="service-card-title">Evaluación Ambiental</h3>
+
+      <!-- =========================================================
+      MEDULARES
+      ========================================================= -->
+
+      <div class="service-main-card">
+
+        <div class="service-card-top">
+
+
+
+          <h3 class="service-card-title">
+            MEDULARES
+          </h3>
+
         </div>
+
         <div class="service-card-content">
-          <p class="service-card-desc">Desarrollamos soluciones técnicas para procesos de evaluación ambiental, análisis de admisibilidad, preparación de antecedentes, gestión de observaciones y soporte especializado para proyectos sometidos a exigencias regulatorias y territoriales complejas.</p>
-          <ul class="service-features">
-            <li class="service-feature"><i class="fas fa-check"></i> Admisibilidad</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Antecedentes técnicos</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Gestión de observaciones</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Soporte regulatorio</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Territorialidad</li>
-          </ul>
-        </div>
-      </div>
 
-      <!-- Cumplimiento Ambiental y Regulatorio -->
-      <div class="service-card animate-on-scroll">
-        <div class="service-card-header">
-          <div class="service-card-icon"><i class="fa-solid fa-clipboard-check"></i></div>
-          <h3 class="service-card-title">Cumplimiento Ambiental y Regulatorio</h3>
-        </div>
-        <div class="service-card-content">
-          <p class="service-card-desc">Apoyamos la gestión de permisos, obligaciones, compromisos ambientales y reportabilidad, fortaleciendo el control interno, la trazabilidad documental y la capacidad de respuesta frente a fiscalización y exigencias sectoriales.</p>
-          <ul class="service-features">
-            <li class="service-feature"><i class="fas fa-check"></i> Permisos ambientales</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Control interno</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Trazabilidad documental</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Respuesta a fiscalización</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Compliance Ambiental -->
-      <div class="service-card animate-on-scroll">
-        <div class="service-card-header">
-          <div class="service-card-icon"><i class="fas fa-shield-alt"></i></div>
-          <h3 class="service-card-title">Compliance Ambiental</h3>
-        </div>
-        <div class="service-card-content">
-          <p class="service-card-desc">Diseñamos e implementamos estrategias de compliance ambiental orientadas a prevenir riesgos regulatorios, penales, reputacionales y territoriales, articulando gobernanza, control interno, trazabilidad, entrenamiento y mejora continua.</p>
-          <ul class="service-features">
-            <li class="service-feature"><i class="fas fa-check"></i> Prevención de riesgos</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Gobernanza ambiental</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Entrenamiento</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Mejora continua</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Delitos contra el Medioambiente -->
-      <div class="service-card animate-on-scroll">
-        <div class="service-card-header">
-          <div class="service-card-icon"><i class="fas fa-gavel"></i></div>
-          <h3 class="service-card-title">Delitos contra el Medioambiente</h3>
-        </div>
-        <div class="service-card-content">
-          <p class="service-card-desc">Acompañamos a empresas y proyectos en la identificación temprana de riesgos asociados a la Ley 21.595 y otros marcos aplicables, revisando brechas, obligaciones, evidencia crítica, exposición penal y medidas preventivas para fortalecer una gestión ambiental diligente y responsable.</p>
-          <ul class="service-features">
-            <li class="service-feature"><i class="fas fa-check"></i> Ley 21.595</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Identificación de brechas</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Evidencia crítica</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Medidas preventivas</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Comunicación Corporativa y Ciudadana -->
-      <div class="service-card animate-on-scroll">
-        <div class="service-card-header">
-          <div class="service-card-icon"><i class="fas fa-brain"></i></div>
-          <h3 class="service-card-title">Comunicación Corporativa y Ciudadana</h3>
-        </div>
-        <div class="service-card-content">
-          <p class="service-card-desc">Diseñamos estrategias de comunicación corporativa y ciudadana para proyectos y organizaciones expuestas a desafíos ambientales, integrando acceso a información, narrativa técnica comprensible, participación temprana, gestión de crisis y relacionamiento con comunidades, autoridades y otros actores relevantes.</p>
-          <ul class="service-features">
-            <li class="service-feature"><i class="fas fa-check"></i> Participación ciudadana</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Gestión de crisis</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Relacionamiento comunitario</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Narrativa técnica</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Resonancia Reputacional -->
-      <div class="service-card animate-on-scroll">
-        <div class="service-card-header">
-          <div class="service-card-icon"><i class="fas fa-chart-line"></i></div>
-          <h3 class="service-card-title">Resonancia Reputacional</h3>
-        </div>
-        <div class="service-card-content">
-          <p class="service-card-desc">Gestionamos la resonancia reputacional de proyectos y organizaciones expuestas a riesgos socioambientales, integrando análisis de actores, narrativa estratégica, alertas tempranas y apoyo comunicacional para fortalecer legitimidad, confianza y continuidad operacional.</p>
-          <ul class="service-features">
-            <li class="service-feature"><i class="fas fa-check"></i> Análisis de actores</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Narrativa estratégica</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Alertas tempranas</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Confianza y legitimidad</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Tecnología Aplicada -->
-      <div class="service-card animate-on-scroll">
-        <div class="service-card-header">
-          <div class="service-card-icon"><i class="fas fa-cloud"></i></div>
-          <h3 class="service-card-title">Tecnología Aplicada</h3>
-        </div>
-        <div class="service-card-content">
-          <p class="service-card-desc">Integramos herramientas de analítica, automatización, trazabilidad, monitoreo y visualización para fortalecer la gestión ambiental, el seguimiento de compromisos, la reportabilidad y la toma de decisiones en terreno y gabinete.</p>
-          <ul class="service-features">
-            <li class="service-feature"><i class="fas fa-check"></i> Analítica ambiental</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Automatización</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Monitoreo y trazabilidad</li>
-            <li class="service-feature"><i class="fas fa-check"></i> Toma de decisiones</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Sección especial: Comunicación Corporativa y Ciudadana -->
-<section class="section section-gray" id="comunicacion">
-  <div class="container">
-    <div class="comunicacion-header animate-on-scroll">
-      <span class="comunicacion-badge">Desarrollo especial</span>
-      <h2 class="section-title">Comunicación Corporativa y Ciudadana</h2>
-      <p class="section-subtitle">Estrategias integrales para el diálogo, la transparencia y la gestión reputacional en entornos socioambientales complejos</p>
-    </div>
-
-    <div class="comunicacion-grid">
-      
-      <!-- Card 1 -->
-      <div class="comunicacion-card animate-on-scroll">
-        <div class="comunicacion-icon">
-          <i class="fas fa-handshake"></i>
-        </div>
-        <h3 class="comunicacion-title">Participación Ciudadana y Relacionamiento Territorial</h3>
-        <p class="comunicacion-desc">Diseñamos e implementamos procesos participativos efectivos que integran a comunidades, organizaciones locales y actores territoriales, construyendo confianza y acuerdos sostenibles para proyectos con impacto ambiental.</p>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="comunicacion-card animate-on-scroll">
-        <div class="comunicacion-icon">
-          <i class="fas fa-users"></i>
-        </div>
-        <h3 class="comunicacion-title">Interlocución con Actores Clave</h3>
-        <p class="comunicacion-desc">Facilitamos el diálogo estratégico entre empresas, autoridades, comunidades y otros actores relevantes, gestionando relaciones que reducen conflictos y alinean expectativas para una convivencia territorial armónica.</p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="comunicacion-card animate-on-scroll">
-        <div class="comunicacion-icon">
-          <i class="fas fa-bullhorn"></i>
-        </div>
-        <h3 class="comunicacion-title">Comunicación de Crisis y Controversias Socioambientales</h3>
-        <p class="comunicacion-desc">Desarrollamos estrategias ágiles de comunicación para momentos críticos, con mensajes clave, protocolos de actuación y gestión de medios que protegen la reputación y la continuidad operacional.</p>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="comunicacion-card animate-on-scroll">
-        <div class="comunicacion-icon">
-          <i class="fas fa-laptop-code"></i>
-        </div>
-        <h3 class="comunicacion-title">Plataformas Digitales Informativas para Proyectos</h3>
-        <p class="comunicacion-desc">Creamos plataformas digitales accesibles e interactivas que centralizan información técnica, legal y comunitaria, promoviendo transparencia, trazabilidad y participación informada de todos los actores.</p>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="comunicacion-card animate-on-scroll">
-        <div class="comunicacion-icon">
-          <i class="fas fa-book-open"></i>
-        </div>
-        <h3 class="comunicacion-title">Divulgación Ambiental en Lenguaje Claro</h3>
-        <p class="comunicacion-desc">Traducimos conceptos técnicos y normativos complejos a un lenguaje claro y cercano, generando materiales educativos y divulgativos que empoderan a comunidades y facilitan la toma de decisiones informada.</p>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="comunicacion-card animate-on-scroll">
-        <div class="comunicacion-icon">
-          <i class="fas fa-chart-pie"></i>
-        </div>
-        <h3 class="comunicacion-title">Presentaciones Estratégicas para Directorios e Instituciones</h3>
-        <p class="comunicacion-desc">Elaboramos presentaciones ejecutivas de alto impacto para directorios, entidades públicas, procesos de licitación y cuentas públicas, con narrativa clara, datos relevantes y diseño profesional.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-<style>
-  
-
-  /* Sección Comunicación Corporativa y Ciudadana */
-.comunicacion-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.comunicacion-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--secondary), var(--accent));
-  color: white;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.4rem 1rem;
-  border-radius: 50px;
-  margin-bottom: 1rem;
-  letter-spacing: 1px;
-}
-
-.comunicacion-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.comunicacion-card {
-  background: white;
-  border-radius: 24px;
-  padding: 2rem;
-  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-  border: 1px solid var(--gray-light);
-  position: relative;
-  overflow: hidden;
-}
-
-.comunicacion-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--secondary), var(--accent));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-}
-
-.comunicacion-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.1);
-  border-color: transparent;
-}
-
-.comunicacion-card:hover::before {
-  transform: scaleX(1);
-}
-
-.comunicacion-icon {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, rgba(0, 85, 255, 0.1), rgba(0, 194, 255, 0.1));
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.comunicacion-card:hover .comunicacion-icon {
-  background: linear-gradient(135deg, var(--secondary), var(--accent));
-}
-
-.comunicacion-icon i {
-  font-size: 1.8rem;
-  color: var(--secondary);
-  transition: all 0.3s ease;
-}
-
-.comunicacion-card:hover .comunicacion-icon i {
-  color: white;
-}
-
-.comunicacion-title {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 1rem;
-  line-height: 1.4;
-}
-
-.comunicacion-desc {
-  color: var(--gray);
-  line-height: 1.6;
-  font-size: 0.95rem;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .comunicacion-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .comunicacion-card {
-    padding: 1.5rem;
-  }
-  
-  .comunicacion-title {
-    font-size: 1.2rem;
-  }
-}
-</style>
-
-
-
-
-        </div>
-      </div>
-    </section>
-
-
-
-
-
-
-<!-- Tecnología Aplicada -->
-<section class="section tecnologia-section" id="tecnologia">
-  <div class="container">
-    <div class="tecnologia-header animate-on-scroll">
-      <div class="tecnologia-badge">Desarrollo especial</div>
-      <h2 class="tecnologia-title">Tecnología <span>Aplicada</span></h2>
-      <p class="tecnologia-subtitle">Capacidades propias para la gestión ambiental 4.0</p>
-    </div>
-
-    <div class="tecnologia-grid animate-on-scroll">
-      <div class="tecnologia-card">
-        <div class="tecnologia-icon"><i class="fas fa-brain"></i></div>
-        <h3>IA + Riesgos Socioambientales</h3>
-        <p>Inteligencia artificial aplicada al diagnóstico y gestión de riesgos socioambientales.</p>
-      </div>
-      <div class="tecnologia-card">
-        <div class="tecnologia-icon"><i class="fas fa-chart-simple"></i></div>
-        <h3>Dashboards & Reportabilidad</h3>
-        <p>Visualización de compromisos, estados de avance y reportabilidad en tiempo real.</p>
-      </div>
-      <div class="tecnologia-card">
-        <div class="tecnologia-icon"><i class="fas fa-folder-tree"></i></div>
-        <h3>Gestión Documental</h3>
-        <p>Trazabilidad de evidencia ambiental con estándares de auditoría.</p>
-      </div>
-      <div class="tecnologia-card">
-        <div class="tecnologia-icon"><i class="fas fa-drone"></i></div>
-        <h3>Registros Aéreos y Terrestres</h3>
-        <p>Soporte visual para seguimiento de proyectos con calidad profesional.</p>
-      </div>
-      <div class="tecnologia-card tecnologia-card-full">
-        <div class="tecnologia-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-        <h3>Plataformas Digitales</h3>
-        <p>Información y comunicación pública con arquitectura cloud moderna.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-.tecnologia-section {
-  background: #0a0f1a;
-  position: relative;
-}
-.tecnologia-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--secondary), var(--accent), transparent);
-}
-.tecnologia-header { text-align: center; margin-bottom: 3rem; }
-.tecnologia-badge {
-  display: inline-block;
-  background: linear-gradient(90deg, var(--secondary), var(--accent));
-  color: white;
-  padding: 0.3rem 1rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-.tecnologia-title {
-  font-size: 2.8rem;
-  color: white;
-}
-.tecnologia-title span { color: var(--accent); }
-.tecnologia-subtitle { color: var(--gray); }
-.tecnologia-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-.tecnologia-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-  padding: 1.8rem;
-  transition: all 0.3s;
-}
-.tecnologia-card:hover {
-  background: rgba(0,85,255,0.1);
-  border-color: var(--secondary);
-  transform: translateY(-3px);
-}
-.tecnologia-card-full {
-  grid-column: span 2;
-}
-.tecnologia-icon {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, var(--secondary), var(--accent));
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.2rem;
-}
-.tecnologia-icon i { font-size: 1.5rem; color: white; }
-.tecnologia-card h3 { color: white; margin-bottom: 0.8rem; font-size: 1.2rem; }
-.tecnologia-card p { color: var(--gray); line-height: 1.5; font-size: 0.9rem; }
-@media (max-width: 768px) {
-  .tecnologia-card-full { grid-column: span 1; }
-  .tecnologia-title { font-size: 2rem; }
-}
-</style>
-
-
-
-
-
-
-
-
-<style>
-.delitos-section {
-  background: #1a1a2e;
-}
-.delitos-grid {
-  display: flex;
-  gap: 3rem;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
-}
-.delitos-ley {
-  flex: 1;
-  background: linear-gradient(135deg, #16213e, #0f0f23);
-  padding: 2rem;
-  border-radius: 24px;
-  border: 1px solid rgba(255,71,87,0.3);
-}
-.ley-badge {
-  display: inline-block;
-  background: var(--error);
-  color: white;
-  padding: 0.3rem 1rem;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
-}
-.delitos-ley h2 {
-  color: white;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-.delitos-ley h2 span { color: var(--error); }
-.delitos-ley p {
-  color: #ccc;
-  line-height: 1.6;
-}
-.delitos-solucion {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.solucion-card {
-  background: rgba(255,71,87,0.1);
-  border: 1px solid rgba(255,71,87,0.3);
-  border-radius: 16px;
-  padding: 1.2rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  transition: all 0.3s;
-}
-.solucion-card:hover {
-  background: rgba(255,71,87,0.2);
-  transform: translateX(5px);
-}
-.solucion-card i {
-  font-size: 2rem;
-  color: var(--error);
-}
-.solucion-card h3 {
-  color: white;
-  font-size: 1.1rem;
-  margin-bottom: 0.2rem;
-}
-.solucion-card p {
-  color: #aaa;
-  font-size: 0.85rem;
-}
-.delitos-nota {
-  background: rgba(255,71,87,0.15);
-  border-left: 4px solid var(--error);
-  padding: 1.5rem;
-  border-radius: 12px;
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-}
-.delitos-nota i {
-  color: var(--error);
-  font-size: 1.5rem;
-}
-.delitos-nota p {
-  color: #ddd;
-  line-height: 1.6;
-  margin: 0;
-}
-@media (max-width: 768px) {
-  .delitos-ley h2 { font-size: 1.5rem; }
-}
-</style>
-
-    <!-- Clients Section -->
-    <section class="section section-dark">
-      <div class="container">
-        <h2 class="section-title animate-on-scroll">Nuestros Clientes</h2>
-        <p class="section-subtitle animate-on-scroll">Hemos trabajado con empresas líderes en diversos sectores</p>
-        
-        <div class="clients-grid">
-          <img src="logo/colbun.svg" alt="Colbún" class="client-logo animate-on-scroll">
-          <img src="logo/marval.svg" alt="Marval" class="client-logo animate-on-scroll">
-          <img src="logo/oxxean.svg" alt="Oxean" class="client-logo animate-on-scroll">
-          <img src="logo/resolve.svg" alt="Resolve Marine" class="client-logo animate-on-scroll">
-          <img src="logo/scotta.svg" alt="Scotta" class="client-logo animate-on-scroll">
-          <img src="logo/ovejera.svg" alt="Hidromocho" class="client-logo animate-on-scroll">
-        </div>
-      </div>
-    </section>
-
-
-
-
-
-
-
-
-</style>
-
-
-
-    <!-- Contact Section -->
-    <section class="section section-dark" id="contacto">
-      <div class="container">
-        <div class="contact-content">
-          <h2 class="section-title animate-on-scroll">¿Necesitas asesoría especializada?</h2>
-          <p class="section-subtitle animate-on-scroll">Contáctanos para evaluar cómo podemos apoyar tus proyectos con soluciones ambientales innovadoras y tecnológicamente avanzadas.</p>
-          
-          <div class="contact-info">
-            <div class="contact-item animate-on-scroll">
-              <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-              <span>felipe@soarblue.cl</span>
-            </div>
-            <div class="contact-item animate-on-scroll">
-              <span class="contact-icon"><i class="fab fa-whatsapp"></i></span>
-              <span>+56998114750 (WhatsApp)</span>
-            </div>
-            <div class="contact-item animate-on-scroll">
-              <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
-              <span>Valdivia, Región de Los Ríos, Chile</span>
+          <div class="service-sub-box">
+            <div class="service-sub-title">
+              Gestión, Seguimiento e Inspección Ambiental de Proyectos de Inversión
             </div>
           </div>
-          
-          <a href="https://wa.me/56998114750" class="cta-button animate-on-scroll">Contactar por WhatsApp</a>
-        </div>
-      </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-content">
-        <img src="logo/logo-soarblue-M4.svg" alt="Soarblue Consultores" class="footer-logo">
-        <p class="footer-text">Anticipa. Integra. Protege.</p>
-        <p class="footer-copyright">© 2026 Soarblue Consultores. <br>Todos los derechos reservados.</p>
+          <div class="service-sub-box">
+            <div class="service-sub-title">
+              Compliance en Prevención de Delitos Ambientales T-MAS
+            </div>
+          </div>
+
+          <div class="service-sub-box">
+            <div class="service-sub-title">
+              Sostenibilidad NIIF S1 y S2<br>
+              Aspectos ESG · Doble Materialidad
+            </div>
+          </div>
+
+          <div class="service-sub-box">
+            <div class="service-sub-title">
+              Comunicación Corporativa y Ciudadana
+            </div>
+          </div>
+
+        </div>
+
       </div>
-    </footer>
+
+      <!-- =========================================================
+      RIZOMA
+      ========================================================= -->
+
+      <div class="service-main-card">
+
+        <div class="service-card-top">
+
+
+
+          <h3 class="service-card-title">
+            RIZOMA
+          </h3>
+
+        </div>
+
+        <div class="service-card-content">
+
+          <div class="service-sub-box">
+
+            <div class="service-sub-title">
+              IMPLEMENTAMOS ARQUITECTURA E INFRAESTRUCTURA
+              DE TECNOLOGÍAS APLICADAS 4.0
+            </div>
+
+            <div class="service-sub-desc">
+              Para proyectos en entornos complejos con RCA,
+              alta exposición y tasa de reportabilidad.
+            </div>
+
+          </div>
+
+  
+
+        </div>
+
+      </div>
+
+      <!-- =========================================================
+      ESPECIALES
+      ========================================================= -->
+
+      <div class="service-main-card">
+
+        <div class="service-card-top">
+
+
+
+          <h3 class="service-card-title">
+            ESPECIALES
+          </h3>
+
+        </div>
+
+        <div class="service-card-content">
+
+          <div class="service-special-list">
+
+            <div class="service-special-item">
+              <i class="fas fa-circle service-special-icon"></i>
+              <div class="service-special-text">
+                Emergencias Marítimas y Derrames de Hidrocarburos
+              </div>
+            </div>
+
+            <div class="service-special-item">
+              <i class="fas fa-circle service-special-icon"></i>
+              <div class="service-special-text">
+                Peritaje Ambiental y Naval
+              </div>
+            </div>
+
+            <div class="service-special-item">
+              <i class="fas fa-circle service-special-icon"></i>
+              <div class="service-special-text">
+                Consultas de Pertinencia
+              </div>
+            </div>
+
+            <div class="service-special-item">
+              <i class="fas fa-circle service-special-icon"></i>
+              <div class="service-special-text">
+                Programas de Cumplimiento
+              </div>
+            </div>
+
+            <div class="service-special-item">
+              <i class="fas fa-circle service-special-icon"></i>
+              <div class="service-special-text">
+                Procedimiento Sancionatorio
+              </div>
+            </div>
+
+            <div class="service-special-item">
+              <i class="fas fa-circle service-special-icon"></i>
+              <div class="service-special-text">
+                Debida Diligencia
+              </div>
+            </div>
+
+            <div class="service-special-item">
+              <i class="fas fa-circle service-special-icon"></i>
+              <div class="service-special-text">
+                Capacitaciones
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 
-  <script>
-    // Función para verificar el acceso
-    function verificarAcceso() {
-      const clave = document.getElementById("clave").value;
-      const correcta = "2025"; // 🔑 Cambia la clave aquí
+</section>
 
-      if (clave === correcta) {
-        document.getElementById("access-overlay").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
-      } else {
-        const error = document.getElementById("error");
-        error.style.display = "flex";
+<!-- =========================================================
+CLIENTES
+========================================================= -->
 
-        // Efecto "shake"
-        const box = document.getElementById("access-overlay");
-        box.classList.add("animate-shake");
-        setTimeout(() => box.classList.remove("animate-shake"), 500);
-      }
-    }
+<section class="section clients">
 
-    // Permitir enviar con Enter
-    document.getElementById("clave").addEventListener("keypress", function(event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        verificarAcceso();
-      }
-    });
+  <div class="container">
 
-    // Animación al hacer scroll
-    document.addEventListener('DOMContentLoaded', function() {
-      const animatedElements = document.querySelectorAll('.animate-on-scroll');
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animated');
-          }
-        });
-      }, {
-        threshold: 0.1
-      });
-      
-      animatedElements.forEach(element => {
-        observer.observe(element);
-      });
-      
-      // Header scroll effect
-      const header = document.getElementById('header');
-      if (header) {
-        window.addEventListener('scroll', function() {
-          if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-          } else {
-            header.classList.remove('scrolled');
-          }
-        });
-      }
-      
-      // Mobile menu toggle
-      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-      const navMenu = document.querySelector('.nav-menu');
-      
-      if (mobileMenuBtn && navMenu) {
-        mobileMenuBtn.addEventListener('click', function() {
-          navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-        });
-      }
-    });
-  </script>
+    <h2 class="section-title">
+      Nuestros Clientes
+    </h2>
+
+    <p class="section-subtitle">
+      Hemos trabajado con empresas líderes en diversos sectores.
+    </p>
+
+    <div class="clients-grid">
+
+      <img src="logo/colbun.svg" alt="Colbún" class="client-logo">
+      <img src="logo/marval.svg" alt="Marval" class="client-logo">
+      <img src="logo/oxxean.svg" alt="Oxean" class="client-logo">
+      <img src="logo/resolve.svg" alt="Resolve Marine" class="client-logo">
+      <img src="logo/scotta.svg" alt="Scotta" class="client-logo">
+      <img src="logo/ovejera.svg" alt="Hidromocho" class="client-logo">
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+CONTACTO
+========================================================= -->
+
+<section class="section contact" id="contacto">
+
+  <div class="container">
+
+    <div class="contact-content">
+
+      <h2 class="section-title">
+        ¿Necesitas asesoría especializada?
+      </h2>
+
+      <p class="section-subtitle">
+        Contáctanos para evaluar cómo podemos apoyar tus proyectos
+        con soluciones ambientales innovadoras y tecnológicamente avanzadas.
+      </p>
+
+      <div class="contact-info">
+
+        <div class="contact-item">
+          <span class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </span>
+          <span>felipe@soarblue.cl</span>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon">
+            <i class="fab fa-whatsapp"></i>
+          </span>
+          <span>+56998114750 (WhatsApp)</span>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </span>
+          <span>Valdivia, Región de Los Ríos, Chile</span>
+        </div>
+
+      </div>
+
+      <a
+        href="https://wa.me/56998114750"
+        class="cta-button"
+      >
+        <i class="fab fa-whatsapp"></i>
+        Contactar por WhatsApp
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+  <div class="footer-content">
+
+    <img
+      src="logo/logo-soarblue-M4.svg"
+      alt="Soarblue"
+      class="footer-logo"
+    >
+
+    <p class="footer-text">
+      Anticipa. Integra. Protege.
+    </p>
+
+    <p class="footer-copyright">
+      © 2026 Soarblue Consultores.<br>
+      Todos los derechos reservados.
+    </p>
+
+  </div>
+
+</footer>
+
+<!-- =========================================================
+SCRIPT
+========================================================= -->
+
+<script>
+
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', () => {
+
+  if(window.scrollY > 50){
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+
+});
+
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navMenu = document.querySelector('.nav-menu');
+
+mobileMenuBtn.addEventListener('click', () => {
+
+  if(navMenu.style.display === 'flex'){
+    navMenu.style.display = 'none';
+  } else {
+    navMenu.style.display = 'flex';
+  }
+
+});
+
+</script>
+
 </body>
 </html>
