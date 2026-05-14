@@ -202,9 +202,7 @@ HERO
   position:relative;
   overflow:hidden;
 
-  background:
-  radial-gradient(circle at top, rgba(255,255,255,.04), transparent 30%),
-  linear-gradient(180deg,#2b2b2b 0%, #252525 100%);
+background: radial-gradient(circle at top, rgba(255, 255, 255, .04), transparent 30%), linear-gradient(240deg, #2b2b2b 60%, #000000 100%);
 
 }
 
@@ -419,10 +417,55 @@ VALUES
 }
 
 .value-title{
+  position: relative;
   font-size:1.3rem;
+  padding-bottom:14px;
   margin-bottom:1rem;
   color:var(--text);
 }
+
+/* Línea base animada */
+.value-title::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:2px;
+
+  transform:scaleX(0);
+  transform-origin:left;
+
+  animation:lineReveal 1s ease forwards;
+}
+
+/* CARD 1 */
+.value-card:nth-child(1) .value-title::after{
+  background:#FFA410;
+}
+
+/* CARD 2 */
+.value-card:nth-child(2) .value-title::after{
+  background:#FF3E10;
+}
+
+/* CARD 3 */
+.value-card:nth-child(3) .value-title::after{
+  background:#E8D100;
+}
+
+/* Animación */
+@keyframes lineReveal{
+  to{
+    transform:scaleX(1);
+  }
+}
+
+
+
+
+
+
 
 .value-text{
   color:var(--text-soft);
@@ -434,20 +477,23 @@ SERVICIOS
 ========================================================= */
 
 .services-section{
-  background:#303030;
+  background:#1d1d1d;
 }
+
 
 .services-grid{
 
   margin-top:4rem;
 
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:repeat(4,1fr);
 
   gap:1.6rem;
 
-}
+  align-items:start;
 
+}
 .service-main-card{
 
   background:
@@ -575,7 +621,7 @@ SERVICIOS
 .service-image{
 
   width:100%;
-  height:260px;
+  height:360px;
 
   object-fit:cover;
 
@@ -619,6 +665,95 @@ SERVICIOS
   color:var(--text-soft);
   line-height:1.8;
 }
+
+
+
+
+/* =========================================================
+CONTRAPESO
+========================================================= */
+
+.contrapeso-card{
+
+  background:
+  linear-gradient(
+    180deg,
+    rgba(74,74,74,.95) 0%,
+    rgba(42,42,42,.98) 100%
+  );
+
+  border:
+  1px solid rgba(143,182,190,.18);
+
+}
+
+.contrapeso-card::after{
+
+  content:'';
+
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+    130deg,
+    transparent 0%,
+    rgba(255,255,255,.03) 50%,
+    transparent 100%
+  );
+
+  pointer-events:none;
+
+}
+
+.contrapeso-title{
+
+  display:flex;
+  align-items:center;
+  gap:1rem;
+
+}
+
+.contrapeso-badge{
+
+  width:52px;
+  height:52px;
+
+  border-radius:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+  rgba(143,182,190,.08);
+
+  border:
+  1px solid rgba(143,182,190,.15);
+
+  color:var(--accent);
+
+  font-size:1.1rem;
+
+}
+
+.contrapeso-text{
+
+  color:var(--text-soft);
+
+  line-height:2;
+
+  font-size:1rem;
+
+}
+
+.contrapeso-text strong{
+  color:var(--text);
+  font-weight:600;
+}
+
+
+
 
 /* =========================================================
 CLIENTES
@@ -742,7 +877,7 @@ FOOTER
 
   padding:4rem 2rem 2rem;
 
-  background:#242424;
+  background:#151515;
 
   border-top:1px solid rgba(255,255,255,.04);
 
@@ -774,7 +909,6 @@ FOOTER
 /* =========================================================
 RESPONSIVE
 ========================================================= */
-
 @media(max-width:1100px){
 
   .values-grid,
@@ -915,6 +1049,9 @@ HEADER
       <li><a href="#servicios" class="nav-link">Servicios</a></li>
       <li><a href="#equipo" class="nav-link">Quiénes somos</a></li>
       <li><a href="#tecnologia" class="nav-link">Tecnología 4.0</a></li>
+
+      <li><a href="#simbiosis" class="nav-link">Simbiosis</a></li>
+
       <li><a href="#contacto" class="nav-link">Contacto</a></li>
 
     </ul>
@@ -946,10 +1083,8 @@ HERO
     </p>
 
     <p class="hero-subtitle">
-      "Diseñamos soluciones personalizadas (Ex-Ante) en medioambiente,
-      compliance, sostenibilidad y comunicación — respaldadas por un equipo
-      profesional que hace trazable e integra cada decisión, de manera
-      transparente, confidencial y cibersegura. (Ex-Post)"
+Diseñamos soluciones personalizadas (Ex-Ante) en medioambiente, 
+compliance, sostenibilidad y comunicación — respaldadas por un equipo profesional que hace trazable e integra cada decisión, de manera transparente, confidencial y cibersegura. (Ex-Post)
     </p>
 
     <h1 class="hero-title">
@@ -984,34 +1119,20 @@ HISTORIA
         <div class="history-text">
 
           <p>
-            La visión de Soarblue nació en 2015 con una convicción:
-            los proyectos de inversión fallan cuando la información llega tarde,
-            llega fragmentada o no llega igual para todos.
-            En 2016, nos adjudicamos un proyecto CORFO patrocinado por INCUBA UC.
+La visión de Soarblue nació en 2015 con una convicción: los proyectos de inversión fallan cuando la información llega tarde, llega fragmentada o no llega igual para todos. En 2016, nos adjudicamos un proyecto CORFO patrocinado por INCUBA UC.
+
           </p>
 
           <p>
-            Nuestro nombre lo dice todo.
-            SOAR — Servicio de Observación Ambiental Remoto —
-            refleja el origen: la incorporación de tecnologías de análisis
-            realista de datos espaciales y los primeros drones para la evaluación,
-            seguimiento y comunicación de proyectos complejos de gran envergadura.
-            Blue representa la dimensión sostenible, comunicacional y reputacional
-            que hace que esa observación se convierta en valor real para el
-            territorio y las compañías.
+Nuestro nombre lo dice todo. SOAR — Servicio de Observación Ambiental Remoto — refleja el origen: la incorporación de tecnologías de análisis realista de datos espaciales y los primeros en utilizar la fotografía profesional aérea y terrestre  para la evaluación, seguimiento y comunicación de proyectos complejos de gran envergadura. Blue representa la dimensión sostenible, comunicacional y reputacional que hace que esa visiónse convierta en valor real para el territorio y las compañías. 
           </p>
 
           <p>
-            Ese conocimiento surge desde la experiencia en empresas privadas,
-            servicios públicos (Directemar y SEA), docencia universitaria y
-            estudios posteriores, que con el tiempo se transforman en el
-            fundamento de los Modelos Dermis y Resonate.
+Ese conocimiento surge desde la experiencia en empresas privadas, servicios públicos (Directemar y SEA), docencia universitaria y estudios posteriores, que con el tiempo se transforman en el fundamento de los Modelos Dermis y Resonate.
           </p>
 
           <p>
-            Hoy Soarblue es una arquitectura de gestión que integra profesionales
-            de diferentes disciplinas, anticipa riesgos y protege proyectos en
-            cada etapa de su ciclo de vida.
+Hoy Soarblue es una arquitectura de gestión que integra profesionales de diferentes disciplinas, anticipa riesgos y protege proyectos en cada etapa de su ciclo de vida.
           </p>
 
         </div>
@@ -1033,6 +1154,7 @@ HISTORIA
           <h3 class="value-title">
             PROPÓSITO
           </h3>
+
 
           <p class="value-text">
             "Que nuestros clientes nunca tengan que explicar lo que pudieron
@@ -1123,31 +1245,43 @@ SERVICIOS
 
         <div class="service-card-content">
 
-          <div class="service-sub-box">
-            <div class="service-sub-title">
+        <div class="service-special-list">
+
+
+          <div class="service-special-item">
+            <i class="fas fa-circle service-special-icon"></i>
+
+            <div class="service-special-text">
               Gestión, Seguimiento e Inspección Ambiental de Proyectos de Inversión
             </div>
           </div>
 
-          <div class="service-sub-box">
-            <div class="service-sub-title">
+          <div class="service-special-item">
+            <i class="fas fa-circle service-special-icon"></i>
+
+            <div class="service-special-text">
               Compliance en Prevención de Delitos Ambientales T-MAS
             </div>
           </div>
 
-          <div class="service-sub-box">
-            <div class="service-sub-title">
+          <div class="service-special-item">
+            <i class="fas fa-circle service-special-icon"></i>
+
+            <div class="service-special-text">
               Sostenibilidad NIIF S1 y S2<br>
               Aspectos ESG · Doble Materialidad
             </div>
           </div>
 
-          <div class="service-sub-box">
-            <div class="service-sub-title">
+          <div class="service-special-item">
+            <i class="fas fa-circle service-special-icon"></i>
+
+            <div class="service-special-text">
               Comunicación Corporativa y Ciudadana
             </div>
           </div>
 
+        </div>
         </div>
 
       </div>
@@ -1183,8 +1317,13 @@ SERVICIOS
             </div>
 
           </div>
-
   
+          <img
+            class="service-image"
+            src="img/01-rizoma.svg"
+            alt="Tecnología Soarblue"
+            
+          >
 
         </div>
 
@@ -1207,6 +1346,8 @@ SERVICIOS
         </div>
 
         <div class="service-card-content">
+
+
 
           <div class="service-special-list">
 
@@ -1264,12 +1405,401 @@ SERVICIOS
         </div>
 
       </div>
+<!-- =========================================================
+CONTRAPESO
+========================================================= -->
+
+<div class="service-main-card contrapeso-card">
+
+  <div class="service-card-top">
+
+    <div class="contrapeso-title">
+
+
+
+      <h3 class="service-card-title">
+        CONTRAPESO
+      </h3>
+
+    </div>
+
+  </div>
+
+  <div class="service-card-content">
+
+    <div class="contrapeso-text">
+
+      <p>
+        <strong>Contrapeso</strong> es un servicio de outsourcing estratégico y colaborativo de consultoría especializada, diseñado para ser contratado por proyecto en cualquiera de sus etapas.
+      </p>
+
+      <br>
+
+      <p>
+        Está concebido específicamente para proyectos de inversión que, aun contando con departamentos internos de medioambiente o compliance, requieren de una mirada experta, externa e independiente.
+      </p>
+
+      <br>
+
+      <p>
+        Su propósito fundamental es integrarse como parte del equipo para respaldar a las áreas internas, previendo y enfrentando situaciones complejas.
+      </p>
+
+      <br>
+
+      <p>
+        Al aportar esta perspectiva imparcial, el servicio genera una excelente percepción en el medio externo y actúa como un puente directo con las partes interesadas.
+      </p>
+
+      <br>
+
+      <p>
+        "Contrapeso" impulsa la proactividad mediante una gestión basada en la transparencia, la trazabilidad y la protección de la reputación corporativa.
+      </p>
+
+      <br>
+
+      <p>
+        Al eliminar las asimetrías de información en la comunicación con la ciudadanía o directorio, este modelo de outsourcing entrega el activo más valioso para la viabilidad y sostenibilidad de cualquier proyecto:
+        <strong>confianza.</strong>
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+      
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- =========================================================
+MODELO DERMIS
+========================================================= -->
+<style>
+  /* =========================================================
+MODELO DERMIS
+PEGAR DEBAJO DE SERVICIOS O ANTES DE CLIENTES
+========================================================= */
+
+.dermis-section{
+
+  background:
+  radial-gradient(
+    circle at top right,
+    rgba(143,182,190,.08),
+    transparent 35%
+  ),
+  linear-gradient(
+    180deg,
+    #242424 0%,
+    #1b1b1b 100%
+  );
+
+  position:relative;
+  overflow:hidden;
+
+}
+
+.dermis-section::before{
+
+  content:'';
+
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,.02) 50%,
+    transparent 100%
+  );
+
+  pointer-events:none;
+
+}
+
+/* =========================================================
+LAYOUT
+========================================================= */
+
+.dermis-layout{
+
+  display:grid;
+
+  grid-template-columns:1fr 1.4fr;
+
+  gap:4rem;
+
+  align-items:center;
+
+  position:relative;
+  z-index:2;
+
+}
+
+/* =========================================================
+TEXTOS
+========================================================= */
+
+.dermis-content{
+
+  max-width:520px;
+
+}
+
+.dermis-label{
+
+  display:inline-flex;
+  align-items:center;
+  gap:.7rem;
+
+  color:var(--accent);
+
+  font-size:.82rem;
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+
+  margin-bottom:1.8rem;
+
+}
+
+.dermis-title{
+
+  font-size:4.2rem;
+
+  line-height:.95;
+
+  letter-spacing:-3px;
+
+  color:var(--text);
+
+  margin-bottom:1rem;
+
+}
+
+.dermis-subtitle{
+
+  font-size:1.1rem;
+
+  color:var(--accent);
+
+  margin-bottom:2.2rem;
+
+  letter-spacing:.5px;
+
+}
+
+.dermis-text{
+
+  color:var(--text-soft);
+
+  line-height:2;
+
+  font-size:1.02rem;
+
+}
+
+/* =========================================================
+IMAGEN
+========================================================= */
+
+.dermis-image-wrapper{
+
+  position:relative;
+
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+
+}
+
+.dermis-image{
+
+  width:100%;
+  max-width:900px;
+
+  object-fit:contain;
+
+  filter:
+  drop-shadow(0 25px 60px rgba(0,0,0,.35));
+
+  opacity:.98;
+
+  animation:dermisFloat 7s ease-in-out infinite;
+
+}
+
+/* =========================================================
+ANIMATION
+========================================================= */
+
+@keyframes dermisFloat{
+
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-10px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px){
+
+  .dermis-layout{
+
+    grid-template-columns:1fr;
+
+    gap:4rem;
+
+  }
+
+  .dermis-content{
+
+    max-width:100%;
+
+    text-align:center;
+
+  }
+
+  .dermis-image-wrapper{
+    justify-content:center;
+  }
+
+  .dermis-title{
+    font-size:3.2rem;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .dermis-section{
+    padding:5rem 1.3rem;
+  }
+
+  .dermis-title{
+
+    font-size:2.4rem;
+
+    letter-spacing:-2px;
+
+  }
+
+  .dermis-subtitle{
+    font-size:1rem;
+  }
+
+  .dermis-text{
+
+    font-size:.98rem;
+
+    line-height:1.9;
+
+  }
+
+}
+
+@media(max-width:480px){
+
+  .dermis-title{
+    font-size:2rem;
+  }
+
+  .dermis-image{
+    max-width:100%;
+  }
+
+}
+</style>
+<section class="section dermis-section" id="dermis">
+
+  <div class="container">
+
+    <div class="dermis-layout">
+
+      <!-- =========================================================
+      TEXTO
+      ========================================================= -->
+
+      <div class="dermis-content">
+
+
+        <h2 class="dermis-title">
+          MODELO DERMIS
+        </h2>
+
+        <div class="dermis-subtitle">
+          (Capas de protección)
+        </div>
+
+        <div class="dermis-text">
+
+          <p>
+            El Modelo Dermis es uno de los pilares metodológicos de Soarblue©, diseñado como una arquitectura de gestión integral que acompaña a los proyectos de inversión durante todo su ciclo de vida.
+          </p>
+
+          <br>
+
+          <p>
+            Funciona como una capa de protección que integra diversas disciplinas para anticipar riesgos y salvaguardar la integridad de los activos y la inversión.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- =========================================================
+      IMAGEN
+      ========================================================= -->
+
+      <div class="dermis-image-wrapper">
+
+        <img
+          src="img/02-dermis.svg"
+          alt="Modelo Dermis"
+          class="dermis-image"
+        >
+
+      </div>
 
     </div>
 
   </div>
 
 </section>
+
+
+
+
+
+
 
 <!-- =========================================================
 CLIENTES
@@ -1284,7 +1814,7 @@ CLIENTES
     </h2>
 
     <p class="section-subtitle">
-      Hemos trabajado con empresas líderes en diversos sectores.
+      Hemos asesorado empresas líderes en diversos sectores.
     </p>
 
     <div class="clients-grid">
@@ -1301,6 +1831,11 @@ CLIENTES
   </div>
 
 </section>
+
+
+
+
+
 
 <!-- =========================================================
 CONTACTO
@@ -1357,9 +1892,7 @@ CONTACTO
     </div>
 
   </div>
-
 </section>
-
 <!-- =========================================================
 FOOTER
 ========================================================= -->
@@ -1375,7 +1908,7 @@ FOOTER
     >
 
     <p class="footer-text">
-      Anticipa. Integra. Protege.
+      Anticipa / Integra / Protege
     </p>
 
     <p class="footer-copyright">
