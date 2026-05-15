@@ -621,7 +621,7 @@ SERVICIOS
 .service-image{
 
   width:100%;
-  height:241px;
+  height:360px;
 
   object-fit:cover;
 
@@ -1738,6 +1738,8 @@ RESPONSIVE
 
 }
 </style>
+
+
 <section class="section dermis-section" id="dermis">
 
   <div class="container">
@@ -1795,12 +1797,1153 @@ RESPONSIVE
 
 </section>
 
+<!-- =========================================================
+TIPOLOGÍAS DE PROYECTOS
+========================================================= -->
+
+<section class="project-types-section">
+
+  <div class="container project-types-layout">
+
+    <!-- =========================================
+    LEFT CONTENT
+    ========================================== -->
+
+    <div class="project-types-left">
+
+      <div class="project-mini-line"></div>
+
+      <p class="project-types-text">
+        Soarblue despliega su consultoría estratégica en sectores de alta
+        complejidad o exposición, cubriendo desde el diseño hasta el cierre.
+        Nuestra metodología garantiza una trazabilidad fehaciente y el
+        cumplimiento normativo en entornos diversos.
+      </p>
+
+      <p class="project-types-text">
+        Este enfoque asegura la preservación del valor corporativo y el blindaje
+        de activos estratégicos, consolidando la gestión ambiental como
+        herramienta de gobernanza.
+      </p>
+
+    </div>
+
+    <!-- =========================================
+    RIGHT CONTENT
+    ========================================== -->
+
+    <div class="project-types-right">
+
+      <div class="project-types-header">
+
+        <span class="project-types-label">
+          ÁREAS DE EXPERIENCIA
+        </span>
+
+        <h2 class="project-types-title">
+          TIPOLOGÍAS DE PROYECTOS
+        </h2>
+
+        <p class="project-types-subtitle">
+          Diseño / Construcción / Operación (modificación) / Cierre
+        </p>
+
+      </div>
+
+      <!-- =========================================
+      LIST
+      ========================================== -->
+
+      <div class="project-types-list">
+
+        <div class="project-type-item">
+          Salmonicultura
+        </div>
+
+        <div class="project-type-item">
+          Parques eólicos
+        </div>
+
+        <div class="project-type-item">
+          Obras Portuarias
+        </div>
+
+        <div class="project-type-item">
+          Astilleros
+        </div>
+
+        <div class="project-type-item">
+          Inmobiliarias / Constructoras
+        </div>
+
+        <div class="project-type-item">
+          Estudios Jurídicos
+        </div>
+
+        <div class="project-type-item">
+          Áridos / Empréstitos
+        </div>
+
+        <div class="project-type-item">
+          Clínicas
+        </div>
+
+        <div class="project-type-item">
+          Rellenos Sanitarios
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+
+/* =========================================================
+TIPOLOGÍAS DE PROYECTOS
+========================================================= */
+
+.project-types-section{
+
+  position:relative;
+
+  padding:8rem 2rem;
+
+  background:
+  radial-gradient(circle at top right,
+  rgba(255,255,255,.025),
+  transparent 30%),
+
+  linear-gradient(180deg,
+  #2d2d2d 0%,
+  #262626 100%);
+
+  overflow:hidden;
+}
+
+.project-types-layout{
+
+  display:grid;
+  grid-template-columns:22% 78%;
+  gap:4.5rem;
+
+  align-items:flex-start;
+}
+
+/* =========================================
+LEFT
+========================================= */
+
+.project-types-left{
+
+  position:sticky;
+  top:120px;
+}
+
+.project-mini-line{
+
+  width:48px;
+  height:1px;
+
+  background:#8db7c0;
+
+  margin-bottom:2rem;
+
+  opacity:.75;
+}
+
+.project-types-text{
+
+  color:#c9c2b4;
+
+  font-size:.94rem;
+  line-height:1.95;
+
+  margin-bottom:1.8rem;
+
+  letter-spacing:.1px;
+}
+
+/* =========================================
+RIGHT
+========================================= */
+
+.project-types-header{
+
+  text-align:center;
+
+  margin-bottom:3.8rem;
+}
+
+.project-types-label{
+
+  display:inline-block;
+
+  margin-bottom:1rem;
+
+  color:#8db7c0;
+
+  font-size:.78rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.project-types-title{
+
+  font-size:clamp(2.2rem,4vw,4.2rem);
+
+  line-height:1;
+
+  letter-spacing:-2px;
+
+  color:#ebe5d8;
+
+  margin-bottom:1rem;
+
+  font-weight:700;
+}
+
+.project-types-subtitle{
+
+  color:#b8b1a4;
+
+  font-size:.96rem;
+
+  letter-spacing:.2px;
+}
+
+/* =========================================
+LIST
+========================================= */
+
+.project-types-list{
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  gap:.9rem;
+}
+
+.project-type-item{
+
+width: 100%;
+max-width: 658px;
+text-align: center;
+padding: 14px 6px;
+border-radius: 22px;
+background: linear-gradient(180deg,
+rgba(255,255,255,.028) 0%,
+rgba(255,255,255,.015) 100%);
+border: 1px solid rgba(255,255,255,.045);
+color: #f0eadf;
+font-size: 19px;
+line-height: 1.1;
+letter-spacing: -1.5px;
+font-weight: 500;
+transition: .28s ease;
+box-shadow: 0 6px 24px rgba(0,0,0,.16);
+}
+
+.project-type-item:hover{
+
+  transform:translateY(-2px);
+
+  border-color:rgba(255,255,255,.08);
+
+  background:
+  linear-gradient(180deg,
+  rgba(255,255,255,.04) 0%,
+  rgba(255,255,255,.02) 100%);
+}
+
+/* =========================================================
+TABLET
+========================================================= */
+
+@media(max-width:1200px){
+
+  .project-types-layout{
+
+    grid-template-columns:1fr;
+    gap:4rem;
+  }
+
+  .project-types-left{
+
+    position:relative;
+    top:auto;
+
+    max-width:850px;
+  }
+
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+  .project-types-section{
+
+    padding:5.5rem 1.3rem;
+  }
+
+  .project-types-layout{
+
+    gap:3rem;
+  }
+
+  .project-types-header{
+
+    margin-bottom:2.5rem;
+  }
+
+  .project-types-title{
+
+    font-size:2.3rem;
+
+    letter-spacing:-1px;
+
+    line-height:1.05;
+  }
+
+  .project-types-subtitle{
+
+    font-size:.9rem;
+
+    line-height:1.7;
+
+    padding:0 .5rem;
+  }
+
+  .project-types-text{
+
+    font-size:.92rem;
+    line-height:1.9;
+  }
+
+  .project-types-list{
+
+    gap:.8rem;
+  }
+
+  .project-type-item{
+
+    max-width:100%;
+
+    border-radius:18px;
+
+    padding:1.25rem 1rem;
+
+    font-size:1.65rem;
+
+    line-height:1.12;
+
+    letter-spacing:-1px;
+  }
+
+}
+
+/* =========================================================
+SMALL MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+  .project-types-section{
+
+    padding:5rem 1rem;
+  }
+
+  .project-types-title{
+
+    font-size:2rem;
+  }
+
+  .project-type-item{
+
+    font-size:1.45rem;
+
+    padding:1.1rem .9rem;
+
+    border-radius:16px;
+  }
+
+  .project-types-text{
+
+    font-size:.9rem;
+  }
+
+}
+
+</style>
 
 
+<!-- =========================================================
+REGISTRO VISUAL COGNITIVO
+========================================================= -->
+
+<section class="visual-section">
+
+  <!-- =========================================
+  BACKGROUND DETAILS
+  ========================================== -->
+
+  <div class="visual-blur visual-blur-1"></div>
+  <div class="visual-blur visual-blur-2"></div>
+
+  <div class="container visual-container">
+
+    <!-- =========================================
+    HEADER
+    ========================================== -->
+
+    <div class="visual-header">
+
+      <span class="visual-label">
+        OBSERVACIÓN · TRAZABILIDAD · PERCEPCIÓN
+      </span>
+
+      <h2 class="visual-title">
+        REGISTRO VISUAL COGNITIVO
+      </h2>
+
+      <p class="visual-quote">
+        “No se puede mejorar lo que no se mide,
+        pero tampoco lo que no se ve o se entiende”
+      </p>
+
+    </div>
+
+    <!-- =========================================
+    MAIN CARD
+    ========================================== -->
+
+    <div class="visual-main-card">
+
+      <div class="visual-main-grid">
+
+        <!-- =========================================
+        LEFT TEXT
+        ========================================== -->
+
+        <div class="visual-column">
+
+          <p class="visual-text">
+            En Soarblue, seguimos el legado de Humberto Maturana y Francisco
+            Varela, entendemos que "conocer es hacer" y que toda observación
+            está indisolublemente ligada a la estructura de quien observa.
+          </p>
+
+          <p class="visual-text">
+            Bajo esta premisa, las asimetrías de información no son meros vacíos
+            de datos, sino brechas en la coordinación de acciones entre distintos
+            observadores: el Directorio, el regulador y la ciudadanía.
+          </p>
+
+          <p class="visual-text">
+            Soarblue interviene en este espacio crítico transformando la
+            "partitura" técnica en un dominio visual compartido. Al dirigir la
+            observación mediante registros de alta fidelidad, no solo
+            comunicamos; generamos un acoplamiento estructural donde todas las
+            partes pueden comprender una realidad común, trazable y transparente.
+          </p>
+
+          <p class="visual-text">
+            Esto permite que la toma de decisiones se oriente sobre una base de
+            confianza técnica inobjetable, convirtiéndose en una herramienta
+            clave para gobiernos corporativos y empresas en los tiempos actuales.
+          </p>
+
+        </div>
+
+        <!-- =========================================
+        RIGHT BLOCK
+        ========================================== -->
+
+        <div class="visual-column">
+
+          <div class="visual-applications-card">
+
+            <div class="visual-small-label">
+              APLICACIONES
+            </div>
+
+            <div class="visual-app-list">
+
+              <div class="visual-app-item">
+                Plataformas digitales APIs con información material del proyecto
+              </div>
+
+              <div class="visual-app-item">
+                Relatos visuales para Streaming Certificados
+              </div>
+
+              <div class="visual-app-item">
+                Elaboramos Participación Ciudadana
+              </div>
+
+              <div class="visual-app-item">
+                Medio probatorio en procedimientos SMA y Tribunal Ambiental
+              </div>
+
+              <div class="visual-app-item">
+                Registros complementarios para Reportabilidad
+              </div>
+
+              <div class="visual-app-item">
+                Registros para meta-data de Compliance Ambiental
+              </div>
+
+              <div class="visual-app-item">
+                Emergencias y Peritajes
+              </div>
+
+              <div class="visual-app-item">
+                Liquidación de Siniestros
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- =========================================
+    SECOND BLOCK
+    ========================================== -->
+
+    <div class="visual-bottom-grid">
+
+      <!-- =========================================
+      LEFT
+      ========================================== -->
+
+      <div class="visual-secondary-card">
+
+        <div class="visual-small-label">
+          CAPACIDAD TÉCNICA
+        </div>
+
+        <p class="visual-text">
+          Contamos con instrumental óptico de alta calidad visual
+          (no aficionado) apoyados por licencias de software especializadas
+          en postproducción, lo cual nos permite alcanzar niveles de percepción
+          y comprensión realistas en el receptor, independiente de su grado de
+          conocimiento en la materia.
+        </p>
+
+        <p class="visual-text">
+          Esto permite un entendimiento horizontal y virtuoso entre equipos
+          técnicos, directorios, autoridades y ciudadanía.
+        </p>
+
+      </div>
+
+      <!-- =========================================
+      RIGHT
+      ========================================== -->
+
+      <div class="visual-secondary-card">
+
+        <div class="visual-small-label">
+          DIRECTOR DE FOTOGRAFÍA AMBIENTAL
+        </div>
+
+        <p class="visual-text">
+          No es un fotógrafo que entiende de medio ambiente.
+          Es un profesional con formación técnica ambiental que además domina
+          el lenguaje visual, la dirección de equipos de registro y la
+          interpretación de documentación vinculante.
+        </p>
+
+        <p class="visual-text">
+          La imagen debe ser técnicamente fiel y comunicacionalmente efectiva
+          al mismo tiempo. Esa intersección es la competencia central y es
+          escasa.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+
+/* =========================================================
+REGISTRO VISUAL COGNITIVO
+========================================================= */
+
+.visual-section{
+
+  position:relative;
+
+  padding:9rem 2rem;
+
+  overflow:hidden;
+
+  background:
+  linear-gradient(180deg,
+  #262626 0%,
+  #2d2d2d 100%);
+}
+
+/* =========================================
+BACKGROUND BLUR
+========================================= */
+
+.visual-blur{
+
+  position:absolute;
+
+  border-radius:50%;
+
+  filter:blur(120px);
+
+  opacity:.06;
+
+  pointer-events:none;
+}
+
+.visual-blur-1{
+
+  width:420px;
+  height:420px;
+
+  background:#8db7c0;
+
+  top:-140px;
+  right:-100px;
+}
+
+.visual-blur-2{
+
+  width:320px;
+  height:320px;
+
+  background:#ffffff;
+
+  bottom:-120px;
+  left:-120px;
+}
+
+/* =========================================
+CONTAINER
+========================================= */
+
+.visual-container{
+
+  position:relative;
+  z-index:2;
+}
+
+/* =========================================
+HEADER
+========================================= */
+
+.visual-header{
+
+  max-width:1200px;
+
+  margin:0 auto 5rem;
+
+  text-align:center;
+}
+
+.visual-label{
+
+  display:inline-block;
+
+  margin-bottom:1.1rem;
+
+  color:#8db7c0;
+
+  font-size:.78rem;
+
+  letter-spacing:3px;
+
+  text-transform:uppercase;
+}
+
+.visual-title{
+
+  font-size:clamp(2.5rem,5vw,5.2rem);
+
+  line-height:1;
+
+  letter-spacing:-3px;
+
+  color:#ebe5d8;
+
+  margin-bottom:1.8rem;
+
+  font-weight:700;
+}
+
+.visual-quote{
+
+  max-width:850px;
+
+  margin:0 auto;
+
+  color:#c8c0b2;
+
+  font-size:1.2rem;
+
+  line-height:1.9;
+
+  font-weight:300;
+}
+
+/* =========================================
+MAIN CARD
+========================================= */
+
+.visual-main-card{
+
+  background:
+  linear-gradient(180deg,
+  rgba(255,255,255,.03) 0%,
+  rgba(255,255,255,.018) 100%);
+
+  border:1px solid rgba(255,255,255,.05);
+
+  border-radius:34px;
+
+  padding:4rem;
+
+  box-shadow:
+  0 20px 60px rgba(0,0,0,.22);
+
+  margin-bottom:2rem;
+}
+
+.visual-main-grid{
+
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+
+  gap:3rem;
+}
+
+/* =========================================
+TEXT
+========================================= */
+
+.visual-text{
+
+  color:#cfc7b7;
+
+  font-size:1rem;
+
+  line-height:2;
+
+  margin-bottom:1.8rem;
+
+  font-weight:400;
+}
+
+/* =========================================
+SMALL LABEL
+========================================= */
+
+.visual-small-label{
+
+  margin-bottom:1.6rem;
+
+  color:#8db7c0;
+
+  font-size:.78rem;
+
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+}
+
+/* =========================================
+APPLICATIONS CARD
+========================================= */
+
+.visual-applications-card{
+
+  height:100%;
+
+  background:
+  linear-gradient(180deg,
+  rgba(255,255,255,.03) 0%,
+  rgba(255,255,255,.015) 100%);
+
+  border:1px solid rgba(255,255,255,.05);
+
+  border-radius:26px;
+
+  padding:2rem;
+}
+
+.visual-app-list{
+
+  display:flex;
+  flex-direction:column;
+
+  gap:.9rem;
+}
+
+.visual-app-item{
+
+  padding:1rem 1.1rem;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,.025);
+
+  border:1px solid rgba(255,255,255,.04);
+
+  color:#e5dfd3;
+
+  line-height:1.7;
+
+  font-size:.95rem;
+
+  transition:.25s ease;
+}
+
+.visual-app-item:hover{
+
+  background:rgba(255,255,255,.04);
+
+  border-color:rgba(255,255,255,.08);
+
+  transform:translateY(-2px);
+}
+
+/* =========================================
+BOTTOM GRID
+========================================= */
+
+.visual-bottom-grid{
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  gap:2rem;
+}
+
+.visual-secondary-card{
+
+  background:
+  linear-gradient(180deg,
+  rgba(255,255,255,.028) 0%,
+  rgba(255,255,255,.015) 100%);
+
+  border:1px solid rgba(255,255,255,.05);
+
+  border-radius:28px;
+
+  padding:2.5rem;
+
+  box-shadow:
+  0 12px 40px rgba(0,0,0,.18);
+}
+
+/* =========================================================
+TABLET
+========================================================= */
+
+@media(max-width:1100px){
+
+  .visual-main-grid{
+
+    grid-template-columns:1fr;
+  }
+
+  .visual-bottom-grid{
+
+    grid-template-columns:1fr;
+  }
+
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+  .visual-section{
+
+    padding:6rem 1.3rem;
+  }
+
+  .visual-header{
+
+    margin-bottom:3rem;
+  }
+
+  .visual-title{
+
+    font-size:2.4rem;
+
+    letter-spacing:-1px;
+
+    line-height:1.05;
+  }
+
+  .visual-quote{
+
+    font-size:1rem;
+
+    line-height:1.8;
+  }
+
+  .visual-main-card{
+
+    padding:2rem;
+
+    border-radius:24px;
+  }
+
+  .visual-secondary-card{
+
+    padding:2rem;
+
+    border-radius:22px;
+  }
+
+  .visual-text{
+
+    font-size:.94rem;
+
+    line-height:1.9;
+  }
+
+  .visual-app-item{
+
+    font-size:.92rem;
+
+    line-height:1.7;
+  }
+
+}
+
+/* =========================================================
+SMALL MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+  .visual-section{
+
+    padding:5rem 1rem;
+  }
+
+  .visual-title{
+
+    font-size:2rem;
+  }
+
+  .visual-main-card{
+
+    padding:1.5rem;
+  }
+
+  .visual-secondary-card{
+
+    padding:1.5rem;
+  }
+
+  .visual-quote{
+
+    font-size:.95rem;
+  }
+
+  .visual-text{
+
+    font-size:.9rem;
+  }
+
+  .visual-app-item{
+
+    padding:.95rem;
+  }
+
+}
+
+</style>
+<section class="section dermis-section" id="dermis">
+
+  <div class="container">
+
+    <div class="dermis-layout">
+
+      <!-- =========================================================
+      TEXTO
+      ========================================================= -->
+
+      <div class="dermis-content">
 
 
+        <h2 class="dermis-title">
+COMUNICACIÓN 
+CORPORATIVA, 
+CIUDADANA (ESCAZÚ) Y CRISIS O EMERGENCIA
+        </h2>
 
 
+        <div class="dermis-text">
+
+          <p>
+El Modelo Resonate es la arquitectura metodológica de Soarblue© para gestionar la interacción entre el proyecto y su entorno.           </p>
+
+          <br>
+
+          <p>
+Su objetivo no es la difusión de información, sino la creación de una frecuencia de entendimiento común entre los stakeholders técnicos, legales y sociales para anticipar, evitar o contener un conflicto no deseado o para informar a la población en general (Escazú).          </p>
+
+        </div>
+
+      </div>
+
+      <!-- =========================================================
+      IMAGEN
+      ========================================================= -->
+
+      <div class="dermis-image-wrapper">
+
+        <img
+          src="img/03-resonante.svg"
+          alt="Modelo Resonante"
+          class="dermis-image"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section dermis-section" id="dermis">
+
+  <div class="container">
+
+    <div class="dermis-layout">
+
+      <!-- =========================================================
+      TEXTO
+      ========================================================= -->
+
+      <div class="dermis-content">
+
+
+        <h2 class="dermis-title">
+TRAZABILIDAD, TRANSPARENCIA
+Y REPUTACIÓN
+        </h2>
+
+
+        <div class="dermis-text">
+
+          <p>
+La arquitectura de reportabilidad de Soarblue© garantiza la integridad estratégica de la información en proyectos de alta complejidad. Mediante la integración de tecnologías 4.0 y análisis espacial, transformamos el registro técnico en un medio probatorio vinculante, trazable y auditable. 
+</p>
+          <br>
+
+          <p>
+Este sistema elimina las asimetrías de datos, asegurando que cada hito sea verificado bajo estrictos protocolos de seguridad de datos y confidencialidad.           
+</p>
+
+        </div>
+
+      </div>
+
+      <!-- =========================================================
+      IMAGEN
+      ========================================================= -->
+
+      <div class="dermis-image-wrapper">
+
+        <img
+          src="img/04-reportabilidad.svg"
+          alt="Reportabilidad"
+          class="dermis-image"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section dermis-section" id="dermis">
+
+  <div class="container">
+
+    <div class="dermis-layout">
+
+      <!-- =========================================================
+      TEXTO
+      ========================================================= -->
+
+      <div class="dermis-content">
+
+
+        <h2 class="dermis-title">
+RIZOMA 
+
+        </h2>
+
+
+        <div class="dermis-text">
+
+          <p>
+
+Es la plataforma personalizada de monitoreo e inteligencia ambiental de proyectos de Soarblue© y Krivia Labs. Integra los datos de terreno de Soarblue — registros de drones, imágenes satelitales, documentación vinculante, hitos RCA — con las capacidades de IA, Machine Learning y Business Intelligence de Krivia Labs, entregando a la empresa una visión continua, inteligente y accionable del estado ambiental de su proyecto.
+
+          <br>
+          <br>
+
+          <p>
+
+No es un informe periódico. Es un sistema vivo.
+</p>
+        </div>
+
+      </div>
+
+      <!-- =========================================================
+      IMAGEN
+      ========================================================= -->
+
+      <div class="dermis-image-wrapper">
+
+        <img
+          src="img/05-proyecto.svg"
+          alt="Reportabilidad"
+          class="dermis-image"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 <!-- =========================================================
 CLIENTES
 ========================================================= -->
@@ -1852,8 +2995,7 @@ CONTACTO
       </h2>
 
       <p class="section-subtitle">
-        Contáctanos para evaluar cómo podemos apoyar tus proyectos
-        con soluciones ambientales innovadoras y tecnológicamente avanzadas.
+        Contáctenos para evaluar cómo podemos apoyar tus proyectos con soluciones.
       </p>
 
       <div class="contact-info">
