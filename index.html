@@ -122,6 +122,7 @@ HEADER
 
 .header-logo{
   height:38px;
+  cursor:pointer;
 }
 
 .nav-menu{
@@ -141,6 +142,7 @@ HEADER
   letter-spacing:.4px;
 
   transition:.25s ease;
+  cursor:pointer;
 
 }
 
@@ -169,6 +171,14 @@ HEADER
   width:100%;
 }
 
+.nav-link.active{
+  color:#ffffff;
+}
+
+.nav-link.active::after{
+  width:100%;
+}
+
 .mobile-menu-btn{
 
   display:none;
@@ -181,6 +191,38 @@ HEADER
   font-size:1.3rem;
   cursor:pointer;
 
+}
+
+/* =========================================================
+PÁGINAS / PESTAÑAS
+========================================================= */
+
+.page-tab{
+  display:none;
+  min-height:100vh;
+}
+
+.page-tab.active{
+  display:block;
+}
+
+/* Ocultar secciones cuando una pestaña está activa */
+body.tab-active .section:not(.always-visible){
+  display:none;
+}
+
+body.tab-active .footer{
+  display:none;
+}
+
+/* Mostrar solo la pestaña activa */
+body.tab-active .page-tab.active{
+  display:block;
+}
+
+/* Hero siempre visible en inicio */
+#inicio .hero{
+  display:flex;
 }
 
 /* =========================================================
@@ -461,12 +503,6 @@ VALUES
   }
 }
 
-
-
-
-
-
-
 .value-text{
   color:var(--text-soft);
   line-height:1.9;
@@ -666,9 +702,6 @@ SERVICIOS
   line-height:1.8;
 }
 
-
-
-
 /* =========================================================
 CONTRAPESO
 ========================================================= */
@@ -751,9 +784,6 @@ CONTRAPESO
   color:var(--text);
   font-weight:600;
 }
-
-
-
 
 /* =========================================================
 CLIENTES
@@ -907,13 +937,942 @@ FOOTER
 }
 
 /* =========================================================
+MODELO DERMIS
+========================================================= */
+
+.dermis-section{
+
+  background:
+  radial-gradient(
+    circle at top right,
+    rgba(143,182,190,.08),
+    transparent 35%
+  ),
+  linear-gradient(
+    180deg,
+    #242424 0%,
+    #1b1b1b 100%
+  );
+
+  position:relative;
+  overflow:hidden;
+
+}
+
+.dermis-section::before{
+
+  content:'';
+
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,.02) 50%,
+    transparent 100%
+  );
+
+  pointer-events:none;
+
+}
+
+.dermis-layout{
+
+  display:grid;
+
+  grid-template-columns:1fr 1.4fr;
+
+  gap:4rem;
+
+  align-items:center;
+
+  position:relative;
+  z-index:2;
+
+}
+
+.dermis-content{
+
+  max-width:520px;
+
+}
+
+.dermis-label{
+
+  display:inline-flex;
+  align-items:center;
+  gap:.7rem;
+
+  color:var(--accent);
+
+  font-size:.82rem;
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+
+  margin-bottom:1.8rem;
+
+}
+
+.dermis-title{
+
+  font-size:4.2rem;
+
+  line-height:.95;
+
+  letter-spacing:-3px;
+
+  color:var(--text);
+
+  margin-bottom:1rem;
+
+}
+
+.dermis-subtitle{
+
+  font-size:1.1rem;
+
+  color:var(--accent);
+
+  margin-bottom:2.2rem;
+
+  letter-spacing:.5px;
+
+}
+
+.dermis-text{
+
+  color:var(--text-soft);
+
+  line-height:2;
+
+  font-size:1.02rem;
+
+}
+
+.dermis-image-wrapper{
+
+  position:relative;
+
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+
+}
+
+.dermis-image{
+
+  width:100%;
+  max-width:900px;
+
+  object-fit:contain;
+
+  filter:
+  drop-shadow(0 25px 60px rgba(0,0,0,.35));
+
+  opacity:.98;
+
+  animation:dermisFloat 7s ease-in-out infinite;
+
+}
+
+@keyframes dermisFloat{
+
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-10px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+
+}
+
+/* =========================================================
+TIPOLOGÍAS DE PROYECTOS
+========================================================= */
+
+.project-types-section{
+
+  position:relative;
+
+  padding:8rem 2rem;
+
+  background:
+  radial-gradient(circle at top right,
+  rgba(255,255,255,.025),
+  transparent 30%),
+
+  linear-gradient(180deg,
+  #2d2d2d 0%,
+  #262626 100%);
+
+  overflow:hidden;
+}
+
+.project-types-layout{
+
+  display:grid;
+  grid-template-columns:22% 78%;
+  gap:4.5rem;
+
+  align-items:flex-start;
+}
+
+.project-types-left{
+
+  position:sticky;
+  top:120px;
+}
+
+.project-mini-line{
+
+  width:48px;
+  height:1px;
+
+  background:#8db7c0;
+
+  margin-bottom:2rem;
+
+  opacity:.75;
+}
+
+.project-types-text{
+
+  color:#c9c2b4;
+
+  font-size:.94rem;
+  line-height:1.95;
+
+  margin-bottom:1.8rem;
+
+  letter-spacing:.1px;
+}
+
+.project-types-header{
+
+  text-align:center;
+
+  margin-bottom:3.8rem;
+}
+
+.project-types-label{
+
+  display:inline-block;
+
+  margin-bottom:1rem;
+
+  color:#8db7c0;
+
+  font-size:.78rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.project-types-title{
+
+  font-size:clamp(2.2rem,4vw,4.2rem);
+
+  line-height:1;
+
+  letter-spacing:-2px;
+
+  color:#ebe5d8;
+
+  margin-bottom:1rem;
+
+  font-weight:700;
+}
+
+.project-types-subtitle{
+
+  color:#b8b1a4;
+
+  font-size:.96rem;
+
+  letter-spacing:.2px;
+}
+
+.project-types-list{
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  gap:.9rem;
+}
+
+.project-type-item{
+
+width: 100%;
+max-width: 658px;
+text-align: center;
+padding: 14px 6px;
+border-radius: 22px;
+background: linear-gradient(180deg,
+rgba(255,255,255,.028) 0%,
+rgba(255,255,255,.015) 100%);
+border: 1px solid rgba(255,255,255,.045);
+color: #f0eadf;
+font-size: 19px;
+line-height: 1.1;
+letter-spacing: -1.5px;
+font-weight: 500;
+transition: .28s ease;
+box-shadow: 0 6px 24px rgba(0,0,0,.16);
+}
+
+.project-type-item:hover{
+
+  transform:translateY(-2px);
+
+  border-color:rgba(255,255,255,.08);
+
+  background:
+  linear-gradient(180deg,
+  rgba(255,255,255,.04) 0%,
+  rgba(255,255,255,.02) 100%);
+}
+
+/* =========================================================
+REGISTRO VISUAL COGNITIVO
+========================================================= */
+
+.visual-section{
+
+  position:relative;
+
+  padding:9rem 2rem;
+
+  overflow:hidden;
+
+  background:
+  linear-gradient(180deg,
+  #262626 0%,
+  #2d2d2d 100%);
+}
+
+.visual-blur{
+
+  position:absolute;
+
+  border-radius:50%;
+
+  filter:blur(120px);
+
+  opacity:.06;
+
+  pointer-events:none;
+}
+
+.visual-blur-1{
+
+  width:420px;
+  height:420px;
+
+  background:#8db7c0;
+
+  top:-140px;
+  right:-100px;
+}
+
+.visual-blur-2{
+
+  width:320px;
+  height:320px;
+
+  background:#ffffff;
+
+  bottom:-120px;
+  left:-120px;
+}
+
+.visual-container{
+
+  position:relative;
+  z-index:2;
+}
+
+.visual-header{
+
+  max-width:1200px;
+
+  margin:0 auto 5rem;
+
+  text-align:center;
+}
+
+.visual-label{
+
+  display:inline-block;
+
+  margin-bottom:1.1rem;
+
+  color:#8db7c0;
+
+  font-size:.78rem;
+
+  letter-spacing:3px;
+
+  text-transform:uppercase;
+}
+
+.visual-title{
+
+  font-size:clamp(2.5rem,5vw,5.2rem);
+
+  line-height:1;
+
+  letter-spacing:-3px;
+
+  color:#ebe5d8;
+
+  margin-bottom:1.8rem;
+
+  font-weight:700;
+}
+
+.visual-quote{
+
+  max-width:850px;
+
+  margin:0 auto;
+
+  color:#c8c0b2;
+
+  font-size:1.2rem;
+
+  line-height:1.9;
+
+  font-weight:300;
+}
+
+.visual-main-card{
+
+  background:
+  linear-gradient(180deg,
+  rgba(255,255,255,.03) 0%,
+  rgba(255,255,255,.018) 100%);
+
+  border:1px solid rgba(255,255,255,.05);
+
+  border-radius:34px;
+
+  padding:4rem;
+
+  box-shadow:
+  0 20px 60px rgba(0,0,0,.22);
+
+  margin-bottom:2rem;
+}
+
+.visual-main-grid{
+
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+
+  gap:3rem;
+}
+
+.visual-text{
+
+  color:#cfc7b7;
+
+  font-size:1rem;
+
+  line-height:2;
+
+  margin-bottom:1.8rem;
+
+  font-weight:400;
+}
+
+.visual-small-label{
+
+  margin-bottom:1.6rem;
+
+  color:#8db7c0;
+
+  font-size:.78rem;
+
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+}
+
+.visual-applications-card{
+
+  height:100%;
+
+  background:
+  linear-gradient(180deg,
+  rgba(255,255,255,.03) 0%,
+  rgba(255,255,255,.015) 100%);
+
+  border:1px solid rgba(255,255,255,.05);
+
+  border-radius:26px;
+
+  padding:2rem;
+}
+
+.visual-app-list{
+
+  display:flex;
+  flex-direction:column;
+
+  gap:.9rem;
+}
+
+.visual-app-item{
+
+  padding:1rem 1.1rem;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,.025);
+
+  border:1px solid rgba(255,255,255,.04);
+
+  color:#e5dfd3;
+
+  line-height:1.7;
+
+  font-size:.95rem;
+
+  transition:.25s ease;
+}
+
+.visual-app-item:hover{
+
+  background:rgba(255,255,255,.04);
+
+  border-color:rgba(255,255,255,.08);
+
+  transform:translateY(-2px);
+}
+
+.visual-bottom-grid{
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  gap:2rem;
+}
+
+.visual-secondary-card{
+
+  background:
+  linear-gradient(180deg,
+  rgba(255,255,255,.028) 0%,
+  rgba(255,255,255,.015) 100%);
+
+  border:1px solid rgba(255,255,255,.05);
+
+  border-radius:28px;
+
+  padding:2.5rem;
+
+  box-shadow:
+  0 12px 40px rgba(0,0,0,.18);
+}
+
+/* =========================================================
+PÁGINA: QUIENES SOMOS
+========================================================= */
+
+.team-hero{
+  min-height:60vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:8rem 2rem 4rem;
+  background: radial-gradient(circle at top, rgba(143,182,190,.12), transparent 40%), linear-gradient(240deg, #2b2b2b 60%, #000000 100%);
+  position:relative;
+  overflow:hidden;
+}
+
+.team-hero-title{
+  font-size:4.5rem;
+  font-weight:700;
+  letter-spacing:-2px;
+  color:var(--text);
+  margin-bottom:1rem;
+}
+
+.team-hero-subtitle{
+  font-size:1.2rem;
+  color:var(--text-soft);
+  max-width:700px;
+  margin:0 auto;
+  line-height:1.9;
+}
+
+.team-grid{
+
+  margin-top:4rem;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  gap:2rem;
+
+}
+
+.team-member{
+
+  background:
+  linear-gradient(180deg,#3a3a3a 0%, #323232 100%);
+
+  border:1px solid var(--line);
+
+  border-radius:26px;
+
+  padding:2.4rem;
+
+  text-align:center;
+
+  transition:.35s ease;
+
+  box-shadow:var(--shadow);
+
+}
+
+.team-member:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,.12);
+}
+
+.team-avatar{
+
+  width:100px;
+  height:100px;
+
+  border-radius:50%;
+
+  margin:0 auto 1.5rem;
+
+  background:rgba(255,255,255,.06);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:2.2rem;
+
+  color:var(--accent);
+
+  border:2px solid rgba(255,255,255,.08);
+
+}
+
+.team-name{
+
+  font-size:1.2rem;
+
+  color:var(--text);
+
+  margin-bottom:.2rem;
+
+}
+
+.team-role{
+
+  font-size:.8rem;
+
+  color:var(--accent);
+
+  letter-spacing:1px;
+
+  text-transform:uppercase;
+
+  margin-bottom:1rem;
+
+}
+
+.team-bio{
+  color:var(--text-soft);
+  line-height:1.8;
+  font-size:.9rem;
+  text-align:left;
+}
+
+/* =========================================================
+PÁGINA: TECNOLOGÍA 4.0
+========================================================= */
+
+.tech-hero{
+  min-height:50vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:8rem 2rem 4rem;
+  background: radial-gradient(circle at top, rgba(143,182,190,.1), transparent 40%), linear-gradient(240deg, #2b2b2b 60%, #000000 100%);
+}
+
+.tech-hero-title{
+  font-size:4rem;
+  font-weight:700;
+  letter-spacing:-2px;
+  color:var(--text);
+}
+
+.tech-hero-subtitle{
+  font-size:1.2rem;
+  color:var(--text-soft);
+  max-width:700px;
+  margin:1rem auto 0;
+  line-height:1.9;
+}
+
+.tech-grid{
+
+  margin-top:4rem;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  gap:2rem;
+
+}
+
+.tech-card{
+
+  background:
+  linear-gradient(180deg,#3a3a3a 0%, #323232 100%);
+
+  border:1px solid var(--line);
+
+  border-radius:26px;
+
+  padding:2.4rem;
+
+  text-align:center;
+
+  transition:.35s ease;
+
+  box-shadow:var(--shadow);
+
+}
+
+.tech-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,.12);
+}
+
+.tech-icon{
+
+  font-size:2.8rem;
+
+  color:var(--accent);
+
+  margin-bottom:1.5rem;
+
+}
+
+.tech-card-title{
+
+  font-size:1.3rem;
+
+  color:var(--text);
+
+  margin-bottom:.8rem;
+
+}
+
+.tech-card-text{
+  color:var(--text-soft);
+  line-height:1.8;
+  font-size:.95rem;
+}
+
+/* =========================================================
+PÁGINA: SIMBIOSIS
+========================================================= */
+
+.simbiosis-hero{
+  min-height:50vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:8rem 2rem 4rem;
+  background: radial-gradient(circle at top, rgba(143,182,190,.1), transparent 40%), linear-gradient(240deg, #2b2b2b 60%, #000000 100%);
+}
+
+.simbiosis-hero-title{
+  font-size:4rem;
+  font-weight:700;
+  letter-spacing:-2px;
+  color:var(--text);
+}
+
+.simbiosis-hero-subtitle{
+  font-size:1.2rem;
+  color:var(--text-soft);
+  max-width:700px;
+  margin:1rem auto 0;
+  line-height:1.9;
+}
+
+.simbiosis-section{
+  background:
+  radial-gradient(
+    circle at center,
+    rgba(143,182,190,.06),
+    transparent 50%
+  ),
+  linear-gradient(
+    180deg,
+    #242424 0%,
+    #1b1b1b 100%
+  );
+}
+
+.simbiosis-content{
+  max-width:1000px;
+  margin:0 auto;
+}
+
+.simbiosis-card{
+  background:
+  linear-gradient(180deg,#3a3a3a 0%, #323232 100%);
+
+  border:1px solid var(--line);
+
+  border-radius:30px;
+
+  padding:3rem;
+
+  box-shadow:var(--shadow);
+  margin-bottom:2rem;
+}
+
+.simbiosis-text{
+  color:var(--text-soft);
+  line-height:2;
+  font-size:1.05rem;
+}
+
+.simbiosis-text p{
+  margin-bottom:1.8rem;
+}
+
+.simbiosis-text strong{
+  color:var(--text);
+  font-weight:600;
+}
+
+.simbiosis-partners{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2rem;
+  margin-top:2rem;
+}
+
+.simbiosis-partner{
+  background:
+  linear-gradient(180deg,#3a3a3a 0%, #323232 100%);
+
+  border:1px solid var(--line);
+
+  border-radius:26px;
+
+  padding:2rem;
+
+  text-align:center;
+
+  transition:.35s ease;
+
+  box-shadow:var(--shadow);
+}
+
+.simbiosis-partner:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,.12);
+}
+
+.simbiosis-partner-logo{
+  object-fit:contain;
+  margin:0 auto 1rem;
+  opacity:.8;
+}
+
+.simbiosis-partner-name{
+  font-size:1.1rem;
+  color:var(--text);
+  margin-bottom:.3rem;
+}
+
+.simbiosis-partner-desc{
+  color:var(--text-soft);
+  font-size:.9rem;
+  line-height:1.7;
+}
+
+/* =========================================================
 RESPONSIVE
 ========================================================= */
+
 @media(max-width:1100px){
 
   .values-grid,
-  .services-grid{
+  .services-grid,
+  .team-grid,
+  .tech-grid,
+  .simbiosis-partners{
     grid-template-columns:1fr;
+  }
+
+  .dermis-layout{
+    grid-template-columns:1fr;
+    gap:4rem;
+  }
+
+  .dermis-content{
+    max-width:100%;
+    text-align:center;
+  }
+
+  .dermis-image-wrapper{
+    justify-content:center;
+  }
+
+  .dermis-title{
+    font-size:3.2rem;
+  }
+
+  .project-types-layout{
+    grid-template-columns:1fr;
+    gap:4rem;
+  }
+
+  .project-types-left{
+    position:relative;
+    top:auto;
+    max-width:850px;
+  }
+
+  .visual-main-grid{
+    grid-template-columns:1fr;
+  }
+
+  .visual-bottom-grid{
+    grid-template-columns:1fr;
+  }
+
+  .team-hero-title,
+  .tech-hero-title,
+  .simbiosis-hero-title{
+    font-size:3rem;
   }
 
 }
@@ -1000,6 +1959,128 @@ RESPONSIVE
     flex-direction:column;
   }
 
+  .dermis-section{
+    padding:5rem 1.3rem;
+  }
+
+  .dermis-title{
+    font-size:2.4rem;
+    letter-spacing:-2px;
+  }
+
+  .dermis-subtitle{
+    font-size:1rem;
+  }
+
+  .dermis-text{
+    font-size:.98rem;
+    line-height:1.9;
+  }
+
+  .project-types-section{
+    padding:5.5rem 1.3rem;
+  }
+
+  .project-types-header{
+    margin-bottom:2.5rem;
+  }
+
+  .project-types-title{
+    font-size:2.3rem;
+    letter-spacing:-1px;
+    line-height:1.05;
+  }
+
+  .project-types-subtitle{
+    font-size:.9rem;
+    line-height:1.7;
+    padding:0 .5rem;
+  }
+
+  .project-types-text{
+    font-size:.92rem;
+    line-height:1.9;
+  }
+
+  .project-types-list{
+    gap:.8rem;
+  }
+
+  .project-type-item{
+    max-width:100%;
+    border-radius:18px;
+    padding:1.25rem 1rem;
+    font-size:1.65rem;
+    line-height:1.12;
+    letter-spacing:-1px;
+  }
+
+  .visual-section{
+    padding:6rem 1.3rem;
+  }
+
+  .visual-header{
+    margin-bottom:3rem;
+  }
+
+  .visual-title{
+    font-size:2.4rem;
+    letter-spacing:-1px;
+    line-height:1.05;
+  }
+
+  .visual-quote{
+    font-size:1rem;
+    line-height:1.8;
+  }
+
+  .visual-main-card{
+    padding:2rem;
+    border-radius:24px;
+  }
+
+  .visual-secondary-card{
+    padding:2rem;
+    border-radius:22px;
+  }
+
+  .visual-text{
+    font-size:.94rem;
+    line-height:1.9;
+  }
+
+  .visual-app-item{
+    font-size:.92rem;
+    line-height:1.7;
+  }
+
+  .team-member{
+    padding:1.8rem;
+  }
+
+  .tech-card{
+    padding:1.8rem;
+  }
+
+  .simbiosis-card{
+    padding:2rem;
+  }
+
+  .team-hero-title,
+  .tech-hero-title,
+  .simbiosis-hero-title{
+    font-size:2.5rem;
+  }
+
+  .team-hero{
+    min-height:40vh;
+    padding:7rem 1.3rem 3rem;
+  }
+
+  .simbiosis-partner-logo{
+    width:100px;
+  }
+
 }
 
 @media(max-width:480px){
@@ -1021,9 +2102,80 @@ RESPONSIVE
     padding:1.4rem;
   }
 
+  .dermis-title{
+    font-size:2rem;
+  }
+
+  .dermis-image{
+    max-width:100%;
+  }
+
+  .project-types-section{
+    padding:5rem 1rem;
+  }
+
+  .project-types-title{
+    font-size:2rem;
+  }
+
+  .project-type-item{
+    font-size:1.45rem;
+    padding:1.1rem .9rem;
+    border-radius:16px;
+  }
+
+  .project-types-text{
+    font-size:.9rem;
+  }
+
+  .visual-section{
+    padding:5rem 1rem;
+  }
+
+  .visual-title{
+    font-size:2rem;
+  }
+
+  .visual-main-card{
+    padding:1.5rem;
+  }
+
+  .visual-secondary-card{
+    padding:1.5rem;
+  }
+
+  .visual-quote{
+    font-size:.95rem;
+  }
+
+  .visual-text{
+    font-size:.9rem;
+  }
+
+  .visual-app-item{
+    padding:.95rem;
+  }
+
+  .team-avatar{
+    width:80px;
+    height:80px;
+    font-size:1.8rem;
+  }
+
+  .team-hero-title,
+  .tech-hero-title,
+  .simbiosis-hero-title{
+    font-size:2rem;
+  }
+
+  .simbiosis-partners{
+    grid-template-columns:1fr;
+  }
+
 }
 
 </style>
+
 </head>
 
 <body>
@@ -1035,171 +2187,164 @@ HEADER
 <header class="header" id="header">
 
   <img
-    src="logo/logo-soarblue-M6.svg"
+    src="logo/logo-soarblue-M4.svg"
     alt="Soarblue"
     class="header-logo"
+    id="logoHome"
   >
 
   <nav>
 
-    <ul class="nav-menu">
+    <ul class="nav-menu" id="navMenu">
 
-      <li><a href="#inicio" class="nav-link">Inicio</a></li>
-      <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
-      <li><a href="#servicios" class="nav-link">Servicios</a></li>
-      <li><a href="#equipo" class="nav-link">Quiénes somos</a></li>
-      <li><a href="#tecnologia" class="nav-link">Tecnología 4.0</a></li>
-
-      <li><a href="#simbiosis" class="nav-link">Simbiosis</a></li>
-
-      <li><a href="#contacto" class="nav-link">Contacto</a></li>
+      <li><a class="nav-link" data-page="inicio" data-tab="false">Inicio</a></li>
+      <li><a class="nav-link" data-page="historia" data-tab="false">Historia</a></li>
+      <li><a class="nav-link" data-page="servicios" data-tab="false">Servicios</a></li>
+      <li><a class="nav-link" data-page="equipo" data-tab="true">Quiénes somos</a></li>
+      <li><a class="nav-link" data-page="tecnologia" data-tab="true">Tecnología 4.0</a></li>
+      <li><a class="nav-link" data-page="simbiosis" data-tab="true">Simbiosis</a></li>
+      <li><a class="nav-link" data-page="contacto" data-tab="false">Contacto</a></li>
 
     </ul>
 
   </nav>
 
-  <button class="mobile-menu-btn">
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
     <i class="fas fa-bars"></i>
   </button>
 
 </header>
 
 <!-- =========================================================
-HERO
+CONTENIDO PRINCIPAL (SIEMPRE VISIBLE)
 ========================================================= -->
 
-<section class="hero" id="inicio">
+<div id="mainContent">
 
-  <div class="hero-content">
+  <!-- =========================================================
+  INICIO / HERO
+  ========================================================= -->
 
-    <img
-      src="logo/logo-soarblue-M4.svg"
-      alt="Soarblue Consultores"
-      class="hero-logo"
-    >
+  <section class="hero" id="inicio">
 
-    <p class="hero-subtitle">
-      "Consultoría de vanguardia para el presente y futuro de su proyecto."
-    </p>
+    <div class="hero-content">
 
-    <p class="hero-subtitle">
+      <img
+        src="logo/logo-soarblue-M4.svg"
+        alt="Soarblue Consultores"
+        class="hero-logo"
+      >
+
+      <p class="hero-subtitle">
+        "Consultoría de vanguardia para el presente y futuro de su proyecto."
+      </p>
+
+      <p class="hero-subtitle">
 Diseñamos soluciones personalizadas (Ex-Ante) en medioambiente, 
 compliance, sostenibilidad y comunicación — respaldadas por un equipo profesional que hace trazable e integra cada decisión, de manera transparente, confidencial y cibersegura. (Ex-Post)
-    </p>
+      </p>
 
-    <h1 class="hero-title">
-      Anticipa / Integra / Protege
-    </h1>
+      <h1 class="hero-title">
+        Anticipa / Integra / Protege
+      </h1>
 
-  </div>
+    </div>
 
-</section>
+  </section>
 
-<!-- =========================================================
-HISTORIA
-========================================================= -->
+  <!-- =========================================================
+  HISTORIA
+  ========================================================= -->
 
-<section class="section" id="nosotros">
+  <section class="section" id="historia">
 
-  <div class="container">
+    <div class="container">
 
-    <h2 class="section-title">
-      Historia
-    </h2>
+      <h2 class="section-title">
+        Historia
+      </h2>
 
-    <div class="history-wrapper">
+      <div class="history-wrapper">
 
-      <div class="history-card">
+        <div class="history-card">
 
-        <div class="history-label">
-          <i class="fas fa-circle"></i>
-          SOARBLUE CONSULTORES
-        </div>
-
-        <div class="history-text">
-
-          <p>
-La visión de Soarblue nació en 2015 con una convicción: los proyectos de inversión fallan cuando la información llega tarde, llega fragmentada o no llega igual para todos. En 2016, nos adjudicamos un proyecto CORFO patrocinado por INCUBA UC.
-
-          </p>
-
-          <p>
-Nuestro nombre lo dice todo. SOAR — Servicio de Observación Ambiental Remoto — refleja el origen: la incorporación de tecnologías de análisis realista de datos espaciales y los primeros en utilizar la fotografía profesional aérea y terrestre  para la evaluación, seguimiento y comunicación de proyectos complejos de gran envergadura. Blue representa la dimensión sostenible, comunicacional y reputacional que hace que esa visiónse convierta en valor real para el territorio y las compañías. 
-          </p>
-
-          <p>
-Ese conocimiento surge desde la experiencia en empresas privadas, servicios públicos (Directemar y SEA), docencia universitaria y estudios posteriores, que con el tiempo se transforman en el fundamento de los Modelos Dermis y Resonate.
-          </p>
-
-          <p>
-Hoy Soarblue es una arquitectura de gestión que integra profesionales de diferentes disciplinas, anticipa riesgos y protege proyectos en cada etapa de su ciclo de vida.
-          </p>
-
-        </div>
-
-      </div>
-
-      <!-- =========================================================
-      VALUES
-      ========================================================= -->
-
-      <div class="values-grid">
-
-        <div class="value-card">
-
-          <div class="value-icon">
-            <i class="fas fa-shield-halved"></i>
+          <div class="history-label">
+            <i class="fas fa-circle"></i>
+            SOARBLUE CONSULTORES
           </div>
 
-          <h3 class="value-title">
-            PROPÓSITO
-          </h3>
+          <div class="history-text">
 
+            <p>
+SOARBLUE nació en 2015 con una convicción clara: los proyectos de inversión fracasan cuando la información llega tarde, fragmentada o de forma desigual a sus distintos actores. En 2016, esta visión se fortaleció con la adjudicación de un proyecto CORFO patrocinado por INCUBA UC
+            </p>
 
-          <p class="value-text">
-            "Que nuestros clientes nunca tengan que explicar lo que pudieron
-            haber anticipado — y que cuando llegue un momento crítico,
-            no estén solos."
-          </p>
+            <p>
+Nuestro nombre resume esa propuesta de valor. SOAR —Servicio de Observación Ambiental Remoto— expresa nuestro origen en el uso de tecnologías de análisis espacial y en la aplicación pionera de fotografía aérea y terrestre profesional para evaluar, monitorear y comunicar proyectos complejos. Blue incorpora la dimensión sostenible, comunicacional y reputacional que transforma esa capacidad técnica en valor para el territorio y las compañías.          </p>
+
+            <p>
+Esta visión se sustenta en experiencia acumulada en empresas privadas, servicios públicos como Directemar y el SEA, docencia y formación especializada. Con el tiempo, ese recorrido dio origen a tres modelos metodológicos conceptuales; DERMIS, RESONATE y RIZOMA.          </p>
+
+            <p>
+Hoy, SOARBLUE es una arquitectura de gestión que articula disciplinas, anticipa riesgos y protege proyectos en cada etapa de su ciclo de vida.          </p>
+
+          </div>
 
         </div>
 
-        <div class="value-card">
+        <!-- =========================================================
+        VALUES
+        ========================================================= -->
 
-          <div class="value-icon">
-            <i class="fas fa-layer-group"></i>
+        <div class="values-grid">
+
+          <div class="value-card">
+
+            <div class="value-icon">
+              <i class="fas fa-shield-halved"></i>
+            </div>
+
+            <h3 class="value-title">
+              PROPÓSITO
+            </h3>
+
+            <p class="value-text">
+              "Que nuestros clientes nunca tengan que explicar lo que pudieron haber anticipado — y que cuando llegue un momento crítico, no estén solos."
+            </p>
+
           </div>
 
-          <h3 class="value-title">
-            MISIÓN
-          </h3>
+          <div class="value-card">
 
-          <p class="value-text">
-            "Diseñar soluciones integradas de gestión ambiental, compliance,
-            sostenibilidad y comunicación para que los proyectos de inversión
-            cuenten con información trazable, verificable y anticipada en cada
-            etapa de su ciclo de vida — protegiendo la inversión, el territorio
-            y la reputación de quienes deciden."
-          </p>
+            <div class="value-icon">
+              <i class="fas fa-layer-group"></i>
+            </div>
 
-        </div>
+            <h3 class="value-title">
+              MISIÓN
+            </h3>
 
-        <div class="value-card">
+            <p class="value-text">
+              "Diseñar soluciones integradas de gestión ambiental, compliance, sostenibilidad y comunicación para que los proyectos de inversión cuenten con información trazable, verificable y anticipada en cada etapa de su ciclo de vida — protegiendo la inversión, el territorio y la reputación de quienes deciden."
+            </p>
 
-          <div class="value-icon">
-            <i class="fas fa-eye"></i>
           </div>
 
-          <h3 class="value-title">
-            VISIÓN
-          </h3>
+          <div class="value-card">
 
-          <p class="value-text">
-            "Ser la consultora de referencia en Chile para proyectos de inversión
-            de alta complejidad ambiental — reconocida por cambiar la forma en que
-            los directorios anticipan los riesgos y toman decisiones antes de que
-            el daño ocurra."
-          </p>
+            <div class="value-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+
+            <h3 class="value-title">
+              VISIÓN
+            </h3>
+
+            <p class="value-text">
+"Ser la consultora de referencia en Chile para proyectos de inversión de alta complejidad ambiental — reconocida por cambiar la forma en que los directorios anticipan los riesgos y toman decisiones antes de que el daño ocurra."
+            </p>
+
+          </div>
 
         </div>
 
@@ -1207,197 +2352,681 @@ Hoy Soarblue es una arquitectura de gestión que integra profesionales de difere
 
     </div>
 
-  </div>
+  </section>
 
-</section>
+  <!-- =========================================================
+  SERVICIOS
+  ========================================================= -->
 
-<!-- =========================================================
-SERVICIOS
-========================================================= -->
+  <section class="section services-section" id="servicios">
 
-<section class="section services-section" id="servicios">
+    <div class="container">
 
-  <div class="container">
+      <h2 class="section-title">
+        Servicios
+      </h2>
 
-    <h2 class="section-title">
-      Servicios
-    </h2>
+      <div class="services-grid">
 
+        <!-- =========================================================
+        MEDULARES
+        ========================================================= -->
 
+        <div class="service-main-card">
 
-    <div class="services-grid">
+          <div class="service-card-top">
 
-      <!-- =========================================================
-      MEDULARES
-      ========================================================= -->
+            <h3 class="service-card-title">
+              MEDULARES
+            </h3>
 
-      <div class="service-main-card">
+          </div>
 
-        <div class="service-card-top">
+          <div class="service-card-content">
 
+          <div class="service-special-list">
 
+            <div class="service-special-item">
+              <i class="fas fa-circle service-special-icon"></i>
 
-          <h3 class="service-card-title">
-            MEDULARES
-          </h3>
+              <div class="service-special-text">
+                <b>
+              Gestión, Seguimiento e Inspección Ambiental de Proyectos de Inversión</b>
+              <br><br>
+              Aseguramos la viabilidad y continuidad operativa de su proyecto en todo su ciclo de vida: desde la fase de evaluación ambiental hasta la etapa de cierre.
+              </div>
+            </div>
+
+            <div class="service-special-item">
+              <i class="fas fa-circle service-special-icon"></i>
+
+              <div class="service-special-text">
+                <b>
+Compliance en Prevención de 
+Delitos Ambientales         
+</b><br><br>
+
+Blindamos su operación y gobierno corporativo frente a los nuevos estándares de responsabilidad penal. Nuestro enfoque mitiga los riesgos de sanciones, protege la continuidad del negocio y resguarda directamente la responsabilidad legal de la empresa, sus directores y gerentes.
+
+              </div>
+            </div>
+
+            <div class="service-special-item">
+              <i class="fas fa-circle service-special-icon"></i>
+
+              <div class="service-special-text">
+                <b>
+Integración ESG, Sostenibilidad Corporativa y Taxonomía-MAS
+</b>
+
+              <br><br>
+Integramos y articulamos las exigencias de sostenibilidad actuales, tanto para Grandes Empresas como para su cadena de suministro (PYMES). Nuestro objetivo es asegurar el cumplimiento regulatorio, mitigar riesgos financieros y posicionar a su empresa de forma competitiva frente a inversionistas y autoridades.
+
+              </div>
+            </div>
+
+            <div class="service-special-item">
+              <i class="fas fa-circle service-special-icon"></i>
+
+              <div class="service-special-text">
+                <b>
+Comunicación Corporativa y Ciudadana</b>
+              <br><br>
+Gestionamos la comunicación estratégica de su proyecto como un activo para la viabilidad del negocio. Al traducir información técnica compleja en mensajes claros para comunidades, autoridades y stakeholders, disminuimos asimetrías, protegemos la licencia social para operar y aseguramos un entorno favorable para el desarrollo del proyecto.
+              </div>
+            </div>
+
+          </div>
+          </div>
 
         </div>
 
-        <div class="service-card-content">
+        <!-- =========================================================
+        CONTRAPESO
+        ========================================================= -->
 
-        <div class="service-special-list">
+        <div class="service-main-card contrapeso-card">
 
+          <div class="service-card-top">
 
-          <div class="service-special-item">
-            <i class="fas fa-circle service-special-icon"></i>
+            <div class="contrapeso-title">
 
-            <div class="service-special-text">
-              Gestión, Seguimiento e Inspección Ambiental de Proyectos de Inversión
+              <h3 class="service-card-title">
+                CONTRAPESO
+              </h3>
+
             </div>
+
           </div>
 
-          <div class="service-special-item">
-            <i class="fas fa-circle service-special-icon"></i>
+          <div class="service-card-content">
 
-            <div class="service-special-text">
-              Compliance en Prevención de Delitos Ambientales T-MAS
+            <div class="contrapeso-text">
+
+              <p>
+                <strong>Contrapeso</strong> es un servicio de outsourcing estratégico y colaborativo de consultoría especializada, diseñado para ser contratado por proyecto en cualquiera de sus etapas.
+              </p>
+
+              <br>
+
+              <p>
+estratégico diseñado para respaldar a los departamentos internos de medioambiente o compliance en proyectos de inversión, aportando una mirada experta e independiente. 
+              </p>
+
+              <br>
+
+              <p>
+
+Nos integramos a su equipo en cualquier etapa para prevenir contingencias y actuar como un puente transparente con los stakeholders.      </p>
+
+              <br>
+
+              <p>
+Al eliminar asimetrías de información frente a directorios y comunidades, protegemos su reputación corporativa y garantizamos el activo clave para la viabilidad del proyecto: confianza.      </p>
+
             </div>
-          </div>
 
-          <div class="service-special-item">
-            <i class="fas fa-circle service-special-icon"></i>
-
-            <div class="service-special-text">
-              Sostenibilidad NIIF S1 y S2<br>
-              Aspectos ESG · Doble Materialidad
-            </div>
-          </div>
-
-          <div class="service-special-item">
-            <i class="fas fa-circle service-special-icon"></i>
-
-            <div class="service-special-text">
-              Comunicación Corporativa y Ciudadana
-            </div>
           </div>
 
         </div>
+
+        <!-- =========================================================
+        POCKET
+        ========================================================= -->
+
+        <div class="service-main-card contrapeso-card">
+
+          <div class="service-card-top">
+
+            <div class="contrapeso-title">
+
+              <h3 class="service-card-title">
+                POCKET
+              </h3>
+
+            </div>
+
+          </div>
+
+          <div class="service-card-content">
+
+            <div class="contrapeso-text">
+
+              <p>
+                <strong>POCKET</strong> 
+                estratégico diseñado para PYMES, proyectos de corta duración o de menor complejidad pero que requieren de una prestación de servicio a la medida. Sin perder la oportunidad de optimizar sus procesos y obtener una solución de calidad.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- =========================================================
+        RIZOMA
+        ========================================================= -->
+
+        <div class="service-main-card">
+
+          <div class="service-card-top">
+
+            <h3 class="service-card-title">
+              RIZOMA
+            </h3>
+
+          </div>
+
+          <div class="service-card-content">
+
+            <div class="service-sub-box">
+
+              <div class="service-sub-title">
+En proyectos complejos, gran parte del valor crítico está contenido en documentos, datos y antecedentes dispersos: permisos, contratos, informes técnicos, planillas, resoluciones, reportes, imágenes, compromisos ambientales, registros operacionales y comunicaciones. El problema no siempre es la falta de información, sino la dificultad de transformarla rápidamente en decisiones, riesgos, evidencia y reportabilidad accionable.
+              </div>
+
+              <div class="service-sub-desc">
+Desde Soarblue incorporamos Rizoma, una capa modular de inteligencia documental y operacional, diseñada para fortalecer la consultoría estratégica en sostenibilidad, cumplimiento, gestión de riesgos y toma de decisiones.
+              </div>
+              <div class="service-sub-desc">
+A diferencia de una solución rígida, Rizoma se configura según la realidad de cada cliente, proyecto o industria, permitiendo activar capacidades de integración, análisis, reportabilidad, seguimiento de cumplimiento y trazabilidad operacional. Cada proyecto puede contar con un espacio de trabajo propio, donde la información es cargada, clasificada, consultada y analizada con apoyo de inteligencia artificial, siempre bajo el criterio experto de Soarblue.            </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- =========================================================
+        CELULARES
+        ========================================================= -->
+
+        <div class="service-main-card">
+
+          <div class="service-card-top">
+
+            <h3 class="service-card-title">
+              CELULARES
+            </h3>
+
+          </div>
+
+          <div class="service-card-content">
+
+            <div class="service-special-list">
+
+              <div class="service-special-item">
+                <i class="fas fa-circle service-special-icon"></i>
+                <div class="service-special-text">
+
+                 <b> Workshops</b>
+                 <br>
+En todas las materias relacionadas a los servicios de Soarblue 
+</div>
+              </div>
+
+              <div class="service-special-item">
+                <i class="fas fa-circle service-special-icon"></i>
+                <div class="service-special-text">
+
+                 <b> Emergencias Marítimas              </b>
+<br>
+Derrames de Hidrocarburos,  Sustancias Peligrosas o Bioseguridad
+</div>
+              </div>
+
+              <div class="service-special-item">
+                <i class="fas fa-circle service-special-icon"></i>
+                <div class="service-special-text">
+                 <b> Peritaje Ambiental y Naval</b>
+<br>
+para Corte de Apelaciones
+                </div>
+              </div>
+
+              <div class="service-special-item">
+                <i class="fas fa-circle service-special-icon"></i>
+                <div class="service-special-text">
+Consultas de Pertinencia              </div>
+              </div>
+
+              <div class="service-special-item">
+                <i class="fas fa-circle service-special-icon"></i>
+                <div class="service-special-text">
+Programas de Cumplimiento              </div>
+              </div>
+
+              <div class="service-special-item">
+                <i class="fas fa-circle service-special-icon"></i>
+                <div class="service-special-text">
+Procedimiento Sancionatorio              </div>
+              </div>
+
+              <div class="service-special-item">
+                <i class="fas fa-circle service-special-icon"></i>
+                <div class="service-special-text">
+Debida diligencia              </div>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
       </div>
 
-      <!-- =========================================================
-      RIZOMA
-      ========================================================= -->
+    </div>
 
-      <div class="service-main-card">
+  </section>
 
-        <div class="service-card-top">
+  <!-- =========================================================
+  MODELO DERMIS
+  ========================================================= -->
 
+  <section class="section dermis-section">
 
+    <div class="container">
 
-          <h3 class="service-card-title">
-            RIZOMA
-          </h3>
+      <div class="dermis-layout">
+
+        <div class="dermis-content">
+
+          <h2 class="dermis-title">
+            MODELO DERMIS
+          </h2>
+
+          <div class="dermis-subtitle">
+            (Capas de protección)
+          </div>
+
+          <div class="dermis-text">
+
+            <p>
+Nuestro Modelo Dermis es uno de los pilares metodológicos de Soarblue©, diseñado como una arquitectura de gestión integral que acompaña a los proyectos de inversión durante todo su ciclo de vida.          </p>
+
+            <br>
+
+            <p>
+Funciona como una capa de protección que integra diversas disciplinas para anticipar riesgos y salvaguardar la integridad de los activos y la inversión.          </p>
+
+          </div>
 
         </div>
 
-        <div class="service-card-content">
+        <div class="dermis-image-wrapper">
 
-          <div class="service-sub-box">
-
-            <div class="service-sub-title">
-              IMPLEMENTAMOS ARQUITECTURA E INFRAESTRUCTURA
-              DE TECNOLOGÍAS APLICADAS 4.0
-            </div>
-
-            <div class="service-sub-desc">
-              Para proyectos en entornos complejos con RCA,
-              alta exposición y tasa de reportabilidad.
-            </div>
-
-          </div>
-  
           <img
-            class="service-image"
-            src="img/01-rizoma.svg"
-            alt="Tecnología Soarblue"
-            
+            src="img/02-dermis.svg"
+            alt="Modelo Dermis"
+            class="dermis-image"
           >
 
         </div>
 
       </div>
 
-      <!-- =========================================================
-      ESPECIALES
-      ========================================================= -->
+    </div>
 
-      <div class="service-main-card">
+  </section>
 
-        <div class="service-card-top">
+  <!-- =========================================================
+  RESONATE
+  ========================================================= -->
 
+  <section class="section dermis-section">
 
+    <div class="container">
 
-          <h3 class="service-card-title">
-            ESPECIALES
-          </h3>
+      <div class="dermis-layout">
+
+        <div class="dermis-content">
+
+          <h2 class="dermis-title">
+COMUNICACIÓN 
+CORPORATIVA, 
+CIUDADANA (ESCAZÚ) Y CRISIS O EMERGENCIA
+          </h2>
+
+          <div class="dermis-text">
+
+            <p>
+El Modelo Resonate es la arquitectura metodológica de Soarblue© para gestionar la interacción entre el proyecto y el área de influencia. 
+            <br>
+            <br>
+
+            <p>
+Su objetivo no es la difusión de información, sino la creación de una frecuencia de entendimiento común entre los stakeholders técnicos, legales y sociales para anticipar, evitar o contener un conflicto no deseado o para informar a la población en general (Escazú) y Monitoreo Participativo.
+          </div>
 
         </div>
 
-        <div class="service-card-content">
+        <div class="dermis-image-wrapper">
 
+          <img
+            src="img/03-resonante.svg"
+            alt="Modelo Resonante"
+            class="dermis-image"
+          >
 
+        </div>
 
-          <div class="service-special-list">
+      </div>
 
-            <div class="service-special-item">
-              <i class="fas fa-circle service-special-icon"></i>
-              <div class="service-special-text">
-                Emergencias Marítimas y Derrames de Hidrocarburos
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+  REPORTABILIDAD
+  ========================================================= -->
+
+  <section class="section dermis-section">
+
+    <div class="container">
+
+      <div class="dermis-layout">
+
+        <div class="dermis-content">
+
+          <h2 class="dermis-title">
+TRAZABILIDAD, TRANSPARENCIA
+Y REPUTACIÓN
+          </h2>
+
+          <div class="dermis-text">
+
+            <p>
+La arquitectura de reportabilidad de Soarblue© garantiza la integridad estratégica de la información en proyectos de alta complejidad. Mediante la integración de tecnologías 4.0 y análisis espacial, transformamos el registro técnico en un medio probatorio vinculante, trazable y auditable.</p>
+            <br>
+
+            <p>
+Este sistema elimina las asimetrías de datos, asegurando que cada hito sea verificado bajo estrictos protocolos de seguridad de datos y confidencialidad. </p>
+
+          </div>
+
+        </div>
+
+        <div class="dermis-image-wrapper">
+
+          <img
+            src="img/04-reportabilidad.svg"
+            alt="Reportabilidad"
+            class="dermis-image"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+  RIZOMA PLATFORM
+  ========================================================= -->
+
+  <section class="section dermis-section">
+
+    <div class="container">
+
+      <div class="dermis-layout">
+
+        <div class="dermis-content">
+
+          <h2 class="dermis-title">
+RIZOMA 
+          </h2>
+
+          <div class="dermis-text">
+
+            <p>
+
+Es la plataforma personalizada de monitoreo e inteligencia ambiental de proyectos de Soarblue© y Krivia Labs. Integra los datos de terreno y registros desde distintas fuentes, imágenes y  documentación vinculante, hitos RCA — con las capacidades de IA, Machine Learning y Business Intelligence de Krivia Labs, entregando a la empresa, pyme u organización una visión continua, inteligente y accionable del estado de su proyecto.
+            <br>
+            <br>
+
+            <p>
+
+No es un informe periódico. Es un sistema vivo.
+</p>
+          </div>
+
+        </div>
+
+        <div class="dermis-image-wrapper">
+
+          <img
+            src="img/05-proyecto.svg"
+            alt="Reportabilidad"
+            class="dermis-image"
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+  TIPOLOGÍAS DE PROYECTOS
+  ========================================================= -->
+
+  <section class="project-types-section">
+
+    <div class="container project-types-layout">
+
+      <div class="project-types-left">
+
+        <div class="project-mini-line"></div>
+
+        <p class="project-types-text">
+Soarblue despliega su consultoría estratégica en sectores de alta complejidad o exposición, cubriendo desde el diseño hasta el cierre. Nuestra metodología garantiza la trazabilidad, transparencia y el cumplimiento normativo en entornos diversos. 
+        </p>
+
+        <p class="project-types-text">
+Este enfoque asegura la preservación del valor corporativo y el blindaje de activos estratégicos, consolidando la gestión integrada como herramienta de gobernanza.
+        </p>
+
+      </div>
+
+      <div class="project-types-right">
+
+        <div class="project-types-header">
+
+          <span class="project-types-label">
+            ÁREAS DE EXPERIENCIA
+          </span>
+
+          <h2 class="project-types-title">
+            TIPOLOGÍAS DE PROYECTOS
+          </h2>
+
+          <p class="project-types-subtitle">
+            Diseño / Construcción / Operación (modificación) / Cierre
+          </p>
+
+        </div>
+
+        <div class="project-types-list">
+
+          <div class="project-type-item">
+            Salmonicultura
+          </div>
+
+          <div class="project-type-item">
+Parques eólicos / fotovoltaicos
+          </div>
+
+          <div class="project-type-item">
+            Obras Portuarias
+          </div>
+
+          <div class="project-type-item">
+            Astilleros
+          </div>
+
+          <div class="project-type-item">
+            Inmobiliarias / Constructoras
+          </div>
+
+          <div class="project-type-item">
+            Estudios Jurídicos
+          </div>
+
+          <div class="project-type-item">
+            Áridos / Empréstitos
+          </div>
+
+          <div class="project-type-item">
+ Clínicas Médicas
+          </div>
+
+          <div class="project-type-item">
+            Rellenos Sanitarios
+          </div>
+
+          <div class="project-type-item">
+Agro industria
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+  REGISTRO VISUAL COGNITIVO
+  ========================================================= -->
+
+  <section class="visual-section">
+
+    <div class="visual-blur visual-blur-1"></div>
+    <div class="visual-blur visual-blur-2"></div>
+
+    <div class="container visual-container">
+
+      <div class="visual-header">
+
+        <span class="visual-label">
+          OBSERVACIÓN · TRAZABILIDAD · PERCEPCIÓN
+        </span>
+
+        <h2 class="visual-title">
+          REGISTRO VISUAL COGNITIVO
+        </h2>
+
+        <p class="visual-quote">
+          “No se puede mejorar lo que no se mide,
+          pero tampoco lo que no se ve o se entiende”
+        </p>
+
+      </div>
+
+      <div class="visual-main-card">
+
+        <div class="visual-main-grid">
+
+          <div class="visual-column">
+
+            <p class="visual-text">
+              En Soarblue, seguimos el legado de Humberto Maturana y Francisco
+              Varela, entendemos que "conocer es hacer" y que toda observación
+              está indisolublemente ligada a la estructura de quien observa.
+            </p>
+
+            <p class="visual-text">
+              Bajo esta premisa, las asimetrías de información no son meros vacíos
+              de datos, sino brechas en la coordinación de acciones entre distintos
+              observadores: el Directorio, el regulador y la ciudadanía.
+            </p>
+
+            <p class="visual-text">
+              Soarblue interviene en este espacio crítico transformando la
+              "partitura" técnica en un dominio visual compartido. Al dirigir la
+              observación mediante registros de alta fidelidad, no solo
+              comunicamos; generamos un acoplamiento estructural donde todas las
+              partes pueden comprender una realidad común, trazable y transparente.
+            </p>
+
+            <p class="visual-text">
+              Esto permite que la toma de decisiones se oriente sobre una base de
+              confianza técnica inobjetable, convirtiéndose en una herramienta
+              clave para gobiernos corporativos y empresas en los tiempos actuales.
+            </p>
+
+          </div>
+
+          <div class="visual-column">
+
+            <div class="visual-applications-card">
+
+              <div class="visual-small-label">
+                APLICACIONES
               </div>
-            </div>
 
-            <div class="service-special-item">
-              <i class="fas fa-circle service-special-icon"></i>
-              <div class="service-special-text">
-                Peritaje Ambiental y Naval
-              </div>
-            </div>
+              <div class="visual-app-list">
 
-            <div class="service-special-item">
-              <i class="fas fa-circle service-special-icon"></i>
-              <div class="service-special-text">
-                Consultas de Pertinencia
-              </div>
-            </div>
+                <div class="visual-app-item">
+                  Plataformas digitales APIs con información material del proyecto
+                </div>
 
-            <div class="service-special-item">
-              <i class="fas fa-circle service-special-icon"></i>
-              <div class="service-special-text">
-                Programas de Cumplimiento
-              </div>
-            </div>
+                <div class="visual-app-item">
+                  Relatos visuales para Streaming Certificados
+                </div>
 
-            <div class="service-special-item">
-              <i class="fas fa-circle service-special-icon"></i>
-              <div class="service-special-text">
-                Procedimiento Sancionatorio
-              </div>
-            </div>
+                <div class="visual-app-item">
+                  Elaboramos Participación Ciudadana
+                </div>
 
-            <div class="service-special-item">
-              <i class="fas fa-circle service-special-icon"></i>
-              <div class="service-special-text">
-                Debida Diligencia
-              </div>
-            </div>
+                <div class="visual-app-item">
+                  Medio probatorio en procedimientos SMA y Tribunal Ambiental
+                </div>
 
-            <div class="service-special-item">
-              <i class="fas fa-circle service-special-icon"></i>
-              <div class="service-special-text">
-                Capacitaciones
+                <div class="visual-app-item">
+                  Registros complementarios para Reportabilidad
+                </div>
+
+                <div class="visual-app-item">
+                  Registros para meta-data de Compliance Ambiental
+                </div>
+
+                <div class="visual-app-item">
+                  Emergencias y Peritajes
+                </div>
+
+                <div class="visual-app-item">
+                  Liquidación de Siniestros
+                </div>
+
               </div>
+
             </div>
 
           </div>
@@ -1405,265 +3034,251 @@ SERVICIOS
         </div>
 
       </div>
-<!-- =========================================================
-CONTRAPESO
-========================================================= -->
 
-<div class="service-main-card contrapeso-card">
+      <div class="visual-bottom-grid">
 
-  <div class="service-card-top">
+        <div class="visual-secondary-card">
 
-    <div class="contrapeso-title">
+          <div class="visual-small-label">
+            CAPACIDAD TÉCNICA
+          </div>
 
+          <p class="visual-text">
+Contamos con instrumental óptico de alta calidad visual (no aficionado) apoyados por licencias de software especializadas en post-producción, lo cual nos permite alcanzar un niveles de percepción y comprensión realistas en el receptor, independiente de su grado de conocimiento en la materia, permitiendo un entendimiento horizontal y virtuoso. 
+          </p>
 
+        </div>
 
-      <h3 class="service-card-title">
-        CONTRAPESO
-      </h3>
+        <div class="visual-secondary-card">
 
-    </div>
+          <div class="visual-small-label">
+Perfil del director de fotografía de proyectos:
+          </div>
 
-  </div>
+          <p class="visual-text">
+Es un profesional con formación técnica que además domina el lenguaje visual, la dirección de equipos de registro y la interpretación de documentación vinculante. La imagen debe ser técnicamente fiel y comunicacionalmente efectiva al mismo tiempo. Esa intersección es la competencia central y es escasa.
+          </p>
 
-  <div class="service-card-content">
+        </div>
 
-    <div class="contrapeso-text">
-
-      <p>
-        <strong>Contrapeso</strong> es un servicio de outsourcing estratégico y colaborativo de consultoría especializada, diseñado para ser contratado por proyecto en cualquiera de sus etapas.
-      </p>
-
-      <br>
-
-      <p>
-        Está concebido específicamente para proyectos de inversión que, aun contando con departamentos internos de medioambiente o compliance, requieren de una mirada experta, externa e independiente.
-      </p>
-
-      <br>
-
-      <p>
-        Su propósito fundamental es integrarse como parte del equipo para respaldar a las áreas internas, previendo y enfrentando situaciones complejas.
-      </p>
-
-      <br>
-
-      <p>
-        Al aportar esta perspectiva imparcial, el servicio genera una excelente percepción en el medio externo y actúa como un puente directo con las partes interesadas.
-      </p>
-
-      <br>
-
-      <p>
-        "Contrapeso" impulsa la proactividad mediante una gestión basada en la transparencia, la trazabilidad y la protección de la reputación corporativa.
-      </p>
-
-      <br>
-
-      <p>
-        Al eliminar las asimetrías de información en la comunicación con la ciudadanía o directorio, este modelo de outsourcing entrega el activo más valioso para la viabilidad y sostenibilidad de cualquier proyecto:
-        <strong>confianza.</strong>
-      </p>
+      </div>
 
     </div>
 
-  </div>
+  </section>
+
+  <!-- =========================================================
+  CLIENTES
+  ========================================================= -->
+
+  <section class="section clients">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Nuestros Clientes
+      </h2>
+
+      <p class="section-subtitle">
+        Hemos asesorado empresas líderes en diversos sectores.
+      </p>
+
+      <div class="clients-grid">
+
+        <img src="logo/colbun.svg" alt="Colbún" class="client-logo">
+        <img src="logo/marval.svg" alt="Marval" class="client-logo">
+        <img src="logo/oxxean.svg" alt="Oxean" class="client-logo">
+        <img src="logo/resolve.svg" alt="Resolve Marine" class="client-logo">
+        <img src="logo/scotta.svg" alt="Scotta" class="client-logo">
+        <img src="logo/ovejera.svg" alt="Hidromocho" class="client-logo">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+  CONTACTO
+  ========================================================= -->
+
+  <section class="section contact" id="contacto">
+
+    <div class="container">
+
+      <div class="contact-content">
+
+        <h2 class="section-title">
+          ¿Necesitas asesoría especializada?
+        </h2>
+
+        <p class="section-subtitle">
+Escríbanos para acordar una reunión.
+        </p>
+
+        <div class="contact-info">
+
+          <div class="contact-item">
+            <span class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <span>felipe@soarblue.cl</span>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-icon">
+              <i class="fab fa-whatsapp"></i>
+            </span>
+            <span>+56998114750 (WhatsApp)</span>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </span>
+            <span>Valdivia, Región de Los Ríos, Chile</span>
+          </div>
+
+        </div>
+
+        <a
+          href="https://wa.me/56998114750"
+          class="cta-button"
+        >
+          <i class="fab fa-whatsapp"></i>
+          Contactar por WhatsApp
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
 
 </div>
 
-
-      
-    </div>
-
-  </div>
-
-</section>
-
-
-
-
-
-
-
-
-
-
 <!-- =========================================================
-MODELO DERMIS
+PÁGINA: QUIENES SOMOS (PESTAÑA)
 ========================================================= -->
+
 <style>
   /* =========================================================
-MODELO DERMIS
-PEGAR DEBAJO DE SERVICIOS O ANTES DE CLIENTES
+TEAM HERO - TÍTULO
 ========================================================= */
 
-.dermis-section{
-
-  background:
-  radial-gradient(
-    circle at top right,
-    rgba(143,182,190,.08),
-    transparent 35%
-  ),
-  linear-gradient(
-    180deg,
-    #242424 0%,
-    #1b1b1b 100%
-  );
-
-  position:relative;
-  overflow:hidden;
-
-}
-
-.dermis-section::before{
-
-  content:'';
-
-  position:absolute;
-  inset:0;
-
-  background:
-  linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255,255,255,.02) 50%,
-    transparent 100%
-  );
-
-  pointer-events:none;
-
-}
-
-/* =========================================================
-LAYOUT
-========================================================= */
-
-.dermis-layout{
-
-  display:grid;
-
-  grid-template-columns:1fr 1.4fr;
-
-  gap:4rem;
-
-  align-items:center;
-
-  position:relative;
-  z-index:2;
-
-}
-
-/* =========================================================
-TEXTOS
-========================================================= */
-
-.dermis-content{
-
-  max-width:520px;
-
-}
-
-.dermis-label{
-
-  display:inline-flex;
-  align-items:center;
-  gap:.7rem;
-
-  color:var(--accent);
-
-  font-size:.82rem;
-  letter-spacing:2px;
-
-  text-transform:uppercase;
-
-  margin-bottom:1.8rem;
-
-}
-
-.dermis-title{
-
-  font-size:4.2rem;
-
-  line-height:.95;
-
-  letter-spacing:-3px;
-
-  color:var(--text);
-
-  margin-bottom:1rem;
-
-}
-
-.dermis-subtitle{
-
-  font-size:1.1rem;
-
-  color:var(--accent);
-
-  margin-bottom:2.2rem;
-
-  letter-spacing:.5px;
-
-}
-
-.dermis-text{
-
-  color:var(--text-soft);
-
-  line-height:2;
-
-  font-size:1.02rem;
-
-}
-
-/* =========================================================
-IMAGEN
-========================================================= */
-
-.dermis-image-wrapper{
-
-  position:relative;
-
+.team-hero{
+  min-height:40vh;
   display:flex;
-  justify-content:flex-end;
   align-items:center;
-
+  justify-content:center;
+  text-align:center;
+  padding:8rem 2rem 4rem;
+  background: radial-gradient(circle at top, rgba(143,182,190,.12), transparent 40%), linear-gradient(240deg, #2b2b2b 60%, #000000 100%);
 }
 
-.dermis-image{
-
-  width:100%;
+.team-hero-content{
   max-width:900px;
+}
 
-  object-fit:contain;
+.team-hero-title{
+  font-size:4.5rem;
+  font-weight:700;
+  letter-spacing:-2px;
+  color:var(--text);
+  margin-bottom:1rem;
+}
 
-  filter:
-  drop-shadow(0 25px 60px rgba(0,0,0,.35));
-
-  opacity:.98;
-
-  animation:dermisFloat 7s ease-in-out infinite;
-
+.team-hero-subtitle{
+  font-size:1.2rem;
+  color:var(--text-soft);
+  max-width:700px;
+  margin:0 auto;
+  line-height:1.9;
 }
 
 /* =========================================================
-ANIMATION
+TEAM IMAGE - FULL WIDTH
 ========================================================= */
 
-@keyframes dermisFloat{
+.team-image-section{
+  width:100%;
+  overflow:hidden;
+  background:#1d1d1d;
+  padding:0;
+}
 
-  0%{
-    transform:translateY(0px);
-  }
+.team-full-image{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:cover;
+  border-top:1px solid rgba(255,255,255,.04);
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
 
-  50%{
-    transform:translateY(-10px);
-  }
+/* =========================================================
+TEAM GRID
+========================================================= */
 
-  100%{
-    transform:translateY(0px);
-  }
+.team-section{
+  padding-top:4rem;
+}
 
+.team-grid{
+  margin-top:2rem;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2rem;
+}
+
+.team-member{
+  background:linear-gradient(180deg,#3a3a3a 0%, #323232 100%);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:2.4rem;
+  text-align:center;
+  transition:.35s ease;
+  box-shadow:var(--shadow);
+}
+
+.team-member:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,.12);
+}
+
+.team-avatar{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  margin:0 auto 1.5rem;
+  background:rgba(255,255,255,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2.2rem;
+  color:var(--accent);
+  border:2px solid rgba(255,255,255,.08);
+}
+
+.team-name{
+  font-size:1.2rem;
+  color:var(--text);
+  margin-bottom:.2rem;
+}
+
+.team-role{
+  font-size:.8rem;
+  color:var(--accent);
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:1rem;
+}
+
+.team-bio{
+  color:var(--text-soft);
+  line-height:1.8;
+  font-size:.9rem;
+  text-align:left;
 }
 
 /* =========================================================
@@ -1671,812 +3286,754 @@ RESPONSIVE
 ========================================================= */
 
 @media(max-width:1100px){
-
-  .dermis-layout{
-
-    grid-template-columns:1fr;
-
-    gap:4rem;
-
+  .team-grid{
+    grid-template-columns:1fr 1fr;
   }
-
-  .dermis-content{
-
-    max-width:100%;
-
-    text-align:center;
-
-  }
-
-  .dermis-image-wrapper{
-    justify-content:center;
-  }
-
-  .dermis-title{
-    font-size:3.2rem;
-  }
-
 }
 
 @media(max-width:768px){
-
-  .dermis-section{
-    padding:5rem 1.3rem;
+  .team-hero{
+    min-height:30vh;
+    padding:7rem 1.3rem 3rem;
   }
-
-  .dermis-title{
-
-    font-size:2.4rem;
-
-    letter-spacing:-2px;
-
+  .team-hero-title{
+    font-size:2.5rem;
   }
-
-  .dermis-subtitle{
+  .team-hero-subtitle{
     font-size:1rem;
   }
-
-  .dermis-text{
-
-    font-size:.98rem;
-
-    line-height:1.9;
-
-  }
-
-}
-
-@media(max-width:480px){
-
-  .dermis-title{
-    font-size:2rem;
-  }
-
-  .dermis-image{
-    max-width:100%;
-  }
-
-}
-</style>
-
-
-<section class="section dermis-section" id="dermis">
-
-  <div class="container">
-
-    <div class="dermis-layout">
-
-      <!-- =========================================================
-      TEXTO
-      ========================================================= -->
-
-      <div class="dermis-content">
-
-
-        <h2 class="dermis-title">
-          MODELO DERMIS
-        </h2>
-
-        <div class="dermis-subtitle">
-          (Capas de protección)
-        </div>
-
-        <div class="dermis-text">
-
-          <p>
-            El Modelo Dermis es uno de los pilares metodológicos de Soarblue©, diseñado como una arquitectura de gestión integral que acompaña a los proyectos de inversión durante todo su ciclo de vida.
-          </p>
-
-          <br>
-
-          <p>
-            Funciona como una capa de protección que integra diversas disciplinas para anticipar riesgos y salvaguardar la integridad de los activos y la inversión.
-          </p>
-
-        </div>
-
-      </div>
-
-      <!-- =========================================================
-      IMAGEN
-      ========================================================= -->
-
-      <div class="dermis-image-wrapper">
-
-        <img
-          src="img/02-dermis.svg"
-          alt="Modelo Dermis"
-          class="dermis-image"
-        >
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- =========================================================
-TIPOLOGÍAS DE PROYECTOS
-========================================================= -->
-
-<section class="project-types-section">
-
-  <div class="container project-types-layout">
-
-    <!-- =========================================
-    LEFT CONTENT
-    ========================================== -->
-
-    <div class="project-types-left">
-
-      <div class="project-mini-line"></div>
-
-      <p class="project-types-text">
-        Soarblue despliega su consultoría estratégica en sectores de alta
-        complejidad o exposición, cubriendo desde el diseño hasta el cierre.
-        Nuestra metodología garantiza una trazabilidad fehaciente y el
-        cumplimiento normativo en entornos diversos.
-      </p>
-
-      <p class="project-types-text">
-        Este enfoque asegura la preservación del valor corporativo y el blindaje
-        de activos estratégicos, consolidando la gestión ambiental como
-        herramienta de gobernanza.
-      </p>
-
-    </div>
-
-    <!-- =========================================
-    RIGHT CONTENT
-    ========================================== -->
-
-    <div class="project-types-right">
-
-      <div class="project-types-header">
-
-        <span class="project-types-label">
-          ÁREAS DE EXPERIENCIA
-        </span>
-
-        <h2 class="project-types-title">
-          TIPOLOGÍAS DE PROYECTOS
-        </h2>
-
-        <p class="project-types-subtitle">
-          Diseño / Construcción / Operación (modificación) / Cierre
-        </p>
-
-      </div>
-
-      <!-- =========================================
-      LIST
-      ========================================== -->
-
-      <div class="project-types-list">
-
-        <div class="project-type-item">
-          Salmonicultura
-        </div>
-
-        <div class="project-type-item">
-          Parques eólicos
-        </div>
-
-        <div class="project-type-item">
-          Obras Portuarias
-        </div>
-
-        <div class="project-type-item">
-          Astilleros
-        </div>
-
-        <div class="project-type-item">
-          Inmobiliarias / Constructoras
-        </div>
-
-        <div class="project-type-item">
-          Estudios Jurídicos
-        </div>
-
-        <div class="project-type-item">
-          Áridos / Empréstitos
-        </div>
-
-        <div class="project-type-item">
-          Clínicas
-        </div>
-
-        <div class="project-type-item">
-          Rellenos Sanitarios
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<style>
-
-/* =========================================================
-TIPOLOGÍAS DE PROYECTOS
-========================================================= */
-
-.project-types-section{
-
-  position:relative;
-
-  padding:8rem 2rem;
-
-  background:
-  radial-gradient(circle at top right,
-  rgba(255,255,255,.025),
-  transparent 30%),
-
-  linear-gradient(180deg,
-  #2d2d2d 0%,
-  #262626 100%);
-
-  overflow:hidden;
-}
-
-.project-types-layout{
-
-  display:grid;
-  grid-template-columns:22% 78%;
-  gap:4.5rem;
-
-  align-items:flex-start;
-}
-
-/* =========================================
-LEFT
-========================================= */
-
-.project-types-left{
-
-  position:sticky;
-  top:120px;
-}
-
-.project-mini-line{
-
-  width:48px;
-  height:1px;
-
-  background:#8db7c0;
-
-  margin-bottom:2rem;
-
-  opacity:.75;
-}
-
-.project-types-text{
-
-  color:#c9c2b4;
-
-  font-size:.94rem;
-  line-height:1.95;
-
-  margin-bottom:1.8rem;
-
-  letter-spacing:.1px;
-}
-
-/* =========================================
-RIGHT
-========================================= */
-
-.project-types-header{
-
-  text-align:center;
-
-  margin-bottom:3.8rem;
-}
-
-.project-types-label{
-
-  display:inline-block;
-
-  margin-bottom:1rem;
-
-  color:#8db7c0;
-
-  font-size:.78rem;
-  letter-spacing:3px;
-  text-transform:uppercase;
-}
-
-.project-types-title{
-
-  font-size:clamp(2.2rem,4vw,4.2rem);
-
-  line-height:1;
-
-  letter-spacing:-2px;
-
-  color:#ebe5d8;
-
-  margin-bottom:1rem;
-
-  font-weight:700;
-}
-
-.project-types-subtitle{
-
-  color:#b8b1a4;
-
-  font-size:.96rem;
-
-  letter-spacing:.2px;
-}
-
-/* =========================================
-LIST
-========================================= */
-
-.project-types-list{
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-
-  gap:.9rem;
-}
-
-.project-type-item{
-
-width: 100%;
-max-width: 658px;
-text-align: center;
-padding: 14px 6px;
-border-radius: 22px;
-background: linear-gradient(180deg,
-rgba(255,255,255,.028) 0%,
-rgba(255,255,255,.015) 100%);
-border: 1px solid rgba(255,255,255,.045);
-color: #f0eadf;
-font-size: 19px;
-line-height: 1.1;
-letter-spacing: -1.5px;
-font-weight: 500;
-transition: .28s ease;
-box-shadow: 0 6px 24px rgba(0,0,0,.16);
-}
-
-.project-type-item:hover{
-
-  transform:translateY(-2px);
-
-  border-color:rgba(255,255,255,.08);
-
-  background:
-  linear-gradient(180deg,
-  rgba(255,255,255,.04) 0%,
-  rgba(255,255,255,.02) 100%);
-}
-
-/* =========================================================
-TABLET
-========================================================= */
-
-@media(max-width:1200px){
-
-  .project-types-layout{
-
+  .team-grid{
     grid-template-columns:1fr;
-    gap:4rem;
   }
-
-  .project-types-left{
-
-    position:relative;
-    top:auto;
-
-    max-width:850px;
+  .team-member{
+    padding:1.8rem;
   }
-
+  .team-avatar{
+    width:80px;
+    height:80px;
+    font-size:1.8rem;
+  }
+  .team-full-image{
+    max-height:300px;
+  }
 }
-
-/* =========================================================
-MOBILE
-========================================================= */
-
-@media(max-width:768px){
-
-  .project-types-section{
-
-    padding:5.5rem 1.3rem;
-  }
-
-  .project-types-layout{
-
-    gap:3rem;
-  }
-
-  .project-types-header{
-
-    margin-bottom:2.5rem;
-  }
-
-  .project-types-title{
-
-    font-size:2.3rem;
-
-    letter-spacing:-1px;
-
-    line-height:1.05;
-  }
-
-  .project-types-subtitle{
-
-    font-size:.9rem;
-
-    line-height:1.7;
-
-    padding:0 .5rem;
-  }
-
-  .project-types-text{
-
-    font-size:.92rem;
-    line-height:1.9;
-  }
-
-  .project-types-list{
-
-    gap:.8rem;
-  }
-
-  .project-type-item{
-
-    max-width:100%;
-
-    border-radius:18px;
-
-    padding:1.25rem 1rem;
-
-    font-size:1.65rem;
-
-    line-height:1.12;
-
-    letter-spacing:-1px;
-  }
-
-}
-
-/* =========================================================
-SMALL MOBILE
-========================================================= */
 
 @media(max-width:480px){
-
-  .project-types-section{
-
-    padding:5rem 1rem;
-  }
-
-  .project-types-title{
-
+  .team-hero-title{
     font-size:2rem;
   }
-
-  .project-type-item{
-
-    font-size:1.45rem;
-
-    padding:1.1rem .9rem;
-
-    border-radius:16px;
+  .team-full-image{
+    max-height:200px;
   }
-
-  .project-types-text{
-
-    font-size:.9rem;
-  }
-
 }
-
 </style>
+<style>
+  
+</style>
+<div class="page-tab" id="page-equipo">
 
+  <section class="team-hero">
+    <div>
+      <h1 class="team-hero-title">Quiénes somos</h1>
+      <p class="team-hero-subtitle">Un equipo multidisciplinario comprometido con la excelencia y la sostenibilidad.</p>
+    </div>
+  </section>
+  <!-- =========================================================
+  SECCIÓN 2: IMAGEN FULL WIDTH
+  ========================================================= -->
 
+  <section class="team-image-section">
+    <img src="img/equipo.svg" alt="Equipo Soarblue" class="team-full-image">
+  </section>
+ <section class="section team-section">
 
-<section class="section dermis-section" id="dermis">
+    <div class="container">
 
-  <div class="container">
+      <div class="team-grid">
 
-    <div class="dermis-layout">
+        <!-- =========================================
+        FELIPE ZAPATA VALENZUELA
+        ========================================== -->
 
-      <!-- =========================================================
-      TEXTO
-      ========================================================= -->
-
-      <div class="dermis-content">
-
-
-        <h2 class="dermis-title">
-COMUNICACIÓN 
-CORPORATIVA, 
-CIUDADANA (ESCAZÚ) Y CRISIS O EMERGENCIA
-        </h2>
-
-
-        <div class="dermis-text">
-
-          <p>
-El Modelo Resonate es la arquitectura metodológica de Soarblue© para gestionar la interacción entre el proyecto y su entorno.           </p>
-
-          <br>
-
-          <p>
-Su objetivo no es la difusión de información, sino la creación de una frecuencia de entendimiento común entre los stakeholders técnicos, legales y sociales para anticipar, evitar o contener un conflicto no deseado o para informar a la población en general (Escazú).          </p>
-
+        <div class="team-member">
+          <div class="team-avatar"><i class="fas fa-user"></i></div>
+          <h3 class="team-name">Felipe Zapata Valenzuela</h3>
+          <p class="team-role">Director Ejecutivo</p>
+          <p class="team-bio">Es Biólogo con mención en Ciencias Ambientales por la Universidad de Concepción y magíster en Recursos Hídricos por la Universidad Austral de Chile. Complementa esta base académica con formación continua en Comunicación Corporativa en la U. de los Andes, Sostenibilidad en los Negocios en la U. de Chile, Compliance Ambiental para Empresas en la U. Adolfo Ibáñez, Liquidación de Siniestros en la U. de los Andes, Bioseguridad en la U. Austral de Chile, Data Science e Inteligencia Artificial para directivos en la U. de Chicago y en Ciudades Inteligentes (Smart cities) en la U. de La Frontera.</p>
+          <p class="team-bio">Cuenta con una trayectoria consolidada en el ámbito ambiental, donde ha combinado rigor técnico y visión estratégica en instituciones y entornos de alta exigencia, entre ellos el Servicio de Evaluación Ambiental, la Gobernación Marítima (Castro y Valdivia) y la gestión de emergencias en industrias de alta exposición. Su enfoque integra el método científico con la gestión estratégica para convertir conocimiento técnico en decisiones de alto impacto para organizaciones e inversiones complejas.</p>
+          <p class="team-bio">Como fundador y director ejecutivo de Soarblue SpA, lidera una consultora especializada en acompañar a organizaciones frente a decisiones complejas y escenarios de alta sensibilidad. Desde ese rol, impulsa metodologías propias —RESONAR y DERMIS— que integran medioambiente, compliance, sostenibilidad y comunicación en una mirada estratégica unificada, aplicable tanto a la gestión cotidiana como a contextos de crisis, emergencia o prevención.</p>
         </div>
+
+
+                <!-- =========================================
+        ALBERTO GUAJARDO
+        ========================================== -->
+
+        <div class="team-member">
+          <div class="team-avatar"><i class="fas fa-user"></i></div>
+          <h3 class="team-name">Alberto Guajardo</h3>
+          <p class="team-role">Director de Sostenibilidad</p>
+          <p class="team-bio">Es Ingeniero Comercial por la Universidad de Chile y cuenta con un Máster Executive en Gestión de Calidad de la EOI de España. Su trayectoria se ha enfocado en sostenibilidad corporativa y responsabilidad social empresarial en organizaciones de América Latina, con acreditación GRI para reportes de sostenibilidad y experiencia en la Norma SGE21.</p>
+          <p class="team-bio">Es examinador internacional del Premio Iberoamericano de la Calidad y del Premio Nacional a la Calidad de Chile, lo que refleja su dominio de altos estándares de gestión y desempeño organizacional.</p>
+          <p class="team-bio">Como docente, ha participado en diplomados de Responsabilidad Social en la Universidad de Chile, la Pontificia Universidad Católica de Valparaíso y la Universidad Andrés Bello, integrando experiencia consultora y formación profesional. Su enfoque articula estrategia, gobernanza y sostenibilidad como pilares de la gestión empresarial actual.</p>
+        </div>
+
+
+
+                <!-- =========================================
+        ANDRÉS FLORES GALLEGOS
+        ========================================== -->
+
+        <div class="team-member">
+          <div class="team-avatar"><i class="fas fa-user"></i></div>
+          <h3 class="team-name">Andrés Flores Gallegos</h3>
+          <p class="team-role">Partner Legal</p>
+          <p class="team-bio">Es abogado con amplia trayectoria en derecho civil, comercial, constitucional y societario, y socio fundador de Flores & Muñoz, estudio orientado a brindar asesoría de primer nivel con foco en resultados, confianza y comunicación efectiva con los clientes.</p>
+          <p class="team-bio">Su experiencia abarca litigios, asesorías estratégicas y defensa ante tribunales y órganos administrativos, respaldada por una formación de postgrado en permanente actualización que le permite operar bajo los más altos estándares de calidad jurídica.</p>
+          <p class="team-bio">Como partner estratégico de Soarblue, integra la dimensión legal a la gestión ambiental diseñando soluciones que equilibran cumplimiento normativo, gestión de riesgos y viabilidad de negocios. Su experiencia en equipos multidisciplinarios y proyectos de alta complejidad le permite articular lo jurídico, lo técnico y lo operativo en una sola mirada, convirtiéndolo en un aliado clave para clientes que necesitan rigor legal alineado con sus objetivos de desarrollo sostenible.</p>
+        </div>
+
+
+
+                <!-- =========================================
+        ALEJANDRA CANELAS WATKINS
+        ========================================== -->
+
+        <div class="team-member">
+          <div class="team-avatar"><i class="fas fa-user"></i></div>
+          <h3 class="team-name">Alejandra Canelas Watkins</h3>
+          <p class="team-role">Directora de Comunicaciones</p>
+          <p class="team-bio">Es periodista titulada con distinción máxima de la Universidad de Chile, bilingüe en español e inglés y diplomada con honores en la Università degli Studi di Genova, Italia, donde accedió mediante beca de excelencia académica.</p>
+          <p class="team-bio">Su trayectoria en comunicación corporativa está marcada por la edición de contenido impreso y la gestión editorial para plataformas digitales, con foco en temáticas de alto impacto social: medioambiente, educación y turismo. Una especialización que la sitúa en la intersección entre el relato estratégico y los asuntos que más importan a las comunidades y los territorios.</p>
+          <p class="team-bio">En 2012 fue reconocida con el Premio Mujer Destacada en el ámbito social-comunitario por la Municipalidad de Viña del Mar, distinción que refleja su compromiso con una comunicación que trasciende lo institucional. Como parte del equipo Soarblue, aporta la dimensión narrativa y reputacional que toda organización necesita para comunicar con coherencia en entornos complejos.</p>
+        </div>
+
+        <!-- =========================================
+        MACARENA VASSALLO C.
+        ========================================== -->
+
+        <div class="team-member">
+          <div class="team-avatar"><i class="fas fa-user"></i></div>
+          <h3 class="team-name">Macarena Vassallo C.</h3>
+          <p class="team-role">Partner en Gestión de Conflictos</p>
+          <p class="team-bio">Es abogada egresada de la Universidad Católica de Chile, especialista en gestión de conflictos y diálogo colaborativo, con una trayectoria consolidada en la construcción de acuerdos entre el sector público, el sector privado y las comunidades, tanto en Chile como en América Latina.</p>
+          <p class="team-bio">Su trabajo se centra en acompañar a organizaciones en la prevención y resolución de controversias mediante metodologías de mediación y diálogo colaborativo, facilitando procesos que generan legitimidad social y viabilidad real para proyectos de alta complejidad.</p>
+          <p class="team-bio">Como partner estratégica de Soarblue, su mirada complementa la dimensión técnica y ambiental con la gestión relacional y territorial, un factor cada vez más determinante en contextos donde las licencias sociales se construyen —o se pierden— antes que las legales. Juntos, acompañamos a gobiernos regionales, empresas y comunidades en procesos que convierten el conflicto en oportunidad de acuerdo.</p>
+        </div>
+
+        <!-- =========================================
+        ARTURO LINARES
+        ========================================== -->
+
+        <div class="team-member">
+          <div class="team-avatar"><i class="fas fa-user"></i></div>
+          <h3 class="team-name">Arturo Linares</h3>
+          <p class="team-role">Especialista en IA</p>
+          <p class="team-bio">Es Ingeniero Electrónico con más de 7 años de experiencia en el desarrollo de soluciones tecnológicas de vanguardia, con proyectos ejecutados en Chile, España, Perú y Argentina en industrias tan diversas que lo hacen un referente de adaptabilidad técnica y visión internacional.</p>
+          <p class="team-bio">Su expertise abarca Inteligencia Artificial, Machine Learning, Blockchain, Cloud Computing, NLP, Computer Vision y Large Language Models, complementado con diplomados en Data Science, Blockchain, IA y MLOps. En 2024 fue ganador del Hackathon OpenAI, reconocimiento que lo posiciona entre los profesionales más destacados del ecosistema de IA generativa en la región.</p>
+          <p class="team-bio">Como parte del equipo Soarblue, aporta la capa tecnológica que transforma datos, procesos y conocimiento ambiental en soluciones inteligentes, automatizadas y escalables. Su integración al modelo boutique de Soarblue permite ofrecer a los clientes una consultoría que no solo diagnostica, sino que innova.</p>
+        </div>
+
+
+
+
+
+        <!-- =========================================
+        JERMAN ESPÍNDOLA
+        ========================================== -->
+
+        <div class="team-member">
+          <div class="team-avatar"><i class="fas fa-user"></i></div>
+          <h3 class="team-name">Jerman Espíndola</h3>
+          <p class="team-role">Arquitecto Blockchain</p>
+          <p class="team-bio">Es Ingeniero en Gestión Industrial con Magíster en Ciencias de la Computación y más de 20 años de trayectoria en tecnologías de la información, combinando profundidad técnica con visión de negocio y liderazgo organizacional.</p>
+          <p class="team-bio">Ha liderado operaciones y sistemas de TI por más de una década, desarrollando plataformas de datos y sistemas transaccionales de alta complejidad. Su especialización en Blockchain y desarrollo de software lo posiciona como un referente en arquitecturas tecnológicas descentralizadas, con aplicaciones concretas en trazabilidad, seguridad de datos y gobernanza digital.</p>
+          <p class="team-bio">Es profesor universitario en la Universidad de Talca y cofundador de Krivia Labs, trayectoria que refleja un perfil singular: el del tecnólogo que también construye ecosistemas y transfiere conocimiento.</p>
+          <p class="team-bio">En Soarblue, su aporte es clave para integrar soluciones blockchain en procesos de compliance, gestión ambiental y trazabilidad de información, dotando a los proyectos de una capa de transparencia y confianza difícil de replicar.</p>
+        </div>
+
+
+
+        <!-- =========================================
+        RODRIGO TOBAR O.
+        ========================================== -->
+
+        <div class="team-member">
+          <div class="team-avatar"><i class="fas fa-user"></i></div>
+          <h3 class="team-name">Rodrigo Tobar O.</h3>
+          <p class="team-role">Director de Tecnología</p>
+          <p class="team-bio">Es Ingeniero en Informática de la UTEM, con Magíster en Tecnologías de la Información y Gestión de la Pontificia Universidad Católica de Chile y Especialización en Dirección de Tecnología (CTO) en la misma casa de estudios. Suma diplomados en Inteligencia Artificial, Blockchain, Ciberseguridad y Transformación Digital, además de certificaciones en DevOps, Azure y Blue Team.</p>
+          <p class="team-bio">Con más de 21 años de trayectoria liderando transformaciones digitales de alto impacto en banca, retail y construcción —en organizaciones como Santander, Cencosud Scotiabank y Hites—, su fortaleza está en alinear estrategia corporativa y tecnología, con foco en arquitectura cloud multicloud, IA, DevSecOps y gobierno de datos.</p>
+          <p class="team-bio">En 2024 obtuvo el primer lugar en el Hackathon de Inteligencia Artificial de OpenAI Latinoamérica, distinción que refleja su posición de frontera en el ecosistema tecnológico regional.</p>
+          <p class="team-bio">Como parte del equipo Soarblue, integra la dimensión digital y de arquitectura tecnológica a los proyectos de consultoría, habilitando soluciones inteligentes, seguras y escalables para clientes que operan en entornos complejos y regulados.</p>
+        </div>
+
+
 
       </div>
 
-      <!-- =========================================================
-      IMAGEN
-      ========================================================= -->
+    </div>
 
-      <div class="dermis-image-wrapper">
 
-        <img
-          src="img/03-resonante.svg"
-          alt="Modelo Resonante"
-          class="dermis-image"
-        >
+  </section>
 
+</div>
+
+<!-- =========================================================
+PÁGINA: TECNOLOGÍA 4.0 (PESTAÑA)
+========================================================= -->
+
+<div class="page-tab" id="page-tecnologia">
+
+  <section class="tech-hero">
+    <div>
+      <h1 class="tech-hero-title">Tecnología 4.0</h1>
+      <p class="tech-hero-subtitle">Innovación al servicio de la gestión ambiental y la toma de decisiones.</p>
+    </div>
+  </section>
+
+  <section class="section">
+
+    <div class="container">
+
+<!-- =========================================================
+SERVICIOS - TARJETAS ACTUALIZADAS
+========================================================= -->
+
+<div class="services-grid">
+
+  <!-- =========================================================
+  GESTIÓN, SEGUIMIENTO E INSPECCIÓN AMBIENTAL
+  ========================================================= -->
+
+  <div class="service-main-card">
+
+    <div class="service-card-top">
+      <h3 class="service-card-title">
+        Gestión, Seguimiento e Inspección Ambiental de Proyectos de Inversión
+      </h3>
+    </div>
+
+    <div class="service-card-content">
+
+      <p class="service-description">
+        Este servicio constituye el núcleo de la vigilancia técnica de Soarblue y acompaña todo el ciclo de vida de los proyectos, desde la Evaluación Ambiental (SEIA) a las etapas de construcción, operación y el cierre (SMA). Integramos supervisión especializada y análisis espacial para resguardar la continuidad operativa y asegurar el cumplimiento de las Resoluciones de Calificación Ambiental (RCA).
+      </p>
+
+      <div class="service-sub-box">
+        <div class="service-sub-title">Alcance del servicio:</div>
+        <ul class="service-list">
+          <li>Elaboración y tramitación de DIA y EIA.</li>
+          <li>Gestión de Permisos Ambientales Sectoriales (PAS).</li>
+          <li>Consultas de pertinencia de ingreso al SEIA.</li>
+          <li>Informes de cumplimiento ambiental, con reportes auditables sobre el nivel y la forma de cumplimiento de los compromisos RCA.</li>
+          <li>Reportes de vigilancia y monitoreo de variables críticas, como fauna, recursos hídricos y arqueología, basados en planes aprobados y mediciones de campo.</li>
+          <li>Control de riesgo normativo mediante semaforización ejecutiva para visualizar hitos críticos y detectar vulnerabilidades de forma proactiva.</li>
+          <li>Dossier de evidencia visual georreferenciada con registros capturados mediante tecnología 4.0, como drones y sensores.</li>
+        </ul>
       </div>
 
     </div>
 
   </div>
 
-</section>
+  <!-- =========================================================
+  INSPECCIÓN Y SEGUIMIENTO
+  ========================================================= -->
 
-<section class="section dermis-section" id="dermis">
+  <div class="service-main-card">
 
-  <div class="container">
+    <div class="service-card-top">
+      <h3 class="service-card-title">
+        Inspección y Seguimiento
+      </h3>
+    </div>
 
-    <div class="dermis-layout">
+    <div class="service-card-content">
 
-      <!-- =========================================================
-      TEXTO
-      ========================================================= -->
+      <p class="service-description">
+        La SMA no fiscaliza a ciegas: contrasta la RCA, los reportes cargados en sistemas electrónicos y las denuncias recibidas con lo que observa en terreno. En Soarblue preparamos su proyecto para ese contraste mediante una revisión preventiva y rigurosa de cada punto crítico antes de la inspección.
+      </p>
 
-      <div class="dermis-content">
-
-
-        <h2 class="dermis-title">
-TRAZABILIDAD, TRANSPARENCIA
-Y REPUTACIÓN
-        </h2>
-
-
-        <div class="dermis-text">
-
-          <p>
-La arquitectura de reportabilidad de Soarblue© garantiza la integridad estratégica de la información en proyectos de alta complejidad. Mediante la integración de tecnologías 4.0 y análisis espacial, transformamos el registro técnico en un medio probatorio vinculante, trazable y auditable. 
-</p>
-          <br>
-
-          <p>
-Este sistema elimina las asimetrías de datos, asegurando que cada hito sea verificado bajo estrictos protocolos de seguridad de datos y confidencialidad.           
-</p>
-
-        </div>
-
-      </div>
-
-      <!-- =========================================================
-      IMAGEN
-      ========================================================= -->
-
-      <div class="dermis-image-wrapper">
-
-        <img
-          src="img/04-reportabilidad.svg"
-          alt="Reportabilidad"
-          class="dermis-image"
-        >
-
+      <div class="service-sub-box">
+        <div class="service-sub-title">Alcance del servicio:</div>
+        <ul class="service-list">
+          <li>Revisión integral del estado de cumplimiento de la RCA.</li>
+          <li>Verificación de reportes en SSA, SRCA y otros sistemas electrónicos.</li>
+          <li>Revisión de permisos sectoriales y normativa aplicable.</li>
+          <li>Simulación de inspección en terreno.</li>
+          <li>Capacitación del personal en procedimientos de fiscalización.</li>
+          <li>Plan de acción correctiva para brechas identificadas.</li>
+          <li>Acompañamiento durante la fiscalización.</li>
+        </ul>
       </div>
 
     </div>
 
   </div>
 
-</section>
+  <!-- =========================================================
+  COMPLIANCE EN PREVENCIÓN DE DELITOS AMBIENTALES
+  ========================================================= -->
 
-<section class="section dermis-section" id="dermis">
+  <div class="service-main-card">
 
-  <div class="container">
+    <div class="service-card-top">
+      <h3 class="service-card-title">
+        Compliance en Prevención de Delitos Ambientales
+      </h3>
+    </div>
 
-    <div class="dermis-layout">
+    <div class="service-card-content">
 
-      <!-- =========================================================
-      TEXTO
-      ========================================================= -->
+      <p class="service-description">
+        El servicio de Compliance protege a la organización frente al marco regulatorio de delitos económicos y ambientales. Implementamos sistemas de gestión que detectan riesgos críticos, establecen protocolos preventivos y generan evidencia sólida para resguardar la responsabilidad penal de la empresa y sus directivos. Así, el cumplimiento normativo se convierte en un pilar de integridad, seguridad jurídica y protección reputacional.
+      </p>
 
-      <div class="dermis-content">
+      <p class="service-description">
+        La Ley 21.595 de Delitos Económicos (2023) elevó el riesgo en Chile: el incumplimiento ambiental ahora puede generar responsabilidad penal personal para ejecutivos y directores. Además, la Superintendencia del Medio Ambiente calcula sanciones con criterios de proporcionalidad, disuasión y eliminación del beneficio económico del incumplimiento. En la práctica, incumplir siempre cuesta más que cumplir.
+      </p>
 
-
-        <h2 class="dermis-title">
-RIZOMA 
-
-        </h2>
-
-
-        <div class="dermis-text">
-
-          <p>
-
-Es la plataforma personalizada de monitoreo e inteligencia ambiental de proyectos de Soarblue© y Krivia Labs. Integra los datos de terreno de Soarblue — registros de drones, imágenes satelitales, documentación vinculante, hitos RCA — con las capacidades de IA, Machine Learning y Business Intelligence de Krivia Labs, entregando a la empresa una visión continua, inteligente y accionable del estado ambiental de su proyecto.
-
-          <br>
-          <br>
-
-          <p>
-
-No es un informe periódico. Es un sistema vivo.
-</p>
-        </div>
-
-      </div>
-
-      <!-- =========================================================
-      IMAGEN
-      ========================================================= -->
-
-      <div class="dermis-image-wrapper">
-
-        <img
-          src="img/05-proyecto.svg"
-          alt="Reportabilidad"
-          class="dermis-image"
-        >
-
+      <div class="service-sub-box">
+        <div class="service-sub-title">Alcance del servicio:</div>
+        <ul class="service-list">
+          <li>Diagnóstico de riesgos legales y ambientales</li>
+          <li>Matriz de riesgos por etapa del proyecto</li>
+          <li>Asesoría preventiva bajo la Ley 21.595</li>
+          <li>Diseño e implementación de programas de cumplimiento</li>
+          <li>Seguimiento de compromisos RCA</li>
+          <li>Preparación para fiscalizaciones de la SMA</li>
+          <li>Defensa administrativa en procedimientos sancionatorios.</li>
+        </ul>
       </div>
 
     </div>
 
   </div>
+<!-- =========================================================
+SERVICIOS FALTANTES
+========================================================= -->
 
-</section>
+
+<!-- =========================================================
+DEFENSA TRIBUNAL AMBIENTAL
+========================================================= -->
+
+<div class="service-main-card">
+
+  <div class="service-card-top">
+    <h3 class="service-card-title">
+      Defensa Tribunal Ambiental
+    </h3>
+  </div>
+
+  <div class="service-card-content">
+
+    <p class="service-description">
+      Los Tribunales Ambientales resuelven los conflictos más complejos del sistema ambiental. Para las empresas, esto implica que las decisiones de organismos públicos que afectan un proyecto pueden ser revisadas por una instancia jurisdiccional independiente y que, además, el Estado, las comunidades o terceros pueden accionar directamente ante el tribunal si estiman que existe daño ambiental.
+    </p>
+
+    <div class="service-sub-box">
+      <div class="service-sub-title">Alcance del servicio:</div>
+      <ul class="service-list">
+        <li>Defensa técnica y jurídica en demandas por daño ambiental ante el 3TA.</li>
+        <li>Impugnación de sanciones de la SMA, con análisis de proporcionalidad y descargos técnicos.</li>
+        <li>Reclamaciones ante el 3TA contra resoluciones de la SMA o SEA.</li>
+        <li>Recursos contra resoluciones de organismos sectoriales con incidencia ambiental.</li>
+        <li>Acciones de nulidad de actos administrativos ambientales.</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+<!-- =========================================================
+MEDIACIÓN AMBIENTAL
+========================================================= -->
+
+<div class="service-main-card">
+
+  <div class="service-card-top">
+    <h3 class="service-card-title">
+      Mediación Ambiental
+    </h3>
+  </div>
+
+  <div class="service-card-content">
+
+    <p class="service-description">
+      Este servicio integra mediación regulatoria, gestión de acuerdos con comunidades, negociación con organismos públicos, diseño de protocolos preventivos y acompañamiento ejecutivo para abordar conflictos socioambientales de manera estratégica.
+    </p>
+
+    <div class="service-sub-box">
+      <div class="service-sub-title">Alcance del servicio:</div>
+      <ul class="service-list">
+        <li>Protocolo de gestión preventiva de conflictos socioambientales.</li>
+        <li>Diagnóstico de conflictividad ambiental.</li>
+        <li>Mediación socioambiental de proyectos de inversión.</li>
+        <li>Construcción de acuerdos de convivencia.</li>
+        <li>Preparación ejecutiva para negociaciones regulatorias críticas.</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+
+
 
 
 
 <!-- =========================================================
-REGISTRO VISUAL COGNITIVO
+PROGRAMAS DE CUMPLIMIENTO (PdC)
 ========================================================= -->
 
-<section class="visual-section">
+<div class="service-main-card">
 
-  <!-- =========================================
-  BACKGROUND DETAILS
-  ========================================== -->
+  <div class="service-card-top">
+    <h3 class="service-card-title">
+      Programas de Cumplimiento (PdC)
+    </h3>
+  </div>
 
-  <div class="visual-blur visual-blur-1"></div>
-  <div class="visual-blur visual-blur-2"></div>
+  <div class="service-card-content">
 
-  <div class="container visual-container">
+    <p class="service-description">
+      Los Programas de Cumplimiento (PdC) son la herramienta clave para subsanar incumplimientos ambientales y regularizar la situación de una empresa ante la Superintendencia del Medio Ambiente (SMA). En Soarblue diseñamos planes integrales con acciones correctivas, metas verificables y cronogramas de ejecución, de modo que la evidencia técnica se traduzca en un respaldo sólido, auditable y alineado con los criterios de aprobación de la autoridad.
+    </p>
 
-    <!-- =========================================
-    HEADER
-    ========================================== -->
+    <p class="service-description">
+      Este instrumento puede presentarse dentro de los 10 días hábiles siguientes a la formulación de cargos y permite suspender el procedimiento sancionatorio, reduciendo el riesgo de multas mediante el compromiso formal de corregir infracciones y mitigar sus efectos. Nuestro enfoque asegura una propuesta técnicamente viable, rigurosa en su verificación y orientada a proteger la continuidad operativa y la integridad reputacional del directorio frente al regulador.
+    </p>
 
-    <div class="visual-header">
-
-      <span class="visual-label">
-        OBSERVACIÓN · TRAZABILIDAD · PERCEPCIÓN
-      </span>
-
-      <h2 class="visual-title">
-        REGISTRO VISUAL COGNITIVO
-      </h2>
-
-      <p class="visual-quote">
-        “No se puede mejorar lo que no se mide,
-        pero tampoco lo que no se ve o se entiende”
-      </p>
-
+    <div class="service-sub-box">
+      <div class="service-sub-title">Alcance del servicio:</div>
+      <ul class="service-list">
+        <li>Análisis del expediente sancionatorio y de los cargos formulados.</li>
+        <li>Diagnóstico técnico en terreno de los incumplimientos.</li>
+        <li>Diseño de medidas de subsanación técnicas, operacionales y de gestión.</li>
+        <li>Elaboración de cronograma detallado y presupuesto de implementación.</li>
+        <li>Redacción y presentación formal del PdC ante la SMA.</li>
+        <li>Gestión del proceso en el sistema SPDC.</li>
+        <li>Implementación, seguimiento y verificación de las medidas aprobadas.</li>
+        <li>Informe final de verificación para el cierre del procedimiento.</li>
+      </ul>
     </div>
 
-    <!-- =========================================
-    MAIN CARD
-    ========================================== -->
+  </div>
 
-    <div class="visual-main-card">
+</div>
 
-      <div class="visual-main-grid">
+<!-- =========================================================
+PROCEDIMIENTO SANCIONATORIO
+========================================================= -->
 
-        <!-- =========================================
-        LEFT TEXT
-        ========================================== -->
+<div class="service-main-card">
 
-        <div class="visual-column">
+  <div class="service-card-top">
+    <h3 class="service-card-title">
+      Procedimiento Sancionatorio
+    </h3>
+  </div>
 
-          <p class="visual-text">
-            En Soarblue, seguimos el legado de Humberto Maturana y Francisco
-            Varela, entendemos que "conocer es hacer" y que toda observación
-            está indisolublemente ligada a la estructura de quien observa.
-          </p>
+  <div class="service-card-content">
 
-          <p class="visual-text">
-            Bajo esta premisa, las asimetrías de información no son meros vacíos
-            de datos, sino brechas en la coordinación de acciones entre distintos
-            observadores: el Directorio, el regulador y la ciudadanía.
-          </p>
+    <p class="service-description">
+      En Soarblue abordamos los procedimientos sancionatorios de la Superintendencia del Medio Ambiente (SMA) como una instancia crítica para proteger la integridad corporativa. Nuestra consultoría técnica revisa en detalle la metodología del regulador y evalúa factores clave como la gravedad de la infracción, el beneficio económico obtenido y los riesgos ambientales involucrados.
+    </p>
 
-          <p class="visual-text">
-            Soarblue interviene en este espacio crítico transformando la
-            "partitura" técnica en un dominio visual compartido. Al dirigir la
-            observación mediante registros de alta fidelidad, no solo
-            comunicamos; generamos un acoplamiento estructural donde todas las
-            partes pueden comprender una realidad común, trazable y transparente.
-          </p>
+    <p class="service-description">
+      A partir de ese análisis, desarrollamos estrategias de defensa técnica integral, preparamos descargos fundados y organizamos evidencia sólida y auditable para sustentar la respuesta ante la autoridad. Trabajamos de forma coordinada con el área legal del cliente para mitigar impactos sancionatorios y resguardar la estabilidad patrimonial, la continuidad operativa y la reputación del directorio.
+    </p>
 
-          <p class="visual-text">
-            Esto permite que la toma de decisiones se oriente sobre una base de
-            confianza técnica inobjetable, convirtiéndose en una herramienta
-            clave para gobiernos corporativos y empresas en los tiempos actuales.
-          </p>
+    <div class="service-sub-box">
+      <div class="service-sub-title">Alcance del servicio:</div>
+      <ul class="service-list">
+        <li>Análisis técnico-jurídico del expediente sancionatorio.</li>
+        <li>Revisión de cargos y antecedentes presentados por la SMA.</li>
+        <li>Elaboración de descargos técnicos debidamente fundamentados.</li>
+        <li>Preparación de evidencia y antecedentes de respaldo.</li>
+        <li>Gestión de medidas provisionales y solicitudes de levantamiento.</li>
+        <li>Interposición de recursos administrativos ante la Superintendencia.</li>
+        <li>Coordinación con abogados para recursos ante Tribunales Ambientales.</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+<!-- =========================================================
+SERVICIOS FALTANTES (6)
+========================================================= -->
+
+
+<!-- =========================================================
+4. SOSTENIBILIDAD, ESG Y ESTÁNDARES FINANCIEROS (NIIF S1 Y S2 / T-MAS)
+========================================================= -->
+
+<div class="service-main-card">
+
+  <div class="service-card-top">
+    <h3 class="service-card-title">
+      Sostenibilidad, ESG y Estándares Financieros
+    </h3>
+    <p class="service-card-subtitle">NIIF S1 y S2 / T-MAS</p>
+  </div>
+
+  <div class="service-card-content">
+
+    <p class="service-description">
+      Esta consultoría integra criterios ambientales, sociales y de gobernanza en el núcleo financiero y estratégico de la compañía. Aplicamos enfoques de Doble Materialidad y la taxonomía T-MAS para identificar riesgos climáticos y oportunidades que pueden afectar la valoración de los activos en el largo plazo.
+    </p>
+
+    <p class="service-description">
+      Acompañamos a empresas que buscan alinear su sostenibilidad con las nuevas exigencias regulatorias, la taxonomía sostenible chilena y las expectativas de inversionistas y directorios. Así, convertimos el desempeño ESG en una gestión medible, defendible y útil para la estrategia de negocio, fortaleciendo la reportabilidad, el acceso a capital y la transparencia ante los distintos grupos de interés.
+    </p>
+
+    <div class="service-sub-box">
+      <div class="service-sub-title">Alcance del servicio:</div>
+      <ul class="service-list">
+        <li><strong>Reportabilidad, IFRS S1/S2 y datos ESG:</strong> ordenamos indicadores, datos y soportes para responder a IFRS S1/S2, la taxonomía y otras exigencias de transparencia, con reportes consistentes y preparados para revisión externa.</li>
+        <li><strong>Estrategia y gobernanza ESG:</strong> definimos la hoja de ruta ESG de la organización, priorizando temas materiales, riesgos y oportunidades, y conectando sostenibilidad con gobierno corporativo, gestión y control interno.</li>
+        <li><strong>Clima, naturaleza y operación:</strong> integramos riesgo climático, naturaleza y desempeño operativo en la toma de decisiones, conectando activos, personas y territorios con criterios de resiliencia y transición.</li>
+        <li><strong>Taxonomía, finanzas verdes y proyectos de inversión:</strong> traducimos el desempeño ESG de la empresa y de sus proyectos en criterios útiles para taxonomía sostenible, financiamiento y evaluación de inversiones.</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+<!-- =========================================================
+3. COMUNICACIÓN CORPORATIVA Y CIUDADANA (MODELO RESONATE)
+========================================================= -->
+
+<div class="service-main-card">
+
+  <div class="service-card-top">
+    <h3 class="service-card-title">
+      Comunicación Corporativa y Ciudadana
+    </h3>
+    <p class="service-card-subtitle">Modelo Resonate</p>
+  </div>
+
+  <div class="service-card-content">
+
+    <p class="service-description">
+      Bajo el Modelo Resonate, este servicio actúa como un mecanismo de sincronización estratégica que evita la fragmentación de la información entre los distintos stakeholders. Para ello, desarrollamos narrativas de transparencia técnica que articulan de forma proactiva la relación entre el directorio, los reguladores, los accionistas y las comunidades locales.
+    </p>
+
+    <p class="service-description">
+      Su propósito es que el cliente no tenga que explicar aquello que pudo anticipar, resguardando así la licencia social para operar. A partir de una interpretación rigurosa de la documentación vinculante, convertimos el cumplimiento ambiental en un activo reputacional sólido y respaldamos una comunicación ética, verificable y consistente, incluso en escenarios de crisis.
+    </p>
+
+    <p class="service-description">
+      Soarblue convierte la comunicación ciudadana en un activo de gobernanza alineado con los estándares del Tratado de Escazú. El servicio garantiza el derecho de acceso a la información y promueve la participación pública mediante un enfoque de transparencia activa y generación de datos. A través de una arquitectura técnica, facilitamos procesos de toma de decisiones inclusivos y oportunos, asegurando que la información ambiental sea accesible, fidedigna y comprensible para todos los actores.
+    </p>
+
+    <div class="service-sub-box">
+      <div class="service-sub-title">Este enfoque contribuye a:</div>
+      <ul class="service-list">
+        <li>Minimizar la conflictividad en territorios complejos.</li>
+        <li>Fortalecer la licencia social para operar.</li>
+        <li>Proporcionar una base sólida para el acceso a la justicia y la protección de los derechos ambientales.</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+<!-- =========================================================
+2. ARQUITECTURA DE TECNOLOGÍAS 4.0
+========================================================= -->
+
+<div class="service-main-card">
+
+  <div class="service-card-top">
+    <h3 class="service-card-title">
+      Arquitectura de Tecnologías 4.0
+    </h3>
+  </div>
+
+  <div class="service-card-content">
+
+    <p class="service-description">
+      Rizoma es la arquitectura de Tecnologías 4.0 de Soarblue, desarrollada para proyectos que operan en entornos de alta complejidad y exigencia normativa. Su propósito es fortalecer el cumplimiento ambiental y mejorar la comunicación entre empresas, ciudadanía y autoridades mediante herramientas tecnológicas confiables.
+    </p>
+
+    <p class="service-description">
+      Para ello, implementamos sistemas de observación remota, análisis espacial y comunicación mediante APIs, con el fin de asegurar el cumplimiento riguroso de las Resoluciones de Calificación Ambiental (RCA). Este enfoque permite que cada hito del proyecto sea trazable, ciberseguro y confidencial, transformando datos técnicos en evidencia verificable y auditable.
+    </p>
+
+    <div class="service-sub-box">
+      <div class="service-sub-title">En la práctica, Rizoma contribuye a:</div>
+      <ul class="service-list">
+        <li>Reducir asimetrías de información entre los distintos actores;</li>
+        <li>Generar puentes comunicacionales con la ciudadanía y las autoridades;</li>
+        <li>Respaldar la toma de decisiones estratégicas con información sólida; y</li>
+        <li>Fortalecer la seguridad jurídica ante directorios y reguladores.</li>
+      </ul>
+      <p class="service-description" style="margin-top:1rem;">
+        De este modo, Rizoma consolida la transparencia institucional como un activo fundamental de gobernanza.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================================================
+6. PERITAJE NAVAL
+========================================================= -->
+
+<div class="service-main-card">
+
+  <div class="service-card-top">
+    <h3 class="service-card-title">
+      Peritaje Naval
+    </h3>
+    <p class="service-card-subtitle">Gestión de Siniestros e Impacto Ambiental</p>
+  </div>
+
+  <div class="service-card-content">
+
+    <p class="service-description">
+      El servicio de Peritaje Naval de Soarblue se especializa en la investigación técnica de accidentes marítimos y emergencias ambientales complejas. Intervenimos en la contención y análisis de derrames de hidrocarburos y sustancias peligrosas, y evaluamos con rigor los daños causados por colisiones o varamientos. Además, actuamos como asesores técnicos e interlocutores estratégicos entre la autoridad, el sistema judicial y el sector privado, facilitando una coordinación eficaz para mitigar impactos ambientales críticos. Nuestra labor aporta evidencia sólida para la resolución de disputas, resguardando la seguridad del medio marino y la reputación del cliente.
+    </p>
+
+  </div>
+
+</div>
+<!-- =========================================================
+1. EMERGENCIAS MARÍTIMAS o SUBACUÁTICAS
+========================================================= -->
+
+
+<!-- =========================================================
+5. PERITO AMBIENTAL
+========================================================= -->
+
+<div class="service-main-card">
+
+  <div class="service-card-top">
+    <h3 class="service-card-title">
+      Perito Ambiental
+    </h3>
+    <p class="service-card-subtitle">Garantía Técnica y Cumplimiento Normativo</p>
+  </div>
+
+  <div class="service-card-content">
+
+    <p class="service-description">
+      El Perito Ambiental de Soarblue actúa como interlocutor técnico en procesos judiciales y administrativos de alta complejidad. Se enfoca en evaluar impactos industriales e investigar daños derivados de contaminación o incidentes operativos. Elaboramos informes periciales que sirven como medio probatorio sólido para determinar responsabilidades y proponer medidas de mitigación o remediación.
+    </p>
+
+  </div>
+
+</div>
+
+<div class="service-main-card">
+
+  <div class="service-card-top">
+    <h3 class="service-card-title">
+      Emergencias Marítimas o Subacuáticas
+    </h3>
+    <p class="service-card-subtitle">Derrames Hidrocarburos u otros</p>
+  </div>
+
+  <div class="service-card-content">
+
+    <p class="service-description">
+      Contamos con más de cinco años de experiencia apoyando estratégicamente a empresas de salvataje marítimo en accidentes de buques y embarcaciones, tanto en zonas costeras como en áreas remotas. En este trabajo, hemos colaborado con referentes del sector como Resolve Marine Group, MARVAL, Oxxean y Servomar.
+    </p>
+
+    <p class="service-description">
+      Nuestro enfoque es integral y exigente. Actuamos como interlocutores entre autoridades, contratistas, ciudadanía y medios de comunicación para asegurar una gestión de crisis transparente y eficaz. Además, elaboramos planes de contingencia ante derrames de hidrocarburos y manejo de residuos peligrosos, y diseñamos estrategias para tratar aguas contaminadas, siempre con un control riguroso y auditable del avance.
+    </p>
+
+    <p class="service-description">
+      Nuestra formación y experiencia en terreno nos permiten liderar escenarios de alta complejidad que exigen máxima responsabilidad y precisión técnica. Frente a auditorías gubernamentales exigentes o peritajes de aseguradoras, trabajamos con el rigor necesario para ofrecer un desempeño confiable y sin margen para errores.
+    </p>
+
+  </div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+  </section>
+
+</div>
+
+
+
+<!-- =========================================================
+PÁGINA: SIMBIOSIS (PESTAÑA)
+========================================================= -->
+
+<div class="page-tab" id="page-simbiosis">
+
+  <section class="simbiosis-hero">
+    <div>
+      <h1 class="simbiosis-hero-title">Simbiosis Estratégicas</h1>
+    </div>
+  </section>
+
+  <section class="section simbiosis-section">
+
+    <div class="container">
+
+      <div class="simbiosis-content">
+
+        <div class="simbiosis-card">
+
+          <div class="simbiosis-text">
+
+            <p>
+Todo comienza con una visión sostenida en el tiempo y respaldada por un recorrido poco común: ciencias ambientales, recursos hídricos, evaluación ambiental del Estado, gestión de emergencias marítimas, tecnología de observación remota y formación avanzada en inteligencia artificial, compliance y sostenibilidad. Cada disciplina incorporada con propósito. Cada experiencia traducida en método. De ese proceso nació Soarblue en 2015 — y con él, el Modelo Dermis, la plataforma Rizoma y una arquitectura de trabajo que no existía antes en Chile.
+            </p>
+
+            <p>
+Sobre esa base, el equipo se completó. GSA ancla el trabajo en terreno. Mediaria transforma conflictos en acuerdos. Krivia Labs potencia la inteligencia de datos. Cada uno conoce su rol. Cada movimiento está coordinado. Y cuando el escenario se complica, responden como uno solo. Eso no se replica. Se construye.
+            </p>
+
+          </div>
 
         </div>
 
-        <!-- =========================================
-        RIGHT BLOCK
-        ========================================== -->
 
-        <div class="visual-column">
+        <div class="simbiosis-partners">
 
-          <div class="visual-applications-card">
+          <div class="simbiosis-partner">
+            <img src="img/simbiosis-01.svg" alt="GSA" class="simbiosis-partner-logo">
+          </div>
 
-            <div class="visual-small-label">
-              APLICACIONES
-            </div>
+          <div class="simbiosis-partner">
+            <img src="img/simbiosis-02.svg" alt="Mediaria" class="simbiosis-partner-logo">
+          </div>
 
-            <div class="visual-app-list">
-
-              <div class="visual-app-item">
-                Plataformas digitales APIs con información material del proyecto
-              </div>
-
-              <div class="visual-app-item">
-                Relatos visuales para Streaming Certificados
-              </div>
-
-              <div class="visual-app-item">
-                Elaboramos Participación Ciudadana
-              </div>
-
-              <div class="visual-app-item">
-                Medio probatorio en procedimientos SMA y Tribunal Ambiental
-              </div>
-
-              <div class="visual-app-item">
-                Registros complementarios para Reportabilidad
-              </div>
-
-              <div class="visual-app-item">
-                Registros para meta-data de Compliance Ambiental
-              </div>
-
-              <div class="visual-app-item">
-                Emergencias y Peritajes
-              </div>
-
-              <div class="visual-app-item">
-                Liquidación de Siniestros
-              </div>
-
-            </div>
-
+          <div class="simbiosis-partner">
+            <img src="img/simbiosis-03.svg" alt="Krivia Labs" class="simbiosis-partner-logo">
           </div>
 
         </div>
@@ -2485,567 +4042,15 @@ REGISTRO VISUAL COGNITIVO
 
     </div>
 
-    <!-- =========================================
-    SECOND BLOCK
-    ========================================== -->
+  </section>
 
-    <div class="visual-bottom-grid">
+</div>
 
-      <!-- =========================================
-      LEFT
-      ========================================== -->
-
-      <div class="visual-secondary-card">
-
-        <div class="visual-small-label">
-          CAPACIDAD TÉCNICA
-        </div>
-
-        <p class="visual-text">
-          Contamos con instrumental óptico de alta calidad visual
-          (no aficionado) apoyados por licencias de software especializadas
-          en postproducción, lo cual nos permite alcanzar niveles de percepción
-          y comprensión realistas en el receptor, independiente de su grado de
-          conocimiento en la materia.
-        </p>
-
-        <p class="visual-text">
-          Esto permite un entendimiento horizontal y virtuoso entre equipos
-          técnicos, directorios, autoridades y ciudadanía.
-        </p>
-
-      </div>
-
-      <!-- =========================================
-      RIGHT
-      ========================================== -->
-
-      <div class="visual-secondary-card">
-
-        <div class="visual-small-label">
-          DIRECTOR DE FOTOGRAFÍA AMBIENTAL
-        </div>
-
-        <p class="visual-text">
-          No es un fotógrafo que entiende de medio ambiente.
-          Es un profesional con formación técnica ambiental que además domina
-          el lenguaje visual, la dirección de equipos de registro y la
-          interpretación de documentación vinculante.
-        </p>
-
-        <p class="visual-text">
-          La imagen debe ser técnicamente fiel y comunicacionalmente efectiva
-          al mismo tiempo. Esa intersección es la competencia central y es
-          escasa.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<style>
-
-/* =========================================================
-REGISTRO VISUAL COGNITIVO
-========================================================= */
-
-.visual-section{
-
-  position:relative;
-
-  padding:9rem 2rem;
-
-  overflow:hidden;
-
-  background:
-  linear-gradient(180deg,
-  #262626 0%,
-  #2d2d2d 100%);
-}
-
-/* =========================================
-BACKGROUND BLUR
-========================================= */
-
-.visual-blur{
-
-  position:absolute;
-
-  border-radius:50%;
-
-  filter:blur(120px);
-
-  opacity:.06;
-
-  pointer-events:none;
-}
-
-.visual-blur-1{
-
-  width:420px;
-  height:420px;
-
-  background:#8db7c0;
-
-  top:-140px;
-  right:-100px;
-}
-
-.visual-blur-2{
-
-  width:320px;
-  height:320px;
-
-  background:#ffffff;
-
-  bottom:-120px;
-  left:-120px;
-}
-
-/* =========================================
-CONTAINER
-========================================= */
-
-.visual-container{
-
-  position:relative;
-  z-index:2;
-}
-
-/* =========================================
-HEADER
-========================================= */
-
-.visual-header{
-
-  max-width:1200px;
-
-  margin:0 auto 5rem;
-
-  text-align:center;
-}
-
-.visual-label{
-
-  display:inline-block;
-
-  margin-bottom:1.1rem;
-
-  color:#8db7c0;
-
-  font-size:.78rem;
-
-  letter-spacing:3px;
-
-  text-transform:uppercase;
-}
-
-.visual-title{
-
-  font-size:clamp(2.5rem,5vw,5.2rem);
-
-  line-height:1;
-
-  letter-spacing:-3px;
-
-  color:#ebe5d8;
-
-  margin-bottom:1.8rem;
-
-  font-weight:700;
-}
-
-.visual-quote{
-
-  max-width:850px;
-
-  margin:0 auto;
-
-  color:#c8c0b2;
-
-  font-size:1.2rem;
-
-  line-height:1.9;
-
-  font-weight:300;
-}
-
-/* =========================================
-MAIN CARD
-========================================= */
-
-.visual-main-card{
-
-  background:
-  linear-gradient(180deg,
-  rgba(255,255,255,.03) 0%,
-  rgba(255,255,255,.018) 100%);
-
-  border:1px solid rgba(255,255,255,.05);
-
-  border-radius:34px;
-
-  padding:4rem;
-
-  box-shadow:
-  0 20px 60px rgba(0,0,0,.22);
-
-  margin-bottom:2rem;
-}
-
-.visual-main-grid{
-
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-
-  gap:3rem;
-}
-
-/* =========================================
-TEXT
-========================================= */
-
-.visual-text{
-
-  color:#cfc7b7;
-
-  font-size:1rem;
-
-  line-height:2;
-
-  margin-bottom:1.8rem;
-
-  font-weight:400;
-}
-
-/* =========================================
-SMALL LABEL
-========================================= */
-
-.visual-small-label{
-
-  margin-bottom:1.6rem;
-
-  color:#8db7c0;
-
-  font-size:.78rem;
-
-  letter-spacing:2px;
-
-  text-transform:uppercase;
-}
-
-/* =========================================
-APPLICATIONS CARD
-========================================= */
-
-.visual-applications-card{
-
-  height:100%;
-
-  background:
-  linear-gradient(180deg,
-  rgba(255,255,255,.03) 0%,
-  rgba(255,255,255,.015) 100%);
-
-  border:1px solid rgba(255,255,255,.05);
-
-  border-radius:26px;
-
-  padding:2rem;
-}
-
-.visual-app-list{
-
-  display:flex;
-  flex-direction:column;
-
-  gap:.9rem;
-}
-
-.visual-app-item{
-
-  padding:1rem 1.1rem;
-
-  border-radius:16px;
-
-  background:rgba(255,255,255,.025);
-
-  border:1px solid rgba(255,255,255,.04);
-
-  color:#e5dfd3;
-
-  line-height:1.7;
-
-  font-size:.95rem;
-
-  transition:.25s ease;
-}
-
-.visual-app-item:hover{
-
-  background:rgba(255,255,255,.04);
-
-  border-color:rgba(255,255,255,.08);
-
-  transform:translateY(-2px);
-}
-
-/* =========================================
-BOTTOM GRID
-========================================= */
-
-.visual-bottom-grid{
-
-  display:grid;
-  grid-template-columns:1fr 1fr;
-
-  gap:2rem;
-}
-
-.visual-secondary-card{
-
-  background:
-  linear-gradient(180deg,
-  rgba(255,255,255,.028) 0%,
-  rgba(255,255,255,.015) 100%);
-
-  border:1px solid rgba(255,255,255,.05);
-
-  border-radius:28px;
-
-  padding:2.5rem;
-
-  box-shadow:
-  0 12px 40px rgba(0,0,0,.18);
-}
-
-/* =========================================================
-TABLET
-========================================================= */
-
-@media(max-width:1100px){
-
-  .visual-main-grid{
-
-    grid-template-columns:1fr;
-  }
-
-  .visual-bottom-grid{
-
-    grid-template-columns:1fr;
-  }
-
-}
-
-/* =========================================================
-MOBILE
-========================================================= */
-
-@media(max-width:768px){
-
-  .visual-section{
-
-    padding:6rem 1.3rem;
-  }
-
-  .visual-header{
-
-    margin-bottom:3rem;
-  }
-
-  .visual-title{
-
-    font-size:2.4rem;
-
-    letter-spacing:-1px;
-
-    line-height:1.05;
-  }
-
-  .visual-quote{
-
-    font-size:1rem;
-
-    line-height:1.8;
-  }
-
-  .visual-main-card{
-
-    padding:2rem;
-
-    border-radius:24px;
-  }
-
-  .visual-secondary-card{
-
-    padding:2rem;
-
-    border-radius:22px;
-  }
-
-  .visual-text{
-
-    font-size:.94rem;
-
-    line-height:1.9;
-  }
-
-  .visual-app-item{
-
-    font-size:.92rem;
-
-    line-height:1.7;
-  }
-
-}
-
-/* =========================================================
-SMALL MOBILE
-========================================================= */
-
-@media(max-width:480px){
-
-  .visual-section{
-
-    padding:5rem 1rem;
-  }
-
-  .visual-title{
-
-    font-size:2rem;
-  }
-
-  .visual-main-card{
-
-    padding:1.5rem;
-  }
-
-  .visual-secondary-card{
-
-    padding:1.5rem;
-  }
-
-  .visual-quote{
-
-    font-size:.95rem;
-  }
-
-  .visual-text{
-
-    font-size:.9rem;
-  }
-
-  .visual-app-item{
-
-    padding:.95rem;
-  }
-
-}
-
-</style>
-
-
-<!-- =========================================================
-CLIENTES
-========================================================= -->
-
-<section class="section clients">
-
-  <div class="container">
-
-    <h2 class="section-title">
-      Nuestros Clientes
-    </h2>
-
-    <p class="section-subtitle">
-      Hemos asesorado empresas líderes en diversos sectores.
-    </p>
-
-    <div class="clients-grid">
-
-      <img src="logo/colbun.svg" alt="Colbún" class="client-logo">
-      <img src="logo/marval.svg" alt="Marval" class="client-logo">
-      <img src="logo/oxxean.svg" alt="Oxean" class="client-logo">
-      <img src="logo/resolve.svg" alt="Resolve Marine" class="client-logo">
-      <img src="logo/scotta.svg" alt="Scotta" class="client-logo">
-      <img src="logo/ovejera.svg" alt="Hidromocho" class="client-logo">
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-
-
-
-<!-- =========================================================
-CONTACTO
-========================================================= -->
-
-<section class="section contact" id="contacto">
-
-  <div class="container">
-
-    <div class="contact-content">
-
-      <h2 class="section-title">
-        ¿Necesitas asesoría especializada?
-      </h2>
-
-      <p class="section-subtitle">
-        Contáctenos para evaluar cómo podemos apoyar tus proyectos con soluciones.
-      </p>
-
-      <div class="contact-info">
-
-        <div class="contact-item">
-          <span class="contact-icon">
-            <i class="fas fa-envelope"></i>
-          </span>
-          <span>felipe@soarblue.cl</span>
-        </div>
-
-        <div class="contact-item">
-          <span class="contact-icon">
-            <i class="fab fa-whatsapp"></i>
-          </span>
-          <span>+56998114750 (WhatsApp)</span>
-        </div>
-
-        <div class="contact-item">
-          <span class="contact-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </span>
-          <span>Valdivia, Región de Los Ríos, Chile</span>
-        </div>
-
-      </div>
-
-      <a
-        href="https://wa.me/56998114750"
-        class="cta-button"
-      >
-        <i class="fab fa-whatsapp"></i>
-        Contactar por WhatsApp
-      </a>
-
-    </div>
-
-  </div>
-</section>
 <!-- =========================================================
 FOOTER
 ========================================================= -->
 
-<footer class="footer">
+<footer class="footer" id="mainFooter">
 
   <div class="footer-content">
 
@@ -3074,6 +4079,10 @@ SCRIPT
 
 <script>
 
+// =========================================================
+// HEADER SCROLL
+// =========================================================
+
 const header = document.getElementById('header');
 
 window.addEventListener('scroll', () => {
@@ -3086,8 +4095,101 @@ window.addEventListener('scroll', () => {
 
 });
 
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const navMenu = document.querySelector('.nav-menu');
+// =========================================================
+// NAVEGACIÓN POR PESTAÑAS
+// =========================================================
+
+const navLinks = document.querySelectorAll('.nav-link');
+const mainContent = document.getElementById('mainContent');
+const mainFooter = document.getElementById('mainFooter');
+const pageTabs = {
+  equipo: document.getElementById('page-equipo'),
+  tecnologia: document.getElementById('page-tecnologia'),
+  simbiosis: document.getElementById('page-simbiosis')
+};
+
+// Estado actual
+let currentTab = null;
+
+function showTab(pageId) {
+
+  // Si es una pestaña (equipo, tecnologia, simbiosis)
+  if (pageId === 'equipo' || pageId === 'tecnologia' || pageId === 'simbiosis') {
+
+    // Ocultar contenido principal
+    mainContent.style.display = 'none';
+    mainFooter.style.display = 'none';
+
+    // Ocultar todas las pestañas
+    Object.values(pageTabs).forEach(tab => {
+      tab.classList.remove('active');
+    });
+
+    // Mostrar la pestaña seleccionada
+    if (pageTabs[pageId]) {
+      pageTabs[pageId].classList.add('active');
+    }
+
+    currentTab = pageId;
+
+  } else {
+
+    // Mostrar contenido principal
+    mainContent.style.display = 'block';
+    mainFooter.style.display = 'block';
+
+    // Ocultar todas las pestañas
+    Object.values(pageTabs).forEach(tab => {
+      tab.classList.remove('active');
+    });
+
+    currentTab = null;
+
+    // Scroll a la sección correspondiente
+    const target = document.getElementById(pageId);
+    if (target) {
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+
+  }
+
+  // Actualizar clase active en los links
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.dataset.page === pageId) {
+      link.classList.add('active');
+    }
+  });
+
+  // Cerrar menú móvil
+  if (window.innerWidth <= 768) {
+    navMenu.style.display = 'none';
+  }
+
+}
+
+// Event listeners para los links de navegación
+navLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const pageId = link.dataset.page;
+    showTab(pageId);
+  });
+});
+
+// Logo click vuelve a inicio
+document.getElementById('logoHome').addEventListener('click', () => {
+  showTab('inicio');
+});
+
+// =========================================================
+// MENÚ MÓVIL
+// =========================================================
+
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const navMenu = document.getElementById('navMenu');
 
 mobileMenuBtn.addEventListener('click', () => {
 
@@ -3097,6 +4199,36 @@ mobileMenuBtn.addEventListener('click', () => {
     navMenu.style.display = 'flex';
   }
 
+});
+
+// Cerrar menú al redimensionar
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    navMenu.style.display = 'flex';
+  } else {
+    navMenu.style.display = 'none';
+  }
+});
+
+// =========================================================
+// INICIALIZAR: mostrar inicio por defecto
+// =========================================================
+
+// Asegurar que el contenido principal esté visible
+mainContent.style.display = 'block';
+mainFooter.style.display = 'block';
+
+// Ocultar pestañas
+Object.values(pageTabs).forEach(tab => {
+  tab.classList.remove('active');
+});
+
+// Activar link de inicio
+navLinks.forEach(link => {
+  link.classList.remove('active');
+  if (link.dataset.page === 'inicio') {
+    link.classList.add('active');
+  }
 });
 
 </script>
